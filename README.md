@@ -21,13 +21,13 @@ API详细调用例程参见 com.test.TestCase
 		
 Session session = FutuOpenD.openSession("localhost", 11111);
 
-//订阅股票
+//订阅股票<br>
 session.qotSub(QotMarket.QotMarket_HK_Security, new String[]{"00700","00005"},new SubType[]	{SubType.SubType_Basic,SubType.SubType_Ticker,SubType.SubType_KL_1Min,SubType.SubType_KL_Day,SubType.SubType_RT,SubType.SubType_OrderBook,SubType.SubType_Broker});
 
-//订阅推送
+//订阅推送<br>
 session.qotRegQotPush(QotMarket.QotMarket_HK_Security, new String[]{"00700"}, new SubType[]{SubType.SubType_Basic,SubType.SubType_Ticker,SubType.SubType_KL_1Min,SubType.SubType_KL_Day,SubType.SubType_RT,SubType.SubType_OrderBook,SubType.SubType_Broker});
 
-//分时(含回调)
+//分时(含回调)<br>
 session.qotGetRT(QotMarket.QotMarket_HK_Security, "00700", new IUpdateCallBack<List<TimeShare>>(){
 	@Override
 		public void callback(List<TimeShare> res) {
