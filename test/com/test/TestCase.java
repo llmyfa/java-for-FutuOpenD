@@ -2,11 +2,9 @@ package com.test;
 
 import java.io.IOException;
 import java.util.List;
-
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
-
 import com.futu.opend.api.Brokers;
 import com.futu.opend.api.IUpdateCallBack;
 import com.futu.opend.api.OrderBooks;
