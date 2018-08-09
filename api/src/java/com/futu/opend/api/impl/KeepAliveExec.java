@@ -25,7 +25,7 @@ class KeepAliveExec implements IExecutor{
 	}
 
 	@Override
-	public Object getValue() {
+	public KeepAlive.Response getValue() {
 		// TODO Auto-generated method stub
 		return null;
 	}

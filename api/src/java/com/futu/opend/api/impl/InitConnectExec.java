@@ -27,7 +27,7 @@ class InitConnectExec implements IExecutor{
 	}
 
 	@Override
-	public Object getValue() {
+	public InitConnect.Response getValue() {
 		return null;
 	}
 

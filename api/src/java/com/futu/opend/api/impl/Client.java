@@ -30,6 +30,10 @@ class Client {
 	public void open(String ip,int port){
 		this.ip = ip;
 		this.port = port;
+		try {
+			initConnection();
+		}  catch (Exception e) {
+		}
 		new SocketThread().start();
 	}
 	
@@ -97,12 +101,12 @@ class Client {
                 public void run() {
                     while (!over&&keepAlive) {
                         try {
+                        	sleepMillis(10 * 1000);// 10s发送一次心跳
                             KeepAliveExec keepAlive = new KeepAliveExec();
                             ProtoBufPackage pack = keepAlive.buildPackage();
                             addHander(pack.getnSerialNo(), keepAlive);
                             os.write(pack.pack());
                             os.flush();
-                            sleepMillis(10 * 1000);// 10s发送一次心跳
                         } catch (Exception e) {
                            
                         }
@@ -115,13 +119,8 @@ class Client {
     }
     
 	private class SocketThread extends Thread {
-
         @Override
         public void run() {
-        	try {
-				initConnection();
-			}  catch (Exception e) {
-			}
         	sendHeartbeat();
             long startTime = System.currentTimeMillis();
            

@@ -24,7 +24,8 @@ class ProtoBufPackage {
 	private byte[] bodys;//包体
 	
 	public ProtoBufPackage(){
-		this.nSerialNo = (int)System.currentTimeMillis();
+		this.nSerialNo = (int)System.currentTimeMillis()+count;
+		count++;
 	}
 	
 	public byte[] pack() throws IOException, NoSuchAlgorithmException{
