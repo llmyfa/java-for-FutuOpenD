@@ -12,7 +12,6 @@ import org.joou.Unsigned;
 
 class ProtoBufPackage {
 
-	static int count = 1;
 	private String szHeaderFlag = "FT";//包头起始标志，固定为“FT”
 	private int nProtoID;//协议ID
 	private byte nProtoFmtType = 0;//协议格式类型，0为Protobuf格式，1为Json格式
@@ -24,8 +23,7 @@ class ProtoBufPackage {
 	private byte[] bodys;//包体
 	
 	public ProtoBufPackage(){
-		this.nSerialNo = (int)System.currentTimeMillis()+count;
-		count++;
+		this.nSerialNo = (int)System.currentTimeMillis();
 	}
 	
 	public byte[] pack() throws IOException, NoSuchAlgorithmException{

@@ -215,7 +215,8 @@ public interface Session {
 	QotGetRehab.Response qotGetRehab(QotMarket market,String[] symbols)  throws IOException;
 	
 	/**
-	 * 获取股票静态信息
+	 * 获取某一市场的证券信息
+	 * 如香港所有股票: QotMarket.QotMarket_HK_Security, SecurityType.SecurityType_Eqty,null
 	 * @param market
 	 * @param symbols
 	 * @param secType
@@ -281,6 +282,21 @@ public interface Session {
 	 * @throws IOException
 	 */
 	QotGetTradeDate.Response qotGetTradeDate(QotMarket market,String beginTime,String endTime) throws IOException;
+	
+	/**
+	 * 解锁模拟盘交易
+	 * @return
+	 * @throws IOException
+	 */
+	TraderSession trdUnlockTradeForSimulate(long futuUserID,String pwdMD5) throws IOException;
+	/**
+	 * 解锁实盘盘交易
+	 * @param futuUserID
+	 * @param pwdMD5
+	 * @return
+	 * @throws IOException
+	 */
+	TraderSession trdUnlockTradeForReal(long futuUserID,String pwdMD5) throws IOException;
 	
 	void close() throws IOException;
 	

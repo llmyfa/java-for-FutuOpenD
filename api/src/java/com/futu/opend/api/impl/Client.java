@@ -8,12 +8,14 @@ import java.net.UnknownHostException;
 import java.security.NoSuchAlgorithmException;
 import java.util.Map;
 
+import com.futu.opend.api.protobuf.InitConnect;
 import com.google.protobuf.InvalidProtocolBufferException;
 
 class Client {
 	
 	private Map<Integer,IExecutor> handlers = new java.util.concurrent.ConcurrentHashMap<Integer, IExecutor>();//包序列号，对应请求包和回包
 	
+	private long connID;
 	private String ip;
 	private int port;
 	private Socket socket = null;
@@ -35,6 +37,23 @@ class Client {
 		}  catch (Exception e) {
 		}
 		new SocketThread().start();
+		
+		IExecutor handler = null;
+		for(IExecutor exec : handlers.values()){
+			if (exec.getnProtoID()==InitConnectExec.nProtoID){
+				handler = exec;
+				break;
+			}
+		}
+		
+		long startTime = System.currentTimeMillis();
+		while(handler.getValue()==null){
+			if ((System.currentTimeMillis() - startTime) > 30 * 1000)//超时
+				break;
+			sleepMillis(1);
+		}
+		InitConnect.Response res = (InitConnect.Response)handler.getValue();
+		connID = res.getS2C().getConnID();
 	}
 	
 	public Object execute(IExecutor handler) throws IOException {
@@ -170,8 +189,11 @@ class Client {
 						for(IExecutor exec : handlers.values()){
 							if (exec instanceof IUpdateExecutor ){
 								IUpdateExecutor upexec = ((IUpdateExecutor)exec);
-								if (((IUpdateExecutor) exec).getnUpdateProtoID()==pack.getnProtoID())
+								if (((IUpdateExecutor) exec).getnUpdateProtoID()==pack.getnProtoID()){
 									upexec.handler(upexec.parse(pack));
+									if (pack.getnProtoID()==TrdGetOrderFillListExec.nUpdateProtoID||pack.getnProtoID()==TrdPlaceOrderExec.nUpdateProtoID)//与交易相关的推送是全局推送，不需要根据条件过滤。只需要推送一次就可以了。2208推送订单更新,2218推送新成交
+										break;
+								}
 							}
 						}
 					}
@@ -197,6 +219,8 @@ class Client {
 	public void setKeepAlive(boolean keepAlive) {
 		this.keepAlive = keepAlive;
 	}
-	
-	
+
+	public long getConnID() {
+		return connID;
+	}
 }

@@ -5,6 +5,8 @@ import com.google.protobuf.InvalidProtocolBufferException;
 
 class InitConnectExec implements IExecutor{
 	
+	private InitConnect.Response response;
+	
 	public final static int nProtoID = 1001;
 	
 	public ProtoBufPackage buildPackage(){
@@ -22,13 +24,13 @@ class InitConnectExec implements IExecutor{
 
 	@Override
 	public void execute(ProtoBufPackage pack)throws InvalidProtocolBufferException {
-		InitConnect.Response response = InitConnect.Response.parseFrom(pack.getBodys());
+		response = InitConnect.Response.parseFrom(pack.getBodys());
 		System.out.println(response.toString());
 	}
 
 	@Override
 	public InitConnect.Response getValue() {
-		return null;
+		return response;
 	}
 
 	@Override
