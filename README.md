@@ -49,5 +49,5 @@ traderSession.trdPlaceOrder(TrdMarket.TrdMarket_HK,TrdSide.TrdSide_Buy,OrderType
 session.close();
 ```	
 ## 参考
-[FutuQuant富途量化投资平台官方python版](https://github.com/FutunnOpen/futuquant)
+[FutuQuant富途量化投资平台官方python版](https://github.com/FutunnOpen/futuquant)<br>
 [FutuQuant协议接口指南](https://futunnopen.github.io/futuquant/protocol/intro.html)
