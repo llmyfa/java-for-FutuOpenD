@@ -46,21 +46,13 @@ public final class QotCommon {
      */
     QotMarket_US_Security(3, 11),
     /**
-     * <code>QotMarket_US_Option = 12;</code>
-     *
-     * <pre>
-     *美期权,暂时不支持期权
-     * </pre>
-     */
-    QotMarket_US_Option(4, 12),
-    /**
      * <code>QotMarket_CNSH_Security = 21;</code>
      *
      * <pre>
      *沪股
      * </pre>
      */
-    QotMarket_CNSH_Security(5, 21),
+    QotMarket_CNSH_Security(4, 21),
     /**
      * <code>QotMarket_CNSZ_Security = 22;</code>
      *
@@ -68,7 +60,7 @@ public final class QotCommon {
      *深股
      * </pre>
      */
-    QotMarket_CNSZ_Security(6, 22),
+    QotMarket_CNSZ_Security(5, 22),
     ;
 
     /**
@@ -104,14 +96,6 @@ public final class QotCommon {
      */
     public static final int QotMarket_US_Security_VALUE = 11;
     /**
-     * <code>QotMarket_US_Option = 12;</code>
-     *
-     * <pre>
-     *美期权,暂时不支持期权
-     * </pre>
-     */
-    public static final int QotMarket_US_Option_VALUE = 12;
-    /**
      * <code>QotMarket_CNSH_Security = 21;</code>
      *
      * <pre>
@@ -137,7 +121,6 @@ public final class QotCommon {
         case 1: return QotMarket_HK_Security;
         case 2: return QotMarket_HK_Future;
         case 11: return QotMarket_US_Security;
-        case 12: return QotMarket_US_Option;
         case 21: return QotMarket_CNSH_Security;
         case 22: return QotMarket_CNSZ_Security;
         default: return null;
@@ -462,6 +445,14 @@ public final class QotCommon {
      * </pre>
      */
     PlateSetType_Concept(3, 3),
+    /**
+     * <code>PlateSetType_Other = 4;</code>
+     *
+     * <pre>
+     *其他板块, 仅用于3207（获取股票所属板块）协议返回,不可作为其他协议的请求参数
+     * </pre>
+     */
+    PlateSetType_Other(4, 4),
     ;
 
     /**
@@ -496,6 +487,14 @@ public final class QotCommon {
      * </pre>
      */
     public static final int PlateSetType_Concept_VALUE = 3;
+    /**
+     * <code>PlateSetType_Other = 4;</code>
+     *
+     * <pre>
+     *其他板块, 仅用于3207（获取股票所属板块）协议返回,不可作为其他协议的请求参数
+     * </pre>
+     */
+    public static final int PlateSetType_Other_VALUE = 4;
 
 
     public final int getNumber() { return value; }
@@ -506,6 +505,7 @@ public final class QotCommon {
         case 1: return PlateSetType_Industry;
         case 2: return PlateSetType_Region;
         case 3: return PlateSetType_Concept;
+        case 4: return PlateSetType_Other;
         default: return null;
       }
     }
@@ -704,6 +704,121 @@ public final class QotCommon {
     }
 
     // @@protoc_insertion_point(enum_scope:Qot_Common.WarrantType)
+  }
+
+  /**
+   * Protobuf enum {@code Qot_Common.OptionType}
+   */
+  public enum OptionType
+      implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <code>OptionType_Unknown = 0;</code>
+     *
+     * <pre>
+     *未知
+     * </pre>
+     */
+    OptionType_Unknown(0, 0),
+    /**
+     * <code>OptionType_Call = 1;</code>
+     *
+     * <pre>
+     *涨
+     * </pre>
+     */
+    OptionType_Call(1, 1),
+    /**
+     * <code>OptionType_Put = 2;</code>
+     *
+     * <pre>
+     *跌
+     * </pre>
+     */
+    OptionType_Put(2, 2),
+    ;
+
+    /**
+     * <code>OptionType_Unknown = 0;</code>
+     *
+     * <pre>
+     *未知
+     * </pre>
+     */
+    public static final int OptionType_Unknown_VALUE = 0;
+    /**
+     * <code>OptionType_Call = 1;</code>
+     *
+     * <pre>
+     *涨
+     * </pre>
+     */
+    public static final int OptionType_Call_VALUE = 1;
+    /**
+     * <code>OptionType_Put = 2;</code>
+     *
+     * <pre>
+     *跌
+     * </pre>
+     */
+    public static final int OptionType_Put_VALUE = 2;
+
+
+    public final int getNumber() { return value; }
+
+    public static OptionType valueOf(int value) {
+      switch (value) {
+        case 0: return OptionType_Unknown;
+        case 1: return OptionType_Call;
+        case 2: return OptionType_Put;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<OptionType>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static com.google.protobuf.Internal.EnumLiteMap<OptionType>
+        internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<OptionType>() {
+            public OptionType findValueByNumber(int number) {
+              return OptionType.valueOf(number);
+            }
+          };
+
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        getValueDescriptor() {
+      return getDescriptor().getValues().get(index);
+    }
+    public final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptorForType() {
+      return getDescriptor();
+    }
+    public static final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptor() {
+      return com.futu.opend.api.protobuf.QotCommon.getDescriptor().getEnumTypes().get(4);
+    }
+
+    private static final OptionType[] VALUES = values();
+
+    public static OptionType valueOf(
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+      if (desc.getType() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "EnumValueDescriptor is not for this type.");
+      }
+      return VALUES[desc.getIndex()];
+    }
+
+    private final int index;
+    private final int value;
+
+    private OptionType(int index, int value) {
+      this.index = index;
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:Qot_Common.OptionType)
   }
 
   /**
@@ -1051,7 +1166,7 @@ public final class QotCommon {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return com.futu.opend.api.protobuf.QotCommon.getDescriptor().getEnumTypes().get(4);
+      return com.futu.opend.api.protobuf.QotCommon.getDescriptor().getEnumTypes().get(5);
     }
 
     private static final QotMarketState[] VALUES = values();
@@ -1166,7 +1281,7 @@ public final class QotCommon {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return com.futu.opend.api.protobuf.QotCommon.getDescriptor().getEnumTypes().get(5);
+      return com.futu.opend.api.protobuf.QotCommon.getDescriptor().getEnumTypes().get(6);
     }
 
     private static final RehabType[] VALUES = values();
@@ -1439,7 +1554,7 @@ public final class QotCommon {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return com.futu.opend.api.protobuf.QotCommon.getDescriptor().getEnumTypes().get(6);
+      return com.futu.opend.api.protobuf.QotCommon.getDescriptor().getEnumTypes().get(7);
     }
 
     private static final KLType[] VALUES = values();
@@ -1688,7 +1803,7 @@ public final class QotCommon {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return com.futu.opend.api.protobuf.QotCommon.getDescriptor().getEnumTypes().get(7);
+      return com.futu.opend.api.protobuf.QotCommon.getDescriptor().getEnumTypes().get(8);
     }
 
     private static final KLFields[] VALUES = values();
@@ -1855,6 +1970,14 @@ public final class QotCommon {
      * </pre>
      */
     SubType_KL_3Min(16, 17),
+    /**
+     * <code>SubType_OrderDetail = 18;</code>
+     *
+     * <pre>
+     *委托明细
+     * </pre>
+     */
+    SubType_OrderDetail(17, 18),
     ;
 
     /**
@@ -1989,6 +2112,14 @@ public final class QotCommon {
      * </pre>
      */
     public static final int SubType_KL_3Min_VALUE = 17;
+    /**
+     * <code>SubType_OrderDetail = 18;</code>
+     *
+     * <pre>
+     *委托明细
+     * </pre>
+     */
+    public static final int SubType_OrderDetail_VALUE = 18;
 
 
     public final int getNumber() { return value; }
@@ -2012,6 +2143,7 @@ public final class QotCommon {
         case 15: return SubType_KL_Qurater;
         case 16: return SubType_KL_Year;
         case 17: return SubType_KL_3Min;
+        case 18: return SubType_OrderDetail;
         default: return null;
       }
     }
@@ -2038,7 +2170,7 @@ public final class QotCommon {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return com.futu.opend.api.protobuf.QotCommon.getDescriptor().getEnumTypes().get(8);
+      return com.futu.opend.api.protobuf.QotCommon.getDescriptor().getEnumTypes().get(9);
     }
 
     private static final SubType[] VALUES = values();
@@ -2170,7 +2302,7 @@ public final class QotCommon {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return com.futu.opend.api.protobuf.QotCommon.getDescriptor().getEnumTypes().get(9);
+      return com.futu.opend.api.protobuf.QotCommon.getDescriptor().getEnumTypes().get(10);
     }
 
     private static final TickerDirection[] VALUES = values();
@@ -2761,7 +2893,7 @@ public final class QotCommon {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return com.futu.opend.api.protobuf.QotCommon.getDescriptor().getEnumTypes().get(10);
+      return com.futu.opend.api.protobuf.QotCommon.getDescriptor().getEnumTypes().get(11);
     }
 
     private static final TickerType[] VALUES = values();
@@ -2876,7 +3008,7 @@ public final class QotCommon {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return com.futu.opend.api.protobuf.QotCommon.getDescriptor().getEnumTypes().get(11);
+      return com.futu.opend.api.protobuf.QotCommon.getDescriptor().getEnumTypes().get(12);
     }
 
     private static final DarkStatus[] VALUES = values();
@@ -2899,6 +3031,266 @@ public final class QotCommon {
     }
 
     // @@protoc_insertion_point(enum_scope:Qot_Common.DarkStatus)
+  }
+
+  /**
+   * Protobuf enum {@code Qot_Common.HolderCategory}
+   */
+  public enum HolderCategory
+      implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <code>HolderCategory_Unknow = 0;</code>
+     *
+     * <pre>
+     *未知
+     * </pre>
+     */
+    HolderCategory_Unknow(0, 0),
+    /**
+     * <code>HolderCategory_Agency = 1;</code>
+     *
+     * <pre>
+     *机构
+     * </pre>
+     */
+    HolderCategory_Agency(1, 1),
+    /**
+     * <code>HolderCategory_Fund = 2;</code>
+     *
+     * <pre>
+     *基金
+     * </pre>
+     */
+    HolderCategory_Fund(2, 2),
+    /**
+     * <code>HolderCategory_SeniorManager = 3;</code>
+     *
+     * <pre>
+     *高管
+     * </pre>
+     */
+    HolderCategory_SeniorManager(3, 3),
+    ;
+
+    /**
+     * <code>HolderCategory_Unknow = 0;</code>
+     *
+     * <pre>
+     *未知
+     * </pre>
+     */
+    public static final int HolderCategory_Unknow_VALUE = 0;
+    /**
+     * <code>HolderCategory_Agency = 1;</code>
+     *
+     * <pre>
+     *机构
+     * </pre>
+     */
+    public static final int HolderCategory_Agency_VALUE = 1;
+    /**
+     * <code>HolderCategory_Fund = 2;</code>
+     *
+     * <pre>
+     *基金
+     * </pre>
+     */
+    public static final int HolderCategory_Fund_VALUE = 2;
+    /**
+     * <code>HolderCategory_SeniorManager = 3;</code>
+     *
+     * <pre>
+     *高管
+     * </pre>
+     */
+    public static final int HolderCategory_SeniorManager_VALUE = 3;
+
+
+    public final int getNumber() { return value; }
+
+    public static HolderCategory valueOf(int value) {
+      switch (value) {
+        case 0: return HolderCategory_Unknow;
+        case 1: return HolderCategory_Agency;
+        case 2: return HolderCategory_Fund;
+        case 3: return HolderCategory_SeniorManager;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<HolderCategory>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static com.google.protobuf.Internal.EnumLiteMap<HolderCategory>
+        internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<HolderCategory>() {
+            public HolderCategory findValueByNumber(int number) {
+              return HolderCategory.valueOf(number);
+            }
+          };
+
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        getValueDescriptor() {
+      return getDescriptor().getValues().get(index);
+    }
+    public final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptorForType() {
+      return getDescriptor();
+    }
+    public static final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptor() {
+      return com.futu.opend.api.protobuf.QotCommon.getDescriptor().getEnumTypes().get(13);
+    }
+
+    private static final HolderCategory[] VALUES = values();
+
+    public static HolderCategory valueOf(
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+      if (desc.getType() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "EnumValueDescriptor is not for this type.");
+      }
+      return VALUES[desc.getIndex()];
+    }
+
+    private final int index;
+    private final int value;
+
+    private HolderCategory(int index, int value) {
+      this.index = index;
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:Qot_Common.HolderCategory)
+  }
+
+  /**
+   * Protobuf enum {@code Qot_Common.PushDataType}
+   *
+   * <pre>
+   *推送数据的分类，目前只有逐笔在使用
+   * </pre>
+   */
+  public enum PushDataType
+      implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <code>PushDataType_Unknow = 0;</code>
+     */
+    PushDataType_Unknow(0, 0),
+    /**
+     * <code>PushDataType_Realtime = 1;</code>
+     *
+     * <pre>
+     *实时推送的数据
+     * </pre>
+     */
+    PushDataType_Realtime(1, 1),
+    /**
+     * <code>PushDataType_ByDisConn = 2;</code>
+     *
+     * <pre>
+     *对后台行情连接断开期间拉取补充的数据 最多750个
+     * </pre>
+     */
+    PushDataType_ByDisConn(2, 2),
+    /**
+     * <code>PushDataType_Cache = 3;</code>
+     *
+     * <pre>
+     *非实时非连接断开补充数据
+     * </pre>
+     */
+    PushDataType_Cache(3, 3),
+    ;
+
+    /**
+     * <code>PushDataType_Unknow = 0;</code>
+     */
+    public static final int PushDataType_Unknow_VALUE = 0;
+    /**
+     * <code>PushDataType_Realtime = 1;</code>
+     *
+     * <pre>
+     *实时推送的数据
+     * </pre>
+     */
+    public static final int PushDataType_Realtime_VALUE = 1;
+    /**
+     * <code>PushDataType_ByDisConn = 2;</code>
+     *
+     * <pre>
+     *对后台行情连接断开期间拉取补充的数据 最多750个
+     * </pre>
+     */
+    public static final int PushDataType_ByDisConn_VALUE = 2;
+    /**
+     * <code>PushDataType_Cache = 3;</code>
+     *
+     * <pre>
+     *非实时非连接断开补充数据
+     * </pre>
+     */
+    public static final int PushDataType_Cache_VALUE = 3;
+
+
+    public final int getNumber() { return value; }
+
+    public static PushDataType valueOf(int value) {
+      switch (value) {
+        case 0: return PushDataType_Unknow;
+        case 1: return PushDataType_Realtime;
+        case 2: return PushDataType_ByDisConn;
+        case 3: return PushDataType_Cache;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<PushDataType>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static com.google.protobuf.Internal.EnumLiteMap<PushDataType>
+        internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<PushDataType>() {
+            public PushDataType findValueByNumber(int number) {
+              return PushDataType.valueOf(number);
+            }
+          };
+
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        getValueDescriptor() {
+      return getDescriptor().getValues().get(index);
+    }
+    public final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptorForType() {
+      return getDescriptor();
+    }
+    public static final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptor() {
+      return com.futu.opend.api.protobuf.QotCommon.getDescriptor().getEnumTypes().get(14);
+    }
+
+    private static final PushDataType[] VALUES = values();
+
+    public static PushDataType valueOf(
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+      if (desc.getType() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "EnumValueDescriptor is not for this type.");
+      }
+      return VALUES[desc.getIndex()];
+    }
+
+    private final int index;
+    private final int value;
+
+    private PushDataType(int index, int value) {
+      this.index = index;
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:Qot_Common.PushDataType)
   }
 
   public interface SecurityOrBuilder extends
@@ -5309,6 +5701,1505 @@ public final class QotCommon {
     // @@protoc_insertion_point(class_scope:Qot_Common.KLine)
   }
 
+  public interface OptionBasicQotExDataOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:Qot_Common.OptionBasicQotExData)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>required double strikePrice = 1;</code>
+     *
+     * <pre>
+     *行权价
+     * </pre>
+     */
+    boolean hasStrikePrice();
+    /**
+     * <code>required double strikePrice = 1;</code>
+     *
+     * <pre>
+     *行权价
+     * </pre>
+     */
+    double getStrikePrice();
+
+    /**
+     * <code>required int32 contractSize = 2;</code>
+     *
+     * <pre>
+     *每份合约数
+     * </pre>
+     */
+    boolean hasContractSize();
+    /**
+     * <code>required int32 contractSize = 2;</code>
+     *
+     * <pre>
+     *每份合约数
+     * </pre>
+     */
+    int getContractSize();
+
+    /**
+     * <code>required int32 openInterest = 3;</code>
+     *
+     * <pre>
+     *未平仓合约数
+     * </pre>
+     */
+    boolean hasOpenInterest();
+    /**
+     * <code>required int32 openInterest = 3;</code>
+     *
+     * <pre>
+     *未平仓合约数
+     * </pre>
+     */
+    int getOpenInterest();
+
+    /**
+     * <code>required double impliedVolatility = 4;</code>
+     *
+     * <pre>
+     *隐含波动率
+     * </pre>
+     */
+    boolean hasImpliedVolatility();
+    /**
+     * <code>required double impliedVolatility = 4;</code>
+     *
+     * <pre>
+     *隐含波动率
+     * </pre>
+     */
+    double getImpliedVolatility();
+
+    /**
+     * <code>required double premium = 5;</code>
+     *
+     * <pre>
+     *溢价
+     * </pre>
+     */
+    boolean hasPremium();
+    /**
+     * <code>required double premium = 5;</code>
+     *
+     * <pre>
+     *溢价
+     * </pre>
+     */
+    double getPremium();
+
+    /**
+     * <code>required double delta = 6;</code>
+     *
+     * <pre>
+     *希腊值 Delta
+     * </pre>
+     */
+    boolean hasDelta();
+    /**
+     * <code>required double delta = 6;</code>
+     *
+     * <pre>
+     *希腊值 Delta
+     * </pre>
+     */
+    double getDelta();
+
+    /**
+     * <code>required double gamma = 7;</code>
+     *
+     * <pre>
+     *希腊值 Gamma
+     * </pre>
+     */
+    boolean hasGamma();
+    /**
+     * <code>required double gamma = 7;</code>
+     *
+     * <pre>
+     *希腊值 Gamma
+     * </pre>
+     */
+    double getGamma();
+
+    /**
+     * <code>required double vega = 8;</code>
+     *
+     * <pre>
+     *希腊值 Vega
+     * </pre>
+     */
+    boolean hasVega();
+    /**
+     * <code>required double vega = 8;</code>
+     *
+     * <pre>
+     *希腊值 Vega
+     * </pre>
+     */
+    double getVega();
+
+    /**
+     * <code>required double theta = 9;</code>
+     *
+     * <pre>
+     *希腊值 Theta
+     * </pre>
+     */
+    boolean hasTheta();
+    /**
+     * <code>required double theta = 9;</code>
+     *
+     * <pre>
+     *希腊值 Theta
+     * </pre>
+     */
+    double getTheta();
+
+    /**
+     * <code>required double rho = 10;</code>
+     *
+     * <pre>
+     *希腊值 Rho
+     * </pre>
+     */
+    boolean hasRho();
+    /**
+     * <code>required double rho = 10;</code>
+     *
+     * <pre>
+     *希腊值 Rho
+     * </pre>
+     */
+    double getRho();
+  }
+  /**
+   * Protobuf type {@code Qot_Common.OptionBasicQotExData}
+   */
+  public static final class OptionBasicQotExData extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:Qot_Common.OptionBasicQotExData)
+      OptionBasicQotExDataOrBuilder {
+    // Use OptionBasicQotExData.newBuilder() to construct.
+    private OptionBasicQotExData(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private OptionBasicQotExData(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final OptionBasicQotExData defaultInstance;
+    public static OptionBasicQotExData getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public OptionBasicQotExData getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private OptionBasicQotExData(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 9: {
+              bitField0_ |= 0x00000001;
+              strikePrice_ = input.readDouble();
+              break;
+            }
+            case 16: {
+              bitField0_ |= 0x00000002;
+              contractSize_ = input.readInt32();
+              break;
+            }
+            case 24: {
+              bitField0_ |= 0x00000004;
+              openInterest_ = input.readInt32();
+              break;
+            }
+            case 33: {
+              bitField0_ |= 0x00000008;
+              impliedVolatility_ = input.readDouble();
+              break;
+            }
+            case 41: {
+              bitField0_ |= 0x00000010;
+              premium_ = input.readDouble();
+              break;
+            }
+            case 49: {
+              bitField0_ |= 0x00000020;
+              delta_ = input.readDouble();
+              break;
+            }
+            case 57: {
+              bitField0_ |= 0x00000040;
+              gamma_ = input.readDouble();
+              break;
+            }
+            case 65: {
+              bitField0_ |= 0x00000080;
+              vega_ = input.readDouble();
+              break;
+            }
+            case 73: {
+              bitField0_ |= 0x00000100;
+              theta_ = input.readDouble();
+              break;
+            }
+            case 81: {
+              bitField0_ |= 0x00000200;
+              rho_ = input.readDouble();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.futu.opend.api.protobuf.QotCommon.internal_static_Qot_Common_OptionBasicQotExData_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.futu.opend.api.protobuf.QotCommon.internal_static_Qot_Common_OptionBasicQotExData_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.futu.opend.api.protobuf.QotCommon.OptionBasicQotExData.class, com.futu.opend.api.protobuf.QotCommon.OptionBasicQotExData.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<OptionBasicQotExData> PARSER =
+        new com.google.protobuf.AbstractParser<OptionBasicQotExData>() {
+      public OptionBasicQotExData parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new OptionBasicQotExData(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<OptionBasicQotExData> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    public static final int STRIKEPRICE_FIELD_NUMBER = 1;
+    private double strikePrice_;
+    /**
+     * <code>required double strikePrice = 1;</code>
+     *
+     * <pre>
+     *行权价
+     * </pre>
+     */
+    public boolean hasStrikePrice() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required double strikePrice = 1;</code>
+     *
+     * <pre>
+     *行权价
+     * </pre>
+     */
+    public double getStrikePrice() {
+      return strikePrice_;
+    }
+
+    public static final int CONTRACTSIZE_FIELD_NUMBER = 2;
+    private int contractSize_;
+    /**
+     * <code>required int32 contractSize = 2;</code>
+     *
+     * <pre>
+     *每份合约数
+     * </pre>
+     */
+    public boolean hasContractSize() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>required int32 contractSize = 2;</code>
+     *
+     * <pre>
+     *每份合约数
+     * </pre>
+     */
+    public int getContractSize() {
+      return contractSize_;
+    }
+
+    public static final int OPENINTEREST_FIELD_NUMBER = 3;
+    private int openInterest_;
+    /**
+     * <code>required int32 openInterest = 3;</code>
+     *
+     * <pre>
+     *未平仓合约数
+     * </pre>
+     */
+    public boolean hasOpenInterest() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>required int32 openInterest = 3;</code>
+     *
+     * <pre>
+     *未平仓合约数
+     * </pre>
+     */
+    public int getOpenInterest() {
+      return openInterest_;
+    }
+
+    public static final int IMPLIEDVOLATILITY_FIELD_NUMBER = 4;
+    private double impliedVolatility_;
+    /**
+     * <code>required double impliedVolatility = 4;</code>
+     *
+     * <pre>
+     *隐含波动率
+     * </pre>
+     */
+    public boolean hasImpliedVolatility() {
+      return ((bitField0_ & 0x00000008) == 0x00000008);
+    }
+    /**
+     * <code>required double impliedVolatility = 4;</code>
+     *
+     * <pre>
+     *隐含波动率
+     * </pre>
+     */
+    public double getImpliedVolatility() {
+      return impliedVolatility_;
+    }
+
+    public static final int PREMIUM_FIELD_NUMBER = 5;
+    private double premium_;
+    /**
+     * <code>required double premium = 5;</code>
+     *
+     * <pre>
+     *溢价
+     * </pre>
+     */
+    public boolean hasPremium() {
+      return ((bitField0_ & 0x00000010) == 0x00000010);
+    }
+    /**
+     * <code>required double premium = 5;</code>
+     *
+     * <pre>
+     *溢价
+     * </pre>
+     */
+    public double getPremium() {
+      return premium_;
+    }
+
+    public static final int DELTA_FIELD_NUMBER = 6;
+    private double delta_;
+    /**
+     * <code>required double delta = 6;</code>
+     *
+     * <pre>
+     *希腊值 Delta
+     * </pre>
+     */
+    public boolean hasDelta() {
+      return ((bitField0_ & 0x00000020) == 0x00000020);
+    }
+    /**
+     * <code>required double delta = 6;</code>
+     *
+     * <pre>
+     *希腊值 Delta
+     * </pre>
+     */
+    public double getDelta() {
+      return delta_;
+    }
+
+    public static final int GAMMA_FIELD_NUMBER = 7;
+    private double gamma_;
+    /**
+     * <code>required double gamma = 7;</code>
+     *
+     * <pre>
+     *希腊值 Gamma
+     * </pre>
+     */
+    public boolean hasGamma() {
+      return ((bitField0_ & 0x00000040) == 0x00000040);
+    }
+    /**
+     * <code>required double gamma = 7;</code>
+     *
+     * <pre>
+     *希腊值 Gamma
+     * </pre>
+     */
+    public double getGamma() {
+      return gamma_;
+    }
+
+    public static final int VEGA_FIELD_NUMBER = 8;
+    private double vega_;
+    /**
+     * <code>required double vega = 8;</code>
+     *
+     * <pre>
+     *希腊值 Vega
+     * </pre>
+     */
+    public boolean hasVega() {
+      return ((bitField0_ & 0x00000080) == 0x00000080);
+    }
+    /**
+     * <code>required double vega = 8;</code>
+     *
+     * <pre>
+     *希腊值 Vega
+     * </pre>
+     */
+    public double getVega() {
+      return vega_;
+    }
+
+    public static final int THETA_FIELD_NUMBER = 9;
+    private double theta_;
+    /**
+     * <code>required double theta = 9;</code>
+     *
+     * <pre>
+     *希腊值 Theta
+     * </pre>
+     */
+    public boolean hasTheta() {
+      return ((bitField0_ & 0x00000100) == 0x00000100);
+    }
+    /**
+     * <code>required double theta = 9;</code>
+     *
+     * <pre>
+     *希腊值 Theta
+     * </pre>
+     */
+    public double getTheta() {
+      return theta_;
+    }
+
+    public static final int RHO_FIELD_NUMBER = 10;
+    private double rho_;
+    /**
+     * <code>required double rho = 10;</code>
+     *
+     * <pre>
+     *希腊值 Rho
+     * </pre>
+     */
+    public boolean hasRho() {
+      return ((bitField0_ & 0x00000200) == 0x00000200);
+    }
+    /**
+     * <code>required double rho = 10;</code>
+     *
+     * <pre>
+     *希腊值 Rho
+     * </pre>
+     */
+    public double getRho() {
+      return rho_;
+    }
+
+    private void initFields() {
+      strikePrice_ = 0D;
+      contractSize_ = 0;
+      openInterest_ = 0;
+      impliedVolatility_ = 0D;
+      premium_ = 0D;
+      delta_ = 0D;
+      gamma_ = 0D;
+      vega_ = 0D;
+      theta_ = 0D;
+      rho_ = 0D;
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      if (!hasStrikePrice()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasContractSize()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasOpenInterest()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasImpliedVolatility()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasPremium()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasDelta()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasGamma()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasVega()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasTheta()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasRho()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeDouble(1, strikePrice_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeInt32(2, contractSize_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeInt32(3, openInterest_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        output.writeDouble(4, impliedVolatility_);
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        output.writeDouble(5, premium_);
+      }
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        output.writeDouble(6, delta_);
+      }
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
+        output.writeDouble(7, gamma_);
+      }
+      if (((bitField0_ & 0x00000080) == 0x00000080)) {
+        output.writeDouble(8, vega_);
+      }
+      if (((bitField0_ & 0x00000100) == 0x00000100)) {
+        output.writeDouble(9, theta_);
+      }
+      if (((bitField0_ & 0x00000200) == 0x00000200)) {
+        output.writeDouble(10, rho_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeDoubleSize(1, strikePrice_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, contractSize_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(3, openInterest_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeDoubleSize(4, impliedVolatility_);
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeDoubleSize(5, premium_);
+      }
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeDoubleSize(6, delta_);
+      }
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeDoubleSize(7, gamma_);
+      }
+      if (((bitField0_ & 0x00000080) == 0x00000080)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeDoubleSize(8, vega_);
+      }
+      if (((bitField0_ & 0x00000100) == 0x00000100)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeDoubleSize(9, theta_);
+      }
+      if (((bitField0_ & 0x00000200) == 0x00000200)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeDoubleSize(10, rho_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.futu.opend.api.protobuf.QotCommon.OptionBasicQotExData parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.futu.opend.api.protobuf.QotCommon.OptionBasicQotExData parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.futu.opend.api.protobuf.QotCommon.OptionBasicQotExData parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.futu.opend.api.protobuf.QotCommon.OptionBasicQotExData parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.futu.opend.api.protobuf.QotCommon.OptionBasicQotExData parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.futu.opend.api.protobuf.QotCommon.OptionBasicQotExData parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.futu.opend.api.protobuf.QotCommon.OptionBasicQotExData parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.futu.opend.api.protobuf.QotCommon.OptionBasicQotExData parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.futu.opend.api.protobuf.QotCommon.OptionBasicQotExData parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.futu.opend.api.protobuf.QotCommon.OptionBasicQotExData parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.futu.opend.api.protobuf.QotCommon.OptionBasicQotExData prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code Qot_Common.OptionBasicQotExData}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:Qot_Common.OptionBasicQotExData)
+        com.futu.opend.api.protobuf.QotCommon.OptionBasicQotExDataOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.futu.opend.api.protobuf.QotCommon.internal_static_Qot_Common_OptionBasicQotExData_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.futu.opend.api.protobuf.QotCommon.internal_static_Qot_Common_OptionBasicQotExData_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.futu.opend.api.protobuf.QotCommon.OptionBasicQotExData.class, com.futu.opend.api.protobuf.QotCommon.OptionBasicQotExData.Builder.class);
+      }
+
+      // Construct using com.futu.opend.api.protobuf.QotCommon.OptionBasicQotExData.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        strikePrice_ = 0D;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        contractSize_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        openInterest_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000004);
+        impliedVolatility_ = 0D;
+        bitField0_ = (bitField0_ & ~0x00000008);
+        premium_ = 0D;
+        bitField0_ = (bitField0_ & ~0x00000010);
+        delta_ = 0D;
+        bitField0_ = (bitField0_ & ~0x00000020);
+        gamma_ = 0D;
+        bitField0_ = (bitField0_ & ~0x00000040);
+        vega_ = 0D;
+        bitField0_ = (bitField0_ & ~0x00000080);
+        theta_ = 0D;
+        bitField0_ = (bitField0_ & ~0x00000100);
+        rho_ = 0D;
+        bitField0_ = (bitField0_ & ~0x00000200);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.futu.opend.api.protobuf.QotCommon.internal_static_Qot_Common_OptionBasicQotExData_descriptor;
+      }
+
+      public com.futu.opend.api.protobuf.QotCommon.OptionBasicQotExData getDefaultInstanceForType() {
+        return com.futu.opend.api.protobuf.QotCommon.OptionBasicQotExData.getDefaultInstance();
+      }
+
+      public com.futu.opend.api.protobuf.QotCommon.OptionBasicQotExData build() {
+        com.futu.opend.api.protobuf.QotCommon.OptionBasicQotExData result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.futu.opend.api.protobuf.QotCommon.OptionBasicQotExData buildPartial() {
+        com.futu.opend.api.protobuf.QotCommon.OptionBasicQotExData result = new com.futu.opend.api.protobuf.QotCommon.OptionBasicQotExData(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.strikePrice_ = strikePrice_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.contractSize_ = contractSize_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.openInterest_ = openInterest_;
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000008;
+        }
+        result.impliedVolatility_ = impliedVolatility_;
+        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
+          to_bitField0_ |= 0x00000010;
+        }
+        result.premium_ = premium_;
+        if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
+          to_bitField0_ |= 0x00000020;
+        }
+        result.delta_ = delta_;
+        if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
+          to_bitField0_ |= 0x00000040;
+        }
+        result.gamma_ = gamma_;
+        if (((from_bitField0_ & 0x00000080) == 0x00000080)) {
+          to_bitField0_ |= 0x00000080;
+        }
+        result.vega_ = vega_;
+        if (((from_bitField0_ & 0x00000100) == 0x00000100)) {
+          to_bitField0_ |= 0x00000100;
+        }
+        result.theta_ = theta_;
+        if (((from_bitField0_ & 0x00000200) == 0x00000200)) {
+          to_bitField0_ |= 0x00000200;
+        }
+        result.rho_ = rho_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.futu.opend.api.protobuf.QotCommon.OptionBasicQotExData) {
+          return mergeFrom((com.futu.opend.api.protobuf.QotCommon.OptionBasicQotExData)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.futu.opend.api.protobuf.QotCommon.OptionBasicQotExData other) {
+        if (other == com.futu.opend.api.protobuf.QotCommon.OptionBasicQotExData.getDefaultInstance()) return this;
+        if (other.hasStrikePrice()) {
+          setStrikePrice(other.getStrikePrice());
+        }
+        if (other.hasContractSize()) {
+          setContractSize(other.getContractSize());
+        }
+        if (other.hasOpenInterest()) {
+          setOpenInterest(other.getOpenInterest());
+        }
+        if (other.hasImpliedVolatility()) {
+          setImpliedVolatility(other.getImpliedVolatility());
+        }
+        if (other.hasPremium()) {
+          setPremium(other.getPremium());
+        }
+        if (other.hasDelta()) {
+          setDelta(other.getDelta());
+        }
+        if (other.hasGamma()) {
+          setGamma(other.getGamma());
+        }
+        if (other.hasVega()) {
+          setVega(other.getVega());
+        }
+        if (other.hasTheta()) {
+          setTheta(other.getTheta());
+        }
+        if (other.hasRho()) {
+          setRho(other.getRho());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasStrikePrice()) {
+          
+          return false;
+        }
+        if (!hasContractSize()) {
+          
+          return false;
+        }
+        if (!hasOpenInterest()) {
+          
+          return false;
+        }
+        if (!hasImpliedVolatility()) {
+          
+          return false;
+        }
+        if (!hasPremium()) {
+          
+          return false;
+        }
+        if (!hasDelta()) {
+          
+          return false;
+        }
+        if (!hasGamma()) {
+          
+          return false;
+        }
+        if (!hasVega()) {
+          
+          return false;
+        }
+        if (!hasTheta()) {
+          
+          return false;
+        }
+        if (!hasRho()) {
+          
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.futu.opend.api.protobuf.QotCommon.OptionBasicQotExData parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.futu.opend.api.protobuf.QotCommon.OptionBasicQotExData) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private double strikePrice_ ;
+      /**
+       * <code>required double strikePrice = 1;</code>
+       *
+       * <pre>
+       *行权价
+       * </pre>
+       */
+      public boolean hasStrikePrice() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required double strikePrice = 1;</code>
+       *
+       * <pre>
+       *行权价
+       * </pre>
+       */
+      public double getStrikePrice() {
+        return strikePrice_;
+      }
+      /**
+       * <code>required double strikePrice = 1;</code>
+       *
+       * <pre>
+       *行权价
+       * </pre>
+       */
+      public Builder setStrikePrice(double value) {
+        bitField0_ |= 0x00000001;
+        strikePrice_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required double strikePrice = 1;</code>
+       *
+       * <pre>
+       *行权价
+       * </pre>
+       */
+      public Builder clearStrikePrice() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        strikePrice_ = 0D;
+        onChanged();
+        return this;
+      }
+
+      private int contractSize_ ;
+      /**
+       * <code>required int32 contractSize = 2;</code>
+       *
+       * <pre>
+       *每份合约数
+       * </pre>
+       */
+      public boolean hasContractSize() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>required int32 contractSize = 2;</code>
+       *
+       * <pre>
+       *每份合约数
+       * </pre>
+       */
+      public int getContractSize() {
+        return contractSize_;
+      }
+      /**
+       * <code>required int32 contractSize = 2;</code>
+       *
+       * <pre>
+       *每份合约数
+       * </pre>
+       */
+      public Builder setContractSize(int value) {
+        bitField0_ |= 0x00000002;
+        contractSize_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 contractSize = 2;</code>
+       *
+       * <pre>
+       *每份合约数
+       * </pre>
+       */
+      public Builder clearContractSize() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        contractSize_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int openInterest_ ;
+      /**
+       * <code>required int32 openInterest = 3;</code>
+       *
+       * <pre>
+       *未平仓合约数
+       * </pre>
+       */
+      public boolean hasOpenInterest() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>required int32 openInterest = 3;</code>
+       *
+       * <pre>
+       *未平仓合约数
+       * </pre>
+       */
+      public int getOpenInterest() {
+        return openInterest_;
+      }
+      /**
+       * <code>required int32 openInterest = 3;</code>
+       *
+       * <pre>
+       *未平仓合约数
+       * </pre>
+       */
+      public Builder setOpenInterest(int value) {
+        bitField0_ |= 0x00000004;
+        openInterest_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 openInterest = 3;</code>
+       *
+       * <pre>
+       *未平仓合约数
+       * </pre>
+       */
+      public Builder clearOpenInterest() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        openInterest_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private double impliedVolatility_ ;
+      /**
+       * <code>required double impliedVolatility = 4;</code>
+       *
+       * <pre>
+       *隐含波动率
+       * </pre>
+       */
+      public boolean hasImpliedVolatility() {
+        return ((bitField0_ & 0x00000008) == 0x00000008);
+      }
+      /**
+       * <code>required double impliedVolatility = 4;</code>
+       *
+       * <pre>
+       *隐含波动率
+       * </pre>
+       */
+      public double getImpliedVolatility() {
+        return impliedVolatility_;
+      }
+      /**
+       * <code>required double impliedVolatility = 4;</code>
+       *
+       * <pre>
+       *隐含波动率
+       * </pre>
+       */
+      public Builder setImpliedVolatility(double value) {
+        bitField0_ |= 0x00000008;
+        impliedVolatility_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required double impliedVolatility = 4;</code>
+       *
+       * <pre>
+       *隐含波动率
+       * </pre>
+       */
+      public Builder clearImpliedVolatility() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        impliedVolatility_ = 0D;
+        onChanged();
+        return this;
+      }
+
+      private double premium_ ;
+      /**
+       * <code>required double premium = 5;</code>
+       *
+       * <pre>
+       *溢价
+       * </pre>
+       */
+      public boolean hasPremium() {
+        return ((bitField0_ & 0x00000010) == 0x00000010);
+      }
+      /**
+       * <code>required double premium = 5;</code>
+       *
+       * <pre>
+       *溢价
+       * </pre>
+       */
+      public double getPremium() {
+        return premium_;
+      }
+      /**
+       * <code>required double premium = 5;</code>
+       *
+       * <pre>
+       *溢价
+       * </pre>
+       */
+      public Builder setPremium(double value) {
+        bitField0_ |= 0x00000010;
+        premium_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required double premium = 5;</code>
+       *
+       * <pre>
+       *溢价
+       * </pre>
+       */
+      public Builder clearPremium() {
+        bitField0_ = (bitField0_ & ~0x00000010);
+        premium_ = 0D;
+        onChanged();
+        return this;
+      }
+
+      private double delta_ ;
+      /**
+       * <code>required double delta = 6;</code>
+       *
+       * <pre>
+       *希腊值 Delta
+       * </pre>
+       */
+      public boolean hasDelta() {
+        return ((bitField0_ & 0x00000020) == 0x00000020);
+      }
+      /**
+       * <code>required double delta = 6;</code>
+       *
+       * <pre>
+       *希腊值 Delta
+       * </pre>
+       */
+      public double getDelta() {
+        return delta_;
+      }
+      /**
+       * <code>required double delta = 6;</code>
+       *
+       * <pre>
+       *希腊值 Delta
+       * </pre>
+       */
+      public Builder setDelta(double value) {
+        bitField0_ |= 0x00000020;
+        delta_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required double delta = 6;</code>
+       *
+       * <pre>
+       *希腊值 Delta
+       * </pre>
+       */
+      public Builder clearDelta() {
+        bitField0_ = (bitField0_ & ~0x00000020);
+        delta_ = 0D;
+        onChanged();
+        return this;
+      }
+
+      private double gamma_ ;
+      /**
+       * <code>required double gamma = 7;</code>
+       *
+       * <pre>
+       *希腊值 Gamma
+       * </pre>
+       */
+      public boolean hasGamma() {
+        return ((bitField0_ & 0x00000040) == 0x00000040);
+      }
+      /**
+       * <code>required double gamma = 7;</code>
+       *
+       * <pre>
+       *希腊值 Gamma
+       * </pre>
+       */
+      public double getGamma() {
+        return gamma_;
+      }
+      /**
+       * <code>required double gamma = 7;</code>
+       *
+       * <pre>
+       *希腊值 Gamma
+       * </pre>
+       */
+      public Builder setGamma(double value) {
+        bitField0_ |= 0x00000040;
+        gamma_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required double gamma = 7;</code>
+       *
+       * <pre>
+       *希腊值 Gamma
+       * </pre>
+       */
+      public Builder clearGamma() {
+        bitField0_ = (bitField0_ & ~0x00000040);
+        gamma_ = 0D;
+        onChanged();
+        return this;
+      }
+
+      private double vega_ ;
+      /**
+       * <code>required double vega = 8;</code>
+       *
+       * <pre>
+       *希腊值 Vega
+       * </pre>
+       */
+      public boolean hasVega() {
+        return ((bitField0_ & 0x00000080) == 0x00000080);
+      }
+      /**
+       * <code>required double vega = 8;</code>
+       *
+       * <pre>
+       *希腊值 Vega
+       * </pre>
+       */
+      public double getVega() {
+        return vega_;
+      }
+      /**
+       * <code>required double vega = 8;</code>
+       *
+       * <pre>
+       *希腊值 Vega
+       * </pre>
+       */
+      public Builder setVega(double value) {
+        bitField0_ |= 0x00000080;
+        vega_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required double vega = 8;</code>
+       *
+       * <pre>
+       *希腊值 Vega
+       * </pre>
+       */
+      public Builder clearVega() {
+        bitField0_ = (bitField0_ & ~0x00000080);
+        vega_ = 0D;
+        onChanged();
+        return this;
+      }
+
+      private double theta_ ;
+      /**
+       * <code>required double theta = 9;</code>
+       *
+       * <pre>
+       *希腊值 Theta
+       * </pre>
+       */
+      public boolean hasTheta() {
+        return ((bitField0_ & 0x00000100) == 0x00000100);
+      }
+      /**
+       * <code>required double theta = 9;</code>
+       *
+       * <pre>
+       *希腊值 Theta
+       * </pre>
+       */
+      public double getTheta() {
+        return theta_;
+      }
+      /**
+       * <code>required double theta = 9;</code>
+       *
+       * <pre>
+       *希腊值 Theta
+       * </pre>
+       */
+      public Builder setTheta(double value) {
+        bitField0_ |= 0x00000100;
+        theta_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required double theta = 9;</code>
+       *
+       * <pre>
+       *希腊值 Theta
+       * </pre>
+       */
+      public Builder clearTheta() {
+        bitField0_ = (bitField0_ & ~0x00000100);
+        theta_ = 0D;
+        onChanged();
+        return this;
+      }
+
+      private double rho_ ;
+      /**
+       * <code>required double rho = 10;</code>
+       *
+       * <pre>
+       *希腊值 Rho
+       * </pre>
+       */
+      public boolean hasRho() {
+        return ((bitField0_ & 0x00000200) == 0x00000200);
+      }
+      /**
+       * <code>required double rho = 10;</code>
+       *
+       * <pre>
+       *希腊值 Rho
+       * </pre>
+       */
+      public double getRho() {
+        return rho_;
+      }
+      /**
+       * <code>required double rho = 10;</code>
+       *
+       * <pre>
+       *希腊值 Rho
+       * </pre>
+       */
+      public Builder setRho(double value) {
+        bitField0_ |= 0x00000200;
+        rho_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required double rho = 10;</code>
+       *
+       * <pre>
+       *希腊值 Rho
+       * </pre>
+       */
+      public Builder clearRho() {
+        bitField0_ = (bitField0_ & ~0x00000200);
+        rho_ = 0D;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:Qot_Common.OptionBasicQotExData)
+    }
+
+    static {
+      defaultInstance = new OptionBasicQotExData(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:Qot_Common.OptionBasicQotExData)
+  }
+
   public interface BasicQotOrBuilder extends
       // @@protoc_insertion_point(interface_extends:Qot_Common.BasicQot)
       com.google.protobuf.MessageOrBuilder {
@@ -5593,6 +7484,31 @@ public final class QotCommon {
      * </pre>
      */
     int getDarkStatus();
+
+    /**
+     * <code>optional .Qot_Common.OptionBasicQotExData optionExData = 16;</code>
+     *
+     * <pre>
+     *期权特有字段
+     * </pre>
+     */
+    boolean hasOptionExData();
+    /**
+     * <code>optional .Qot_Common.OptionBasicQotExData optionExData = 16;</code>
+     *
+     * <pre>
+     *期权特有字段
+     * </pre>
+     */
+    com.futu.opend.api.protobuf.QotCommon.OptionBasicQotExData getOptionExData();
+    /**
+     * <code>optional .Qot_Common.OptionBasicQotExData optionExData = 16;</code>
+     *
+     * <pre>
+     *期权特有字段
+     * </pre>
+     */
+    com.futu.opend.api.protobuf.QotCommon.OptionBasicQotExDataOrBuilder getOptionExDataOrBuilder();
   }
   /**
    * Protobuf type {@code Qot_Common.BasicQot}
@@ -5729,6 +7645,19 @@ public final class QotCommon {
             case 120: {
               bitField0_ |= 0x00004000;
               darkStatus_ = input.readInt32();
+              break;
+            }
+            case 130: {
+              com.futu.opend.api.protobuf.QotCommon.OptionBasicQotExData.Builder subBuilder = null;
+              if (((bitField0_ & 0x00008000) == 0x00008000)) {
+                subBuilder = optionExData_.toBuilder();
+              }
+              optionExData_ = input.readMessage(com.futu.opend.api.protobuf.QotCommon.OptionBasicQotExData.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(optionExData_);
+                optionExData_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00008000;
               break;
             }
           }
@@ -6188,6 +8117,39 @@ public final class QotCommon {
       return darkStatus_;
     }
 
+    public static final int OPTIONEXDATA_FIELD_NUMBER = 16;
+    private com.futu.opend.api.protobuf.QotCommon.OptionBasicQotExData optionExData_;
+    /**
+     * <code>optional .Qot_Common.OptionBasicQotExData optionExData = 16;</code>
+     *
+     * <pre>
+     *期权特有字段
+     * </pre>
+     */
+    public boolean hasOptionExData() {
+      return ((bitField0_ & 0x00008000) == 0x00008000);
+    }
+    /**
+     * <code>optional .Qot_Common.OptionBasicQotExData optionExData = 16;</code>
+     *
+     * <pre>
+     *期权特有字段
+     * </pre>
+     */
+    public com.futu.opend.api.protobuf.QotCommon.OptionBasicQotExData getOptionExData() {
+      return optionExData_;
+    }
+    /**
+     * <code>optional .Qot_Common.OptionBasicQotExData optionExData = 16;</code>
+     *
+     * <pre>
+     *期权特有字段
+     * </pre>
+     */
+    public com.futu.opend.api.protobuf.QotCommon.OptionBasicQotExDataOrBuilder getOptionExDataOrBuilder() {
+      return optionExData_;
+    }
+
     private void initFields() {
       security_ = com.futu.opend.api.protobuf.QotCommon.Security.getDefaultInstance();
       isSuspended_ = false;
@@ -6204,6 +8166,7 @@ public final class QotCommon {
       turnoverRate_ = 0D;
       amplitude_ = 0D;
       darkStatus_ = 0;
+      optionExData_ = com.futu.opend.api.protobuf.QotCommon.OptionBasicQotExData.getDefaultInstance();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -6271,6 +8234,12 @@ public final class QotCommon {
         memoizedIsInitialized = 0;
         return false;
       }
+      if (hasOptionExData()) {
+        if (!getOptionExData().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -6322,6 +8291,9 @@ public final class QotCommon {
       }
       if (((bitField0_ & 0x00004000) == 0x00004000)) {
         output.writeInt32(15, darkStatus_);
+      }
+      if (((bitField0_ & 0x00008000) == 0x00008000)) {
+        output.writeMessage(16, optionExData_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -6391,6 +8363,10 @@ public final class QotCommon {
       if (((bitField0_ & 0x00004000) == 0x00004000)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(15, darkStatus_);
+      }
+      if (((bitField0_ & 0x00008000) == 0x00008000)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(16, optionExData_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -6502,6 +8478,7 @@ public final class QotCommon {
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
           getSecurityFieldBuilder();
+          getOptionExDataFieldBuilder();
         }
       }
       private static Builder create() {
@@ -6544,6 +8521,12 @@ public final class QotCommon {
         bitField0_ = (bitField0_ & ~0x00002000);
         darkStatus_ = 0;
         bitField0_ = (bitField0_ & ~0x00004000);
+        if (optionExDataBuilder_ == null) {
+          optionExData_ = com.futu.opend.api.protobuf.QotCommon.OptionBasicQotExData.getDefaultInstance();
+        } else {
+          optionExDataBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00008000);
         return this;
       }
 
@@ -6636,6 +8619,14 @@ public final class QotCommon {
           to_bitField0_ |= 0x00004000;
         }
         result.darkStatus_ = darkStatus_;
+        if (((from_bitField0_ & 0x00008000) == 0x00008000)) {
+          to_bitField0_ |= 0x00008000;
+        }
+        if (optionExDataBuilder_ == null) {
+          result.optionExData_ = optionExData_;
+        } else {
+          result.optionExData_ = optionExDataBuilder_.build();
+        }
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -6701,6 +8692,9 @@ public final class QotCommon {
         if (other.hasDarkStatus()) {
           setDarkStatus(other.getDarkStatus());
         }
+        if (other.hasOptionExData()) {
+          mergeOptionExData(other.getOptionExData());
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
@@ -6765,6 +8759,12 @@ public final class QotCommon {
         if (!getSecurity().isInitialized()) {
           
           return false;
+        }
+        if (hasOptionExData()) {
+          if (!getOptionExData().isInitialized()) {
+            
+            return false;
+          }
         }
         return true;
       }
@@ -7714,6 +9714,158 @@ public final class QotCommon {
         darkStatus_ = 0;
         onChanged();
         return this;
+      }
+
+      private com.futu.opend.api.protobuf.QotCommon.OptionBasicQotExData optionExData_ = com.futu.opend.api.protobuf.QotCommon.OptionBasicQotExData.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          com.futu.opend.api.protobuf.QotCommon.OptionBasicQotExData, com.futu.opend.api.protobuf.QotCommon.OptionBasicQotExData.Builder, com.futu.opend.api.protobuf.QotCommon.OptionBasicQotExDataOrBuilder> optionExDataBuilder_;
+      /**
+       * <code>optional .Qot_Common.OptionBasicQotExData optionExData = 16;</code>
+       *
+       * <pre>
+       *期权特有字段
+       * </pre>
+       */
+      public boolean hasOptionExData() {
+        return ((bitField0_ & 0x00008000) == 0x00008000);
+      }
+      /**
+       * <code>optional .Qot_Common.OptionBasicQotExData optionExData = 16;</code>
+       *
+       * <pre>
+       *期权特有字段
+       * </pre>
+       */
+      public com.futu.opend.api.protobuf.QotCommon.OptionBasicQotExData getOptionExData() {
+        if (optionExDataBuilder_ == null) {
+          return optionExData_;
+        } else {
+          return optionExDataBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .Qot_Common.OptionBasicQotExData optionExData = 16;</code>
+       *
+       * <pre>
+       *期权特有字段
+       * </pre>
+       */
+      public Builder setOptionExData(com.futu.opend.api.protobuf.QotCommon.OptionBasicQotExData value) {
+        if (optionExDataBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          optionExData_ = value;
+          onChanged();
+        } else {
+          optionExDataBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00008000;
+        return this;
+      }
+      /**
+       * <code>optional .Qot_Common.OptionBasicQotExData optionExData = 16;</code>
+       *
+       * <pre>
+       *期权特有字段
+       * </pre>
+       */
+      public Builder setOptionExData(
+          com.futu.opend.api.protobuf.QotCommon.OptionBasicQotExData.Builder builderForValue) {
+        if (optionExDataBuilder_ == null) {
+          optionExData_ = builderForValue.build();
+          onChanged();
+        } else {
+          optionExDataBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00008000;
+        return this;
+      }
+      /**
+       * <code>optional .Qot_Common.OptionBasicQotExData optionExData = 16;</code>
+       *
+       * <pre>
+       *期权特有字段
+       * </pre>
+       */
+      public Builder mergeOptionExData(com.futu.opend.api.protobuf.QotCommon.OptionBasicQotExData value) {
+        if (optionExDataBuilder_ == null) {
+          if (((bitField0_ & 0x00008000) == 0x00008000) &&
+              optionExData_ != com.futu.opend.api.protobuf.QotCommon.OptionBasicQotExData.getDefaultInstance()) {
+            optionExData_ =
+              com.futu.opend.api.protobuf.QotCommon.OptionBasicQotExData.newBuilder(optionExData_).mergeFrom(value).buildPartial();
+          } else {
+            optionExData_ = value;
+          }
+          onChanged();
+        } else {
+          optionExDataBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00008000;
+        return this;
+      }
+      /**
+       * <code>optional .Qot_Common.OptionBasicQotExData optionExData = 16;</code>
+       *
+       * <pre>
+       *期权特有字段
+       * </pre>
+       */
+      public Builder clearOptionExData() {
+        if (optionExDataBuilder_ == null) {
+          optionExData_ = com.futu.opend.api.protobuf.QotCommon.OptionBasicQotExData.getDefaultInstance();
+          onChanged();
+        } else {
+          optionExDataBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00008000);
+        return this;
+      }
+      /**
+       * <code>optional .Qot_Common.OptionBasicQotExData optionExData = 16;</code>
+       *
+       * <pre>
+       *期权特有字段
+       * </pre>
+       */
+      public com.futu.opend.api.protobuf.QotCommon.OptionBasicQotExData.Builder getOptionExDataBuilder() {
+        bitField0_ |= 0x00008000;
+        onChanged();
+        return getOptionExDataFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .Qot_Common.OptionBasicQotExData optionExData = 16;</code>
+       *
+       * <pre>
+       *期权特有字段
+       * </pre>
+       */
+      public com.futu.opend.api.protobuf.QotCommon.OptionBasicQotExDataOrBuilder getOptionExDataOrBuilder() {
+        if (optionExDataBuilder_ != null) {
+          return optionExDataBuilder_.getMessageOrBuilder();
+        } else {
+          return optionExData_;
+        }
+      }
+      /**
+       * <code>optional .Qot_Common.OptionBasicQotExData optionExData = 16;</code>
+       *
+       * <pre>
+       *期权特有字段
+       * </pre>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.futu.opend.api.protobuf.QotCommon.OptionBasicQotExData, com.futu.opend.api.protobuf.QotCommon.OptionBasicQotExData.Builder, com.futu.opend.api.protobuf.QotCommon.OptionBasicQotExDataOrBuilder> 
+          getOptionExDataFieldBuilder() {
+        if (optionExDataBuilder_ == null) {
+          optionExDataBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.futu.opend.api.protobuf.QotCommon.OptionBasicQotExData, com.futu.opend.api.protobuf.QotCommon.OptionBasicQotExData.Builder, com.futu.opend.api.protobuf.QotCommon.OptionBasicQotExDataOrBuilder>(
+                  getOptionExData(),
+                  getParentForChildren(),
+                  isClean());
+          optionExData_ = null;
+        }
+        return optionExDataBuilder_;
       }
 
       // @@protoc_insertion_point(builder_scope:Qot_Common.BasicQot)
@@ -9095,7 +11247,7 @@ public final class QotCommon {
      * <code>required int32 lotSize = 3;</code>
      *
      * <pre>
-     *每手数量
+     *每手数量,期权类型表示一份合约的股数
      * </pre>
      */
     boolean hasLotSize();
@@ -9103,7 +11255,7 @@ public final class QotCommon {
      * <code>required int32 lotSize = 3;</code>
      *
      * <pre>
-     *每手数量
+     *每手数量,期权类型表示一份合约的股数
      * </pre>
      */
     int getLotSize();
@@ -9176,6 +11328,23 @@ public final class QotCommon {
      */
     com.google.protobuf.ByteString
         getListTimeBytes();
+
+    /**
+     * <code>optional bool delisting = 7;</code>
+     *
+     * <pre>
+     *是否退市
+     * </pre>
+     */
+    boolean hasDelisting();
+    /**
+     * <code>optional bool delisting = 7;</code>
+     *
+     * <pre>
+     *是否退市
+     * </pre>
+     */
+    boolean getDelisting();
   }
   /**
    * Protobuf type {@code Qot_Common.SecurityStaticBasic}
@@ -9267,6 +11436,11 @@ public final class QotCommon {
               com.google.protobuf.ByteString bs = input.readBytes();
               bitField0_ |= 0x00000020;
               listTime_ = bs;
+              break;
+            }
+            case 56: {
+              bitField0_ |= 0x00000040;
+              delisting_ = input.readBool();
               break;
             }
           }
@@ -9371,7 +11545,7 @@ public final class QotCommon {
      * <code>required int32 lotSize = 3;</code>
      *
      * <pre>
-     *每手数量
+     *每手数量,期权类型表示一份合约的股数
      * </pre>
      */
     public boolean hasLotSize() {
@@ -9381,7 +11555,7 @@ public final class QotCommon {
      * <code>required int32 lotSize = 3;</code>
      *
      * <pre>
-     *每手数量
+     *每手数量,期权类型表示一份合约的股数
      * </pre>
      */
     public int getLotSize() {
@@ -9519,6 +11693,29 @@ public final class QotCommon {
       }
     }
 
+    public static final int DELISTING_FIELD_NUMBER = 7;
+    private boolean delisting_;
+    /**
+     * <code>optional bool delisting = 7;</code>
+     *
+     * <pre>
+     *是否退市
+     * </pre>
+     */
+    public boolean hasDelisting() {
+      return ((bitField0_ & 0x00000040) == 0x00000040);
+    }
+    /**
+     * <code>optional bool delisting = 7;</code>
+     *
+     * <pre>
+     *是否退市
+     * </pre>
+     */
+    public boolean getDelisting() {
+      return delisting_;
+    }
+
     private void initFields() {
       security_ = com.futu.opend.api.protobuf.QotCommon.Security.getDefaultInstance();
       id_ = 0L;
@@ -9526,6 +11723,7 @@ public final class QotCommon {
       secType_ = 0;
       name_ = "";
       listTime_ = "";
+      delisting_ = false;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -9586,6 +11784,9 @@ public final class QotCommon {
       if (((bitField0_ & 0x00000020) == 0x00000020)) {
         output.writeBytes(6, getListTimeBytes());
       }
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
+        output.writeBool(7, delisting_);
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -9618,6 +11819,10 @@ public final class QotCommon {
       if (((bitField0_ & 0x00000020) == 0x00000020)) {
         size += com.google.protobuf.CodedOutputStream
           .computeBytesSize(6, getListTimeBytes());
+      }
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(7, delisting_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -9753,6 +11958,8 @@ public final class QotCommon {
         bitField0_ = (bitField0_ & ~0x00000010);
         listTime_ = "";
         bitField0_ = (bitField0_ & ~0x00000020);
+        delisting_ = false;
+        bitField0_ = (bitField0_ & ~0x00000040);
         return this;
       }
 
@@ -9809,6 +12016,10 @@ public final class QotCommon {
           to_bitField0_ |= 0x00000020;
         }
         result.listTime_ = listTime_;
+        if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
+          to_bitField0_ |= 0x00000040;
+        }
+        result.delisting_ = delisting_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -9846,6 +12057,9 @@ public final class QotCommon {
           bitField0_ |= 0x00000020;
           listTime_ = other.listTime_;
           onChanged();
+        }
+        if (other.hasDelisting()) {
+          setDelisting(other.getDelisting());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -10107,7 +12321,7 @@ public final class QotCommon {
        * <code>required int32 lotSize = 3;</code>
        *
        * <pre>
-       *每手数量
+       *每手数量,期权类型表示一份合约的股数
        * </pre>
        */
       public boolean hasLotSize() {
@@ -10117,7 +12331,7 @@ public final class QotCommon {
        * <code>required int32 lotSize = 3;</code>
        *
        * <pre>
-       *每手数量
+       *每手数量,期权类型表示一份合约的股数
        * </pre>
        */
       public int getLotSize() {
@@ -10127,7 +12341,7 @@ public final class QotCommon {
        * <code>required int32 lotSize = 3;</code>
        *
        * <pre>
-       *每手数量
+       *每手数量,期权类型表示一份合约的股数
        * </pre>
        */
       public Builder setLotSize(int value) {
@@ -10140,7 +12354,7 @@ public final class QotCommon {
        * <code>required int32 lotSize = 3;</code>
        *
        * <pre>
-       *每手数量
+       *每手数量,期权类型表示一份合约的股数
        * </pre>
        */
       public Builder clearLotSize() {
@@ -10394,6 +12608,54 @@ public final class QotCommon {
   }
   bitField0_ |= 0x00000020;
         listTime_ = value;
+        onChanged();
+        return this;
+      }
+
+      private boolean delisting_ ;
+      /**
+       * <code>optional bool delisting = 7;</code>
+       *
+       * <pre>
+       *是否退市
+       * </pre>
+       */
+      public boolean hasDelisting() {
+        return ((bitField0_ & 0x00000040) == 0x00000040);
+      }
+      /**
+       * <code>optional bool delisting = 7;</code>
+       *
+       * <pre>
+       *是否退市
+       * </pre>
+       */
+      public boolean getDelisting() {
+        return delisting_;
+      }
+      /**
+       * <code>optional bool delisting = 7;</code>
+       *
+       * <pre>
+       *是否退市
+       * </pre>
+       */
+      public Builder setDelisting(boolean value) {
+        bitField0_ |= 0x00000040;
+        delisting_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional bool delisting = 7;</code>
+       *
+       * <pre>
+       *是否退市
+       * </pre>
+       */
+      public Builder clearDelisting() {
+        bitField0_ = (bitField0_ & ~0x00000040);
+        delisting_ = false;
         onChanged();
         return this;
       }
@@ -11111,6 +13373,1370 @@ public final class QotCommon {
     // @@protoc_insertion_point(class_scope:Qot_Common.WarrantStaticExData)
   }
 
+  public interface OptionStaticExDataOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:Qot_Common.OptionStaticExData)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>required int32 type = 1;</code>
+     *
+     * <pre>
+     *Qot_Common.OptionType,期权
+     * </pre>
+     */
+    boolean hasType();
+    /**
+     * <code>required int32 type = 1;</code>
+     *
+     * <pre>
+     *Qot_Common.OptionType,期权
+     * </pre>
+     */
+    int getType();
+
+    /**
+     * <code>required .Qot_Common.Security owner = 2;</code>
+     *
+     * <pre>
+     *标的股
+     * </pre>
+     */
+    boolean hasOwner();
+    /**
+     * <code>required .Qot_Common.Security owner = 2;</code>
+     *
+     * <pre>
+     *标的股
+     * </pre>
+     */
+    com.futu.opend.api.protobuf.QotCommon.Security getOwner();
+    /**
+     * <code>required .Qot_Common.Security owner = 2;</code>
+     *
+     * <pre>
+     *标的股
+     * </pre>
+     */
+    com.futu.opend.api.protobuf.QotCommon.SecurityOrBuilder getOwnerOrBuilder();
+
+    /**
+     * <code>required string strikeTime = 3;</code>
+     *
+     * <pre>
+     *行权日
+     * </pre>
+     */
+    boolean hasStrikeTime();
+    /**
+     * <code>required string strikeTime = 3;</code>
+     *
+     * <pre>
+     *行权日
+     * </pre>
+     */
+    java.lang.String getStrikeTime();
+    /**
+     * <code>required string strikeTime = 3;</code>
+     *
+     * <pre>
+     *行权日
+     * </pre>
+     */
+    com.google.protobuf.ByteString
+        getStrikeTimeBytes();
+
+    /**
+     * <code>required double strikePrice = 4;</code>
+     *
+     * <pre>
+     *行权价
+     * </pre>
+     */
+    boolean hasStrikePrice();
+    /**
+     * <code>required double strikePrice = 4;</code>
+     *
+     * <pre>
+     *行权价
+     * </pre>
+     */
+    double getStrikePrice();
+
+    /**
+     * <code>required bool suspend = 5;</code>
+     *
+     * <pre>
+     *是否停牌
+     * </pre>
+     */
+    boolean hasSuspend();
+    /**
+     * <code>required bool suspend = 5;</code>
+     *
+     * <pre>
+     *是否停牌
+     * </pre>
+     */
+    boolean getSuspend();
+
+    /**
+     * <code>required string market = 6;</code>
+     *
+     * <pre>
+     *发行市场名字
+     * </pre>
+     */
+    boolean hasMarket();
+    /**
+     * <code>required string market = 6;</code>
+     *
+     * <pre>
+     *发行市场名字
+     * </pre>
+     */
+    java.lang.String getMarket();
+    /**
+     * <code>required string market = 6;</code>
+     *
+     * <pre>
+     *发行市场名字
+     * </pre>
+     */
+    com.google.protobuf.ByteString
+        getMarketBytes();
+  }
+  /**
+   * Protobuf type {@code Qot_Common.OptionStaticExData}
+   */
+  public static final class OptionStaticExData extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:Qot_Common.OptionStaticExData)
+      OptionStaticExDataOrBuilder {
+    // Use OptionStaticExData.newBuilder() to construct.
+    private OptionStaticExData(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private OptionStaticExData(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final OptionStaticExData defaultInstance;
+    public static OptionStaticExData getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public OptionStaticExData getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private OptionStaticExData(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              type_ = input.readInt32();
+              break;
+            }
+            case 18: {
+              com.futu.opend.api.protobuf.QotCommon.Security.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000002) == 0x00000002)) {
+                subBuilder = owner_.toBuilder();
+              }
+              owner_ = input.readMessage(com.futu.opend.api.protobuf.QotCommon.Security.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(owner_);
+                owner_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000002;
+              break;
+            }
+            case 26: {
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000004;
+              strikeTime_ = bs;
+              break;
+            }
+            case 33: {
+              bitField0_ |= 0x00000008;
+              strikePrice_ = input.readDouble();
+              break;
+            }
+            case 40: {
+              bitField0_ |= 0x00000010;
+              suspend_ = input.readBool();
+              break;
+            }
+            case 50: {
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000020;
+              market_ = bs;
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.futu.opend.api.protobuf.QotCommon.internal_static_Qot_Common_OptionStaticExData_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.futu.opend.api.protobuf.QotCommon.internal_static_Qot_Common_OptionStaticExData_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.futu.opend.api.protobuf.QotCommon.OptionStaticExData.class, com.futu.opend.api.protobuf.QotCommon.OptionStaticExData.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<OptionStaticExData> PARSER =
+        new com.google.protobuf.AbstractParser<OptionStaticExData>() {
+      public OptionStaticExData parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new OptionStaticExData(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<OptionStaticExData> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    public static final int TYPE_FIELD_NUMBER = 1;
+    private int type_;
+    /**
+     * <code>required int32 type = 1;</code>
+     *
+     * <pre>
+     *Qot_Common.OptionType,期权
+     * </pre>
+     */
+    public boolean hasType() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required int32 type = 1;</code>
+     *
+     * <pre>
+     *Qot_Common.OptionType,期权
+     * </pre>
+     */
+    public int getType() {
+      return type_;
+    }
+
+    public static final int OWNER_FIELD_NUMBER = 2;
+    private com.futu.opend.api.protobuf.QotCommon.Security owner_;
+    /**
+     * <code>required .Qot_Common.Security owner = 2;</code>
+     *
+     * <pre>
+     *标的股
+     * </pre>
+     */
+    public boolean hasOwner() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>required .Qot_Common.Security owner = 2;</code>
+     *
+     * <pre>
+     *标的股
+     * </pre>
+     */
+    public com.futu.opend.api.protobuf.QotCommon.Security getOwner() {
+      return owner_;
+    }
+    /**
+     * <code>required .Qot_Common.Security owner = 2;</code>
+     *
+     * <pre>
+     *标的股
+     * </pre>
+     */
+    public com.futu.opend.api.protobuf.QotCommon.SecurityOrBuilder getOwnerOrBuilder() {
+      return owner_;
+    }
+
+    public static final int STRIKETIME_FIELD_NUMBER = 3;
+    private java.lang.Object strikeTime_;
+    /**
+     * <code>required string strikeTime = 3;</code>
+     *
+     * <pre>
+     *行权日
+     * </pre>
+     */
+    public boolean hasStrikeTime() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>required string strikeTime = 3;</code>
+     *
+     * <pre>
+     *行权日
+     * </pre>
+     */
+    public java.lang.String getStrikeTime() {
+      java.lang.Object ref = strikeTime_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          strikeTime_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string strikeTime = 3;</code>
+     *
+     * <pre>
+     *行权日
+     * </pre>
+     */
+    public com.google.protobuf.ByteString
+        getStrikeTimeBytes() {
+      java.lang.Object ref = strikeTime_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        strikeTime_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int STRIKEPRICE_FIELD_NUMBER = 4;
+    private double strikePrice_;
+    /**
+     * <code>required double strikePrice = 4;</code>
+     *
+     * <pre>
+     *行权价
+     * </pre>
+     */
+    public boolean hasStrikePrice() {
+      return ((bitField0_ & 0x00000008) == 0x00000008);
+    }
+    /**
+     * <code>required double strikePrice = 4;</code>
+     *
+     * <pre>
+     *行权价
+     * </pre>
+     */
+    public double getStrikePrice() {
+      return strikePrice_;
+    }
+
+    public static final int SUSPEND_FIELD_NUMBER = 5;
+    private boolean suspend_;
+    /**
+     * <code>required bool suspend = 5;</code>
+     *
+     * <pre>
+     *是否停牌
+     * </pre>
+     */
+    public boolean hasSuspend() {
+      return ((bitField0_ & 0x00000010) == 0x00000010);
+    }
+    /**
+     * <code>required bool suspend = 5;</code>
+     *
+     * <pre>
+     *是否停牌
+     * </pre>
+     */
+    public boolean getSuspend() {
+      return suspend_;
+    }
+
+    public static final int MARKET_FIELD_NUMBER = 6;
+    private java.lang.Object market_;
+    /**
+     * <code>required string market = 6;</code>
+     *
+     * <pre>
+     *发行市场名字
+     * </pre>
+     */
+    public boolean hasMarket() {
+      return ((bitField0_ & 0x00000020) == 0x00000020);
+    }
+    /**
+     * <code>required string market = 6;</code>
+     *
+     * <pre>
+     *发行市场名字
+     * </pre>
+     */
+    public java.lang.String getMarket() {
+      java.lang.Object ref = market_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          market_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string market = 6;</code>
+     *
+     * <pre>
+     *发行市场名字
+     * </pre>
+     */
+    public com.google.protobuf.ByteString
+        getMarketBytes() {
+      java.lang.Object ref = market_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        market_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private void initFields() {
+      type_ = 0;
+      owner_ = com.futu.opend.api.protobuf.QotCommon.Security.getDefaultInstance();
+      strikeTime_ = "";
+      strikePrice_ = 0D;
+      suspend_ = false;
+      market_ = "";
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      if (!hasType()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasOwner()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasStrikeTime()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasStrikePrice()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasSuspend()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasMarket()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!getOwner().isInitialized()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeInt32(1, type_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeMessage(2, owner_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeBytes(3, getStrikeTimeBytes());
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        output.writeDouble(4, strikePrice_);
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        output.writeBool(5, suspend_);
+      }
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        output.writeBytes(6, getMarketBytes());
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, type_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, owner_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(3, getStrikeTimeBytes());
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeDoubleSize(4, strikePrice_);
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(5, suspend_);
+      }
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(6, getMarketBytes());
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.futu.opend.api.protobuf.QotCommon.OptionStaticExData parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.futu.opend.api.protobuf.QotCommon.OptionStaticExData parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.futu.opend.api.protobuf.QotCommon.OptionStaticExData parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.futu.opend.api.protobuf.QotCommon.OptionStaticExData parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.futu.opend.api.protobuf.QotCommon.OptionStaticExData parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.futu.opend.api.protobuf.QotCommon.OptionStaticExData parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.futu.opend.api.protobuf.QotCommon.OptionStaticExData parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.futu.opend.api.protobuf.QotCommon.OptionStaticExData parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.futu.opend.api.protobuf.QotCommon.OptionStaticExData parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.futu.opend.api.protobuf.QotCommon.OptionStaticExData parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.futu.opend.api.protobuf.QotCommon.OptionStaticExData prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code Qot_Common.OptionStaticExData}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:Qot_Common.OptionStaticExData)
+        com.futu.opend.api.protobuf.QotCommon.OptionStaticExDataOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.futu.opend.api.protobuf.QotCommon.internal_static_Qot_Common_OptionStaticExData_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.futu.opend.api.protobuf.QotCommon.internal_static_Qot_Common_OptionStaticExData_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.futu.opend.api.protobuf.QotCommon.OptionStaticExData.class, com.futu.opend.api.protobuf.QotCommon.OptionStaticExData.Builder.class);
+      }
+
+      // Construct using com.futu.opend.api.protobuf.QotCommon.OptionStaticExData.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getOwnerFieldBuilder();
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        type_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        if (ownerBuilder_ == null) {
+          owner_ = com.futu.opend.api.protobuf.QotCommon.Security.getDefaultInstance();
+        } else {
+          ownerBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000002);
+        strikeTime_ = "";
+        bitField0_ = (bitField0_ & ~0x00000004);
+        strikePrice_ = 0D;
+        bitField0_ = (bitField0_ & ~0x00000008);
+        suspend_ = false;
+        bitField0_ = (bitField0_ & ~0x00000010);
+        market_ = "";
+        bitField0_ = (bitField0_ & ~0x00000020);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.futu.opend.api.protobuf.QotCommon.internal_static_Qot_Common_OptionStaticExData_descriptor;
+      }
+
+      public com.futu.opend.api.protobuf.QotCommon.OptionStaticExData getDefaultInstanceForType() {
+        return com.futu.opend.api.protobuf.QotCommon.OptionStaticExData.getDefaultInstance();
+      }
+
+      public com.futu.opend.api.protobuf.QotCommon.OptionStaticExData build() {
+        com.futu.opend.api.protobuf.QotCommon.OptionStaticExData result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.futu.opend.api.protobuf.QotCommon.OptionStaticExData buildPartial() {
+        com.futu.opend.api.protobuf.QotCommon.OptionStaticExData result = new com.futu.opend.api.protobuf.QotCommon.OptionStaticExData(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.type_ = type_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        if (ownerBuilder_ == null) {
+          result.owner_ = owner_;
+        } else {
+          result.owner_ = ownerBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.strikeTime_ = strikeTime_;
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000008;
+        }
+        result.strikePrice_ = strikePrice_;
+        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
+          to_bitField0_ |= 0x00000010;
+        }
+        result.suspend_ = suspend_;
+        if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
+          to_bitField0_ |= 0x00000020;
+        }
+        result.market_ = market_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.futu.opend.api.protobuf.QotCommon.OptionStaticExData) {
+          return mergeFrom((com.futu.opend.api.protobuf.QotCommon.OptionStaticExData)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.futu.opend.api.protobuf.QotCommon.OptionStaticExData other) {
+        if (other == com.futu.opend.api.protobuf.QotCommon.OptionStaticExData.getDefaultInstance()) return this;
+        if (other.hasType()) {
+          setType(other.getType());
+        }
+        if (other.hasOwner()) {
+          mergeOwner(other.getOwner());
+        }
+        if (other.hasStrikeTime()) {
+          bitField0_ |= 0x00000004;
+          strikeTime_ = other.strikeTime_;
+          onChanged();
+        }
+        if (other.hasStrikePrice()) {
+          setStrikePrice(other.getStrikePrice());
+        }
+        if (other.hasSuspend()) {
+          setSuspend(other.getSuspend());
+        }
+        if (other.hasMarket()) {
+          bitField0_ |= 0x00000020;
+          market_ = other.market_;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasType()) {
+          
+          return false;
+        }
+        if (!hasOwner()) {
+          
+          return false;
+        }
+        if (!hasStrikeTime()) {
+          
+          return false;
+        }
+        if (!hasStrikePrice()) {
+          
+          return false;
+        }
+        if (!hasSuspend()) {
+          
+          return false;
+        }
+        if (!hasMarket()) {
+          
+          return false;
+        }
+        if (!getOwner().isInitialized()) {
+          
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.futu.opend.api.protobuf.QotCommon.OptionStaticExData parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.futu.opend.api.protobuf.QotCommon.OptionStaticExData) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private int type_ ;
+      /**
+       * <code>required int32 type = 1;</code>
+       *
+       * <pre>
+       *Qot_Common.OptionType,期权
+       * </pre>
+       */
+      public boolean hasType() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required int32 type = 1;</code>
+       *
+       * <pre>
+       *Qot_Common.OptionType,期权
+       * </pre>
+       */
+      public int getType() {
+        return type_;
+      }
+      /**
+       * <code>required int32 type = 1;</code>
+       *
+       * <pre>
+       *Qot_Common.OptionType,期权
+       * </pre>
+       */
+      public Builder setType(int value) {
+        bitField0_ |= 0x00000001;
+        type_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 type = 1;</code>
+       *
+       * <pre>
+       *Qot_Common.OptionType,期权
+       * </pre>
+       */
+      public Builder clearType() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        type_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private com.futu.opend.api.protobuf.QotCommon.Security owner_ = com.futu.opend.api.protobuf.QotCommon.Security.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          com.futu.opend.api.protobuf.QotCommon.Security, com.futu.opend.api.protobuf.QotCommon.Security.Builder, com.futu.opend.api.protobuf.QotCommon.SecurityOrBuilder> ownerBuilder_;
+      /**
+       * <code>required .Qot_Common.Security owner = 2;</code>
+       *
+       * <pre>
+       *标的股
+       * </pre>
+       */
+      public boolean hasOwner() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>required .Qot_Common.Security owner = 2;</code>
+       *
+       * <pre>
+       *标的股
+       * </pre>
+       */
+      public com.futu.opend.api.protobuf.QotCommon.Security getOwner() {
+        if (ownerBuilder_ == null) {
+          return owner_;
+        } else {
+          return ownerBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>required .Qot_Common.Security owner = 2;</code>
+       *
+       * <pre>
+       *标的股
+       * </pre>
+       */
+      public Builder setOwner(com.futu.opend.api.protobuf.QotCommon.Security value) {
+        if (ownerBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          owner_ = value;
+          onChanged();
+        } else {
+          ownerBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000002;
+        return this;
+      }
+      /**
+       * <code>required .Qot_Common.Security owner = 2;</code>
+       *
+       * <pre>
+       *标的股
+       * </pre>
+       */
+      public Builder setOwner(
+          com.futu.opend.api.protobuf.QotCommon.Security.Builder builderForValue) {
+        if (ownerBuilder_ == null) {
+          owner_ = builderForValue.build();
+          onChanged();
+        } else {
+          ownerBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000002;
+        return this;
+      }
+      /**
+       * <code>required .Qot_Common.Security owner = 2;</code>
+       *
+       * <pre>
+       *标的股
+       * </pre>
+       */
+      public Builder mergeOwner(com.futu.opend.api.protobuf.QotCommon.Security value) {
+        if (ownerBuilder_ == null) {
+          if (((bitField0_ & 0x00000002) == 0x00000002) &&
+              owner_ != com.futu.opend.api.protobuf.QotCommon.Security.getDefaultInstance()) {
+            owner_ =
+              com.futu.opend.api.protobuf.QotCommon.Security.newBuilder(owner_).mergeFrom(value).buildPartial();
+          } else {
+            owner_ = value;
+          }
+          onChanged();
+        } else {
+          ownerBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000002;
+        return this;
+      }
+      /**
+       * <code>required .Qot_Common.Security owner = 2;</code>
+       *
+       * <pre>
+       *标的股
+       * </pre>
+       */
+      public Builder clearOwner() {
+        if (ownerBuilder_ == null) {
+          owner_ = com.futu.opend.api.protobuf.QotCommon.Security.getDefaultInstance();
+          onChanged();
+        } else {
+          ownerBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000002);
+        return this;
+      }
+      /**
+       * <code>required .Qot_Common.Security owner = 2;</code>
+       *
+       * <pre>
+       *标的股
+       * </pre>
+       */
+      public com.futu.opend.api.protobuf.QotCommon.Security.Builder getOwnerBuilder() {
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return getOwnerFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>required .Qot_Common.Security owner = 2;</code>
+       *
+       * <pre>
+       *标的股
+       * </pre>
+       */
+      public com.futu.opend.api.protobuf.QotCommon.SecurityOrBuilder getOwnerOrBuilder() {
+        if (ownerBuilder_ != null) {
+          return ownerBuilder_.getMessageOrBuilder();
+        } else {
+          return owner_;
+        }
+      }
+      /**
+       * <code>required .Qot_Common.Security owner = 2;</code>
+       *
+       * <pre>
+       *标的股
+       * </pre>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.futu.opend.api.protobuf.QotCommon.Security, com.futu.opend.api.protobuf.QotCommon.Security.Builder, com.futu.opend.api.protobuf.QotCommon.SecurityOrBuilder> 
+          getOwnerFieldBuilder() {
+        if (ownerBuilder_ == null) {
+          ownerBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.futu.opend.api.protobuf.QotCommon.Security, com.futu.opend.api.protobuf.QotCommon.Security.Builder, com.futu.opend.api.protobuf.QotCommon.SecurityOrBuilder>(
+                  getOwner(),
+                  getParentForChildren(),
+                  isClean());
+          owner_ = null;
+        }
+        return ownerBuilder_;
+      }
+
+      private java.lang.Object strikeTime_ = "";
+      /**
+       * <code>required string strikeTime = 3;</code>
+       *
+       * <pre>
+       *行权日
+       * </pre>
+       */
+      public boolean hasStrikeTime() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>required string strikeTime = 3;</code>
+       *
+       * <pre>
+       *行权日
+       * </pre>
+       */
+      public java.lang.String getStrikeTime() {
+        java.lang.Object ref = strikeTime_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            strikeTime_ = s;
+          }
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>required string strikeTime = 3;</code>
+       *
+       * <pre>
+       *行权日
+       * </pre>
+       */
+      public com.google.protobuf.ByteString
+          getStrikeTimeBytes() {
+        java.lang.Object ref = strikeTime_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          strikeTime_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string strikeTime = 3;</code>
+       *
+       * <pre>
+       *行权日
+       * </pre>
+       */
+      public Builder setStrikeTime(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000004;
+        strikeTime_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string strikeTime = 3;</code>
+       *
+       * <pre>
+       *行权日
+       * </pre>
+       */
+      public Builder clearStrikeTime() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        strikeTime_ = getDefaultInstance().getStrikeTime();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string strikeTime = 3;</code>
+       *
+       * <pre>
+       *行权日
+       * </pre>
+       */
+      public Builder setStrikeTimeBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000004;
+        strikeTime_ = value;
+        onChanged();
+        return this;
+      }
+
+      private double strikePrice_ ;
+      /**
+       * <code>required double strikePrice = 4;</code>
+       *
+       * <pre>
+       *行权价
+       * </pre>
+       */
+      public boolean hasStrikePrice() {
+        return ((bitField0_ & 0x00000008) == 0x00000008);
+      }
+      /**
+       * <code>required double strikePrice = 4;</code>
+       *
+       * <pre>
+       *行权价
+       * </pre>
+       */
+      public double getStrikePrice() {
+        return strikePrice_;
+      }
+      /**
+       * <code>required double strikePrice = 4;</code>
+       *
+       * <pre>
+       *行权价
+       * </pre>
+       */
+      public Builder setStrikePrice(double value) {
+        bitField0_ |= 0x00000008;
+        strikePrice_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required double strikePrice = 4;</code>
+       *
+       * <pre>
+       *行权价
+       * </pre>
+       */
+      public Builder clearStrikePrice() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        strikePrice_ = 0D;
+        onChanged();
+        return this;
+      }
+
+      private boolean suspend_ ;
+      /**
+       * <code>required bool suspend = 5;</code>
+       *
+       * <pre>
+       *是否停牌
+       * </pre>
+       */
+      public boolean hasSuspend() {
+        return ((bitField0_ & 0x00000010) == 0x00000010);
+      }
+      /**
+       * <code>required bool suspend = 5;</code>
+       *
+       * <pre>
+       *是否停牌
+       * </pre>
+       */
+      public boolean getSuspend() {
+        return suspend_;
+      }
+      /**
+       * <code>required bool suspend = 5;</code>
+       *
+       * <pre>
+       *是否停牌
+       * </pre>
+       */
+      public Builder setSuspend(boolean value) {
+        bitField0_ |= 0x00000010;
+        suspend_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required bool suspend = 5;</code>
+       *
+       * <pre>
+       *是否停牌
+       * </pre>
+       */
+      public Builder clearSuspend() {
+        bitField0_ = (bitField0_ & ~0x00000010);
+        suspend_ = false;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object market_ = "";
+      /**
+       * <code>required string market = 6;</code>
+       *
+       * <pre>
+       *发行市场名字
+       * </pre>
+       */
+      public boolean hasMarket() {
+        return ((bitField0_ & 0x00000020) == 0x00000020);
+      }
+      /**
+       * <code>required string market = 6;</code>
+       *
+       * <pre>
+       *发行市场名字
+       * </pre>
+       */
+      public java.lang.String getMarket() {
+        java.lang.Object ref = market_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            market_ = s;
+          }
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>required string market = 6;</code>
+       *
+       * <pre>
+       *发行市场名字
+       * </pre>
+       */
+      public com.google.protobuf.ByteString
+          getMarketBytes() {
+        java.lang.Object ref = market_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          market_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string market = 6;</code>
+       *
+       * <pre>
+       *发行市场名字
+       * </pre>
+       */
+      public Builder setMarket(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000020;
+        market_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string market = 6;</code>
+       *
+       * <pre>
+       *发行市场名字
+       * </pre>
+       */
+      public Builder clearMarket() {
+        bitField0_ = (bitField0_ & ~0x00000020);
+        market_ = getDefaultInstance().getMarket();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string market = 6;</code>
+       *
+       * <pre>
+       *发行市场名字
+       * </pre>
+       */
+      public Builder setMarketBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000020;
+        market_ = value;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:Qot_Common.OptionStaticExData)
+    }
+
+    static {
+      defaultInstance = new OptionStaticExData(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:Qot_Common.OptionStaticExData)
+  }
+
   public interface SecurityStaticInfoOrBuilder extends
       // @@protoc_insertion_point(interface_extends:Qot_Common.SecurityStaticInfo)
       com.google.protobuf.MessageOrBuilder {
@@ -11164,6 +14790,31 @@ public final class QotCommon {
      * </pre>
      */
     com.futu.opend.api.protobuf.QotCommon.WarrantStaticExDataOrBuilder getWarrantExDataOrBuilder();
+
+    /**
+     * <code>optional .Qot_Common.OptionStaticExData optionExData = 3;</code>
+     *
+     * <pre>
+     *期权额外股票静态信息
+     * </pre>
+     */
+    boolean hasOptionExData();
+    /**
+     * <code>optional .Qot_Common.OptionStaticExData optionExData = 3;</code>
+     *
+     * <pre>
+     *期权额外股票静态信息
+     * </pre>
+     */
+    com.futu.opend.api.protobuf.QotCommon.OptionStaticExData getOptionExData();
+    /**
+     * <code>optional .Qot_Common.OptionStaticExData optionExData = 3;</code>
+     *
+     * <pre>
+     *期权额外股票静态信息
+     * </pre>
+     */
+    com.futu.opend.api.protobuf.QotCommon.OptionStaticExDataOrBuilder getOptionExDataOrBuilder();
   }
   /**
    * Protobuf type {@code Qot_Common.SecurityStaticInfo}
@@ -11241,6 +14892,19 @@ public final class QotCommon {
                 warrantExData_ = subBuilder.buildPartial();
               }
               bitField0_ |= 0x00000002;
+              break;
+            }
+            case 26: {
+              com.futu.opend.api.protobuf.QotCommon.OptionStaticExData.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000004) == 0x00000004)) {
+                subBuilder = optionExData_.toBuilder();
+              }
+              optionExData_ = input.readMessage(com.futu.opend.api.protobuf.QotCommon.OptionStaticExData.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(optionExData_);
+                optionExData_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000004;
               break;
             }
           }
@@ -11349,9 +15013,43 @@ public final class QotCommon {
       return warrantExData_;
     }
 
+    public static final int OPTIONEXDATA_FIELD_NUMBER = 3;
+    private com.futu.opend.api.protobuf.QotCommon.OptionStaticExData optionExData_;
+    /**
+     * <code>optional .Qot_Common.OptionStaticExData optionExData = 3;</code>
+     *
+     * <pre>
+     *期权额外股票静态信息
+     * </pre>
+     */
+    public boolean hasOptionExData() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>optional .Qot_Common.OptionStaticExData optionExData = 3;</code>
+     *
+     * <pre>
+     *期权额外股票静态信息
+     * </pre>
+     */
+    public com.futu.opend.api.protobuf.QotCommon.OptionStaticExData getOptionExData() {
+      return optionExData_;
+    }
+    /**
+     * <code>optional .Qot_Common.OptionStaticExData optionExData = 3;</code>
+     *
+     * <pre>
+     *期权额外股票静态信息
+     * </pre>
+     */
+    public com.futu.opend.api.protobuf.QotCommon.OptionStaticExDataOrBuilder getOptionExDataOrBuilder() {
+      return optionExData_;
+    }
+
     private void initFields() {
       basic_ = com.futu.opend.api.protobuf.QotCommon.SecurityStaticBasic.getDefaultInstance();
       warrantExData_ = com.futu.opend.api.protobuf.QotCommon.WarrantStaticExData.getDefaultInstance();
+      optionExData_ = com.futu.opend.api.protobuf.QotCommon.OptionStaticExData.getDefaultInstance();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -11373,6 +15071,12 @@ public final class QotCommon {
           return false;
         }
       }
+      if (hasOptionExData()) {
+        if (!getOptionExData().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -11385,6 +15089,9 @@ public final class QotCommon {
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         output.writeMessage(2, warrantExData_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeMessage(3, optionExData_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -11402,6 +15109,10 @@ public final class QotCommon {
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(2, warrantExData_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(3, optionExData_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -11514,6 +15225,7 @@ public final class QotCommon {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
           getBasicFieldBuilder();
           getWarrantExDataFieldBuilder();
+          getOptionExDataFieldBuilder();
         }
       }
       private static Builder create() {
@@ -11534,6 +15246,12 @@ public final class QotCommon {
           warrantExDataBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x00000002);
+        if (optionExDataBuilder_ == null) {
+          optionExData_ = com.futu.opend.api.protobuf.QotCommon.OptionStaticExData.getDefaultInstance();
+        } else {
+          optionExDataBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000004);
         return this;
       }
 
@@ -11578,6 +15296,14 @@ public final class QotCommon {
         } else {
           result.warrantExData_ = warrantExDataBuilder_.build();
         }
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        if (optionExDataBuilder_ == null) {
+          result.optionExData_ = optionExData_;
+        } else {
+          result.optionExData_ = optionExDataBuilder_.build();
+        }
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -11600,6 +15326,9 @@ public final class QotCommon {
         if (other.hasWarrantExData()) {
           mergeWarrantExData(other.getWarrantExData());
         }
+        if (other.hasOptionExData()) {
+          mergeOptionExData(other.getOptionExData());
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
@@ -11615,6 +15344,12 @@ public final class QotCommon {
         }
         if (hasWarrantExData()) {
           if (!getWarrantExData().isInitialized()) {
+            
+            return false;
+          }
+        }
+        if (hasOptionExData()) {
+          if (!getOptionExData().isInitialized()) {
             
             return false;
           }
@@ -11943,6 +15678,158 @@ public final class QotCommon {
           warrantExData_ = null;
         }
         return warrantExDataBuilder_;
+      }
+
+      private com.futu.opend.api.protobuf.QotCommon.OptionStaticExData optionExData_ = com.futu.opend.api.protobuf.QotCommon.OptionStaticExData.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          com.futu.opend.api.protobuf.QotCommon.OptionStaticExData, com.futu.opend.api.protobuf.QotCommon.OptionStaticExData.Builder, com.futu.opend.api.protobuf.QotCommon.OptionStaticExDataOrBuilder> optionExDataBuilder_;
+      /**
+       * <code>optional .Qot_Common.OptionStaticExData optionExData = 3;</code>
+       *
+       * <pre>
+       *期权额外股票静态信息
+       * </pre>
+       */
+      public boolean hasOptionExData() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>optional .Qot_Common.OptionStaticExData optionExData = 3;</code>
+       *
+       * <pre>
+       *期权额外股票静态信息
+       * </pre>
+       */
+      public com.futu.opend.api.protobuf.QotCommon.OptionStaticExData getOptionExData() {
+        if (optionExDataBuilder_ == null) {
+          return optionExData_;
+        } else {
+          return optionExDataBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .Qot_Common.OptionStaticExData optionExData = 3;</code>
+       *
+       * <pre>
+       *期权额外股票静态信息
+       * </pre>
+       */
+      public Builder setOptionExData(com.futu.opend.api.protobuf.QotCommon.OptionStaticExData value) {
+        if (optionExDataBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          optionExData_ = value;
+          onChanged();
+        } else {
+          optionExDataBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000004;
+        return this;
+      }
+      /**
+       * <code>optional .Qot_Common.OptionStaticExData optionExData = 3;</code>
+       *
+       * <pre>
+       *期权额外股票静态信息
+       * </pre>
+       */
+      public Builder setOptionExData(
+          com.futu.opend.api.protobuf.QotCommon.OptionStaticExData.Builder builderForValue) {
+        if (optionExDataBuilder_ == null) {
+          optionExData_ = builderForValue.build();
+          onChanged();
+        } else {
+          optionExDataBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000004;
+        return this;
+      }
+      /**
+       * <code>optional .Qot_Common.OptionStaticExData optionExData = 3;</code>
+       *
+       * <pre>
+       *期权额外股票静态信息
+       * </pre>
+       */
+      public Builder mergeOptionExData(com.futu.opend.api.protobuf.QotCommon.OptionStaticExData value) {
+        if (optionExDataBuilder_ == null) {
+          if (((bitField0_ & 0x00000004) == 0x00000004) &&
+              optionExData_ != com.futu.opend.api.protobuf.QotCommon.OptionStaticExData.getDefaultInstance()) {
+            optionExData_ =
+              com.futu.opend.api.protobuf.QotCommon.OptionStaticExData.newBuilder(optionExData_).mergeFrom(value).buildPartial();
+          } else {
+            optionExData_ = value;
+          }
+          onChanged();
+        } else {
+          optionExDataBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000004;
+        return this;
+      }
+      /**
+       * <code>optional .Qot_Common.OptionStaticExData optionExData = 3;</code>
+       *
+       * <pre>
+       *期权额外股票静态信息
+       * </pre>
+       */
+      public Builder clearOptionExData() {
+        if (optionExDataBuilder_ == null) {
+          optionExData_ = com.futu.opend.api.protobuf.QotCommon.OptionStaticExData.getDefaultInstance();
+          onChanged();
+        } else {
+          optionExDataBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000004);
+        return this;
+      }
+      /**
+       * <code>optional .Qot_Common.OptionStaticExData optionExData = 3;</code>
+       *
+       * <pre>
+       *期权额外股票静态信息
+       * </pre>
+       */
+      public com.futu.opend.api.protobuf.QotCommon.OptionStaticExData.Builder getOptionExDataBuilder() {
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return getOptionExDataFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .Qot_Common.OptionStaticExData optionExData = 3;</code>
+       *
+       * <pre>
+       *期权额外股票静态信息
+       * </pre>
+       */
+      public com.futu.opend.api.protobuf.QotCommon.OptionStaticExDataOrBuilder getOptionExDataOrBuilder() {
+        if (optionExDataBuilder_ != null) {
+          return optionExDataBuilder_.getMessageOrBuilder();
+        } else {
+          return optionExData_;
+        }
+      }
+      /**
+       * <code>optional .Qot_Common.OptionStaticExData optionExData = 3;</code>
+       *
+       * <pre>
+       *期权额外股票静态信息
+       * </pre>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.futu.opend.api.protobuf.QotCommon.OptionStaticExData, com.futu.opend.api.protobuf.QotCommon.OptionStaticExData.Builder, com.futu.opend.api.protobuf.QotCommon.OptionStaticExDataOrBuilder> 
+          getOptionExDataFieldBuilder() {
+        if (optionExDataBuilder_ == null) {
+          optionExDataBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.futu.opend.api.protobuf.QotCommon.OptionStaticExData, com.futu.opend.api.protobuf.QotCommon.OptionStaticExData.Builder, com.futu.opend.api.protobuf.QotCommon.OptionStaticExDataOrBuilder>(
+                  getOptionExData(),
+                  getParentForChildren(),
+                  isClean());
+          optionExData_ = null;
+        }
+        return optionExDataBuilder_;
       }
 
       // @@protoc_insertion_point(builder_scope:Qot_Common.SecurityStaticInfo)
@@ -12889,6 +16776,23 @@ public final class QotCommon {
      * </pre>
      */
     int getTypeSign();
+
+    /**
+     * <code>optional int32 pushDataType = 10;</code>
+     *
+     * <pre>
+     *用于区分推送情况
+     * </pre>
+     */
+    boolean hasPushDataType();
+    /**
+     * <code>optional int32 pushDataType = 10;</code>
+     *
+     * <pre>
+     *用于区分推送情况
+     * </pre>
+     */
+    int getPushDataType();
   }
   /**
    * Protobuf type {@code Qot_Common.Ticker}
@@ -12986,6 +16890,11 @@ public final class QotCommon {
             case 72: {
               bitField0_ |= 0x00000100;
               typeSign_ = input.readInt32();
+              break;
+            }
+            case 80: {
+              bitField0_ |= 0x00000200;
+              pushDataType_ = input.readInt32();
               break;
             }
           }
@@ -13266,6 +17175,29 @@ public final class QotCommon {
       return typeSign_;
     }
 
+    public static final int PUSHDATATYPE_FIELD_NUMBER = 10;
+    private int pushDataType_;
+    /**
+     * <code>optional int32 pushDataType = 10;</code>
+     *
+     * <pre>
+     *用于区分推送情况
+     * </pre>
+     */
+    public boolean hasPushDataType() {
+      return ((bitField0_ & 0x00000200) == 0x00000200);
+    }
+    /**
+     * <code>optional int32 pushDataType = 10;</code>
+     *
+     * <pre>
+     *用于区分推送情况
+     * </pre>
+     */
+    public int getPushDataType() {
+      return pushDataType_;
+    }
+
     private void initFields() {
       time_ = "";
       sequence_ = 0L;
@@ -13276,6 +17208,7 @@ public final class QotCommon {
       recvTime_ = 0D;
       type_ = 0;
       typeSign_ = 0;
+      pushDataType_ = 0;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -13341,6 +17274,9 @@ public final class QotCommon {
       if (((bitField0_ & 0x00000100) == 0x00000100)) {
         output.writeInt32(9, typeSign_);
       }
+      if (((bitField0_ & 0x00000200) == 0x00000200)) {
+        output.writeInt32(10, pushDataType_);
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -13385,6 +17321,10 @@ public final class QotCommon {
       if (((bitField0_ & 0x00000100) == 0x00000100)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(9, typeSign_);
+      }
+      if (((bitField0_ & 0x00000200) == 0x00000200)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(10, pushDataType_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -13521,6 +17461,8 @@ public final class QotCommon {
         bitField0_ = (bitField0_ & ~0x00000080);
         typeSign_ = 0;
         bitField0_ = (bitField0_ & ~0x00000100);
+        pushDataType_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000200);
         return this;
       }
 
@@ -13585,6 +17527,10 @@ public final class QotCommon {
           to_bitField0_ |= 0x00000100;
         }
         result.typeSign_ = typeSign_;
+        if (((from_bitField0_ & 0x00000200) == 0x00000200)) {
+          to_bitField0_ |= 0x00000200;
+        }
+        result.pushDataType_ = pushDataType_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -13629,6 +17575,9 @@ public final class QotCommon {
         }
         if (other.hasTypeSign()) {
           setTypeSign(other.getTypeSign());
+        }
+        if (other.hasPushDataType()) {
+          setPushDataType(other.getPushDataType());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -14161,6 +18110,54 @@ public final class QotCommon {
       public Builder clearTypeSign() {
         bitField0_ = (bitField0_ & ~0x00000100);
         typeSign_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int pushDataType_ ;
+      /**
+       * <code>optional int32 pushDataType = 10;</code>
+       *
+       * <pre>
+       *用于区分推送情况
+       * </pre>
+       */
+      public boolean hasPushDataType() {
+        return ((bitField0_ & 0x00000200) == 0x00000200);
+      }
+      /**
+       * <code>optional int32 pushDataType = 10;</code>
+       *
+       * <pre>
+       *用于区分推送情况
+       * </pre>
+       */
+      public int getPushDataType() {
+        return pushDataType_;
+      }
+      /**
+       * <code>optional int32 pushDataType = 10;</code>
+       *
+       * <pre>
+       *用于区分推送情况
+       * </pre>
+       */
+      public Builder setPushDataType(int value) {
+        bitField0_ |= 0x00000200;
+        pushDataType_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 pushDataType = 10;</code>
+       *
+       * <pre>
+       *用于区分推送情况
+       * </pre>
+       */
+      public Builder clearPushDataType() {
+        bitField0_ = (bitField0_ & ~0x00000200);
+        pushDataType_ = 0;
         onChanged();
         return this;
       }
@@ -14847,6 +18844,1872 @@ public final class QotCommon {
     }
 
     // @@protoc_insertion_point(class_scope:Qot_Common.OrderBook)
+  }
+
+  public interface OrderDetailOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:Qot_Common.OrderDetail)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>required int32 orderCount = 1;</code>
+     *
+     * <pre>
+     *委托订单个数
+     * </pre>
+     */
+    boolean hasOrderCount();
+    /**
+     * <code>required int32 orderCount = 1;</code>
+     *
+     * <pre>
+     *委托订单个数
+     * </pre>
+     */
+    int getOrderCount();
+
+    /**
+     * <code>repeated double orderVol = 2;</code>
+     *
+     * <pre>
+     *每笔委托的委托量，注意：当前只会返回最多前50笔委托的委托数量
+     * </pre>
+     */
+    java.util.List<java.lang.Double> getOrderVolList();
+    /**
+     * <code>repeated double orderVol = 2;</code>
+     *
+     * <pre>
+     *每笔委托的委托量，注意：当前只会返回最多前50笔委托的委托数量
+     * </pre>
+     */
+    int getOrderVolCount();
+    /**
+     * <code>repeated double orderVol = 2;</code>
+     *
+     * <pre>
+     *每笔委托的委托量，注意：当前只会返回最多前50笔委托的委托数量
+     * </pre>
+     */
+    double getOrderVol(int index);
+  }
+  /**
+   * Protobuf type {@code Qot_Common.OrderDetail}
+   */
+  public static final class OrderDetail extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:Qot_Common.OrderDetail)
+      OrderDetailOrBuilder {
+    // Use OrderDetail.newBuilder() to construct.
+    private OrderDetail(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private OrderDetail(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final OrderDetail defaultInstance;
+    public static OrderDetail getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public OrderDetail getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private OrderDetail(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              orderCount_ = input.readInt32();
+              break;
+            }
+            case 17: {
+              if (!((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
+                orderVol_ = new java.util.ArrayList<java.lang.Double>();
+                mutable_bitField0_ |= 0x00000002;
+              }
+              orderVol_.add(input.readDouble());
+              break;
+            }
+            case 18: {
+              int length = input.readRawVarint32();
+              int limit = input.pushLimit(length);
+              if (!((mutable_bitField0_ & 0x00000002) == 0x00000002) && input.getBytesUntilLimit() > 0) {
+                orderVol_ = new java.util.ArrayList<java.lang.Double>();
+                mutable_bitField0_ |= 0x00000002;
+              }
+              while (input.getBytesUntilLimit() > 0) {
+                orderVol_.add(input.readDouble());
+              }
+              input.popLimit(limit);
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
+          orderVol_ = java.util.Collections.unmodifiableList(orderVol_);
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.futu.opend.api.protobuf.QotCommon.internal_static_Qot_Common_OrderDetail_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.futu.opend.api.protobuf.QotCommon.internal_static_Qot_Common_OrderDetail_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.futu.opend.api.protobuf.QotCommon.OrderDetail.class, com.futu.opend.api.protobuf.QotCommon.OrderDetail.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<OrderDetail> PARSER =
+        new com.google.protobuf.AbstractParser<OrderDetail>() {
+      public OrderDetail parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new OrderDetail(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<OrderDetail> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    public static final int ORDERCOUNT_FIELD_NUMBER = 1;
+    private int orderCount_;
+    /**
+     * <code>required int32 orderCount = 1;</code>
+     *
+     * <pre>
+     *委托订单个数
+     * </pre>
+     */
+    public boolean hasOrderCount() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required int32 orderCount = 1;</code>
+     *
+     * <pre>
+     *委托订单个数
+     * </pre>
+     */
+    public int getOrderCount() {
+      return orderCount_;
+    }
+
+    public static final int ORDERVOL_FIELD_NUMBER = 2;
+    private java.util.List<java.lang.Double> orderVol_;
+    /**
+     * <code>repeated double orderVol = 2;</code>
+     *
+     * <pre>
+     *每笔委托的委托量，注意：当前只会返回最多前50笔委托的委托数量
+     * </pre>
+     */
+    public java.util.List<java.lang.Double>
+        getOrderVolList() {
+      return orderVol_;
+    }
+    /**
+     * <code>repeated double orderVol = 2;</code>
+     *
+     * <pre>
+     *每笔委托的委托量，注意：当前只会返回最多前50笔委托的委托数量
+     * </pre>
+     */
+    public int getOrderVolCount() {
+      return orderVol_.size();
+    }
+    /**
+     * <code>repeated double orderVol = 2;</code>
+     *
+     * <pre>
+     *每笔委托的委托量，注意：当前只会返回最多前50笔委托的委托数量
+     * </pre>
+     */
+    public double getOrderVol(int index) {
+      return orderVol_.get(index);
+    }
+
+    private void initFields() {
+      orderCount_ = 0;
+      orderVol_ = java.util.Collections.emptyList();
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      if (!hasOrderCount()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeInt32(1, orderCount_);
+      }
+      for (int i = 0; i < orderVol_.size(); i++) {
+        output.writeDouble(2, orderVol_.get(i));
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, orderCount_);
+      }
+      {
+        int dataSize = 0;
+        dataSize = 8 * getOrderVolList().size();
+        size += dataSize;
+        size += 1 * getOrderVolList().size();
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.futu.opend.api.protobuf.QotCommon.OrderDetail parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.futu.opend.api.protobuf.QotCommon.OrderDetail parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.futu.opend.api.protobuf.QotCommon.OrderDetail parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.futu.opend.api.protobuf.QotCommon.OrderDetail parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.futu.opend.api.protobuf.QotCommon.OrderDetail parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.futu.opend.api.protobuf.QotCommon.OrderDetail parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.futu.opend.api.protobuf.QotCommon.OrderDetail parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.futu.opend.api.protobuf.QotCommon.OrderDetail parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.futu.opend.api.protobuf.QotCommon.OrderDetail parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.futu.opend.api.protobuf.QotCommon.OrderDetail parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.futu.opend.api.protobuf.QotCommon.OrderDetail prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code Qot_Common.OrderDetail}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:Qot_Common.OrderDetail)
+        com.futu.opend.api.protobuf.QotCommon.OrderDetailOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.futu.opend.api.protobuf.QotCommon.internal_static_Qot_Common_OrderDetail_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.futu.opend.api.protobuf.QotCommon.internal_static_Qot_Common_OrderDetail_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.futu.opend.api.protobuf.QotCommon.OrderDetail.class, com.futu.opend.api.protobuf.QotCommon.OrderDetail.Builder.class);
+      }
+
+      // Construct using com.futu.opend.api.protobuf.QotCommon.OrderDetail.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        orderCount_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        orderVol_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000002);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.futu.opend.api.protobuf.QotCommon.internal_static_Qot_Common_OrderDetail_descriptor;
+      }
+
+      public com.futu.opend.api.protobuf.QotCommon.OrderDetail getDefaultInstanceForType() {
+        return com.futu.opend.api.protobuf.QotCommon.OrderDetail.getDefaultInstance();
+      }
+
+      public com.futu.opend.api.protobuf.QotCommon.OrderDetail build() {
+        com.futu.opend.api.protobuf.QotCommon.OrderDetail result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.futu.opend.api.protobuf.QotCommon.OrderDetail buildPartial() {
+        com.futu.opend.api.protobuf.QotCommon.OrderDetail result = new com.futu.opend.api.protobuf.QotCommon.OrderDetail(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.orderCount_ = orderCount_;
+        if (((bitField0_ & 0x00000002) == 0x00000002)) {
+          orderVol_ = java.util.Collections.unmodifiableList(orderVol_);
+          bitField0_ = (bitField0_ & ~0x00000002);
+        }
+        result.orderVol_ = orderVol_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.futu.opend.api.protobuf.QotCommon.OrderDetail) {
+          return mergeFrom((com.futu.opend.api.protobuf.QotCommon.OrderDetail)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.futu.opend.api.protobuf.QotCommon.OrderDetail other) {
+        if (other == com.futu.opend.api.protobuf.QotCommon.OrderDetail.getDefaultInstance()) return this;
+        if (other.hasOrderCount()) {
+          setOrderCount(other.getOrderCount());
+        }
+        if (!other.orderVol_.isEmpty()) {
+          if (orderVol_.isEmpty()) {
+            orderVol_ = other.orderVol_;
+            bitField0_ = (bitField0_ & ~0x00000002);
+          } else {
+            ensureOrderVolIsMutable();
+            orderVol_.addAll(other.orderVol_);
+          }
+          onChanged();
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasOrderCount()) {
+          
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.futu.opend.api.protobuf.QotCommon.OrderDetail parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.futu.opend.api.protobuf.QotCommon.OrderDetail) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private int orderCount_ ;
+      /**
+       * <code>required int32 orderCount = 1;</code>
+       *
+       * <pre>
+       *委托订单个数
+       * </pre>
+       */
+      public boolean hasOrderCount() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required int32 orderCount = 1;</code>
+       *
+       * <pre>
+       *委托订单个数
+       * </pre>
+       */
+      public int getOrderCount() {
+        return orderCount_;
+      }
+      /**
+       * <code>required int32 orderCount = 1;</code>
+       *
+       * <pre>
+       *委托订单个数
+       * </pre>
+       */
+      public Builder setOrderCount(int value) {
+        bitField0_ |= 0x00000001;
+        orderCount_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 orderCount = 1;</code>
+       *
+       * <pre>
+       *委托订单个数
+       * </pre>
+       */
+      public Builder clearOrderCount() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        orderCount_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private java.util.List<java.lang.Double> orderVol_ = java.util.Collections.emptyList();
+      private void ensureOrderVolIsMutable() {
+        if (!((bitField0_ & 0x00000002) == 0x00000002)) {
+          orderVol_ = new java.util.ArrayList<java.lang.Double>(orderVol_);
+          bitField0_ |= 0x00000002;
+         }
+      }
+      /**
+       * <code>repeated double orderVol = 2;</code>
+       *
+       * <pre>
+       *每笔委托的委托量，注意：当前只会返回最多前50笔委托的委托数量
+       * </pre>
+       */
+      public java.util.List<java.lang.Double>
+          getOrderVolList() {
+        return java.util.Collections.unmodifiableList(orderVol_);
+      }
+      /**
+       * <code>repeated double orderVol = 2;</code>
+       *
+       * <pre>
+       *每笔委托的委托量，注意：当前只会返回最多前50笔委托的委托数量
+       * </pre>
+       */
+      public int getOrderVolCount() {
+        return orderVol_.size();
+      }
+      /**
+       * <code>repeated double orderVol = 2;</code>
+       *
+       * <pre>
+       *每笔委托的委托量，注意：当前只会返回最多前50笔委托的委托数量
+       * </pre>
+       */
+      public double getOrderVol(int index) {
+        return orderVol_.get(index);
+      }
+      /**
+       * <code>repeated double orderVol = 2;</code>
+       *
+       * <pre>
+       *每笔委托的委托量，注意：当前只会返回最多前50笔委托的委托数量
+       * </pre>
+       */
+      public Builder setOrderVol(
+          int index, double value) {
+        ensureOrderVolIsMutable();
+        orderVol_.set(index, value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated double orderVol = 2;</code>
+       *
+       * <pre>
+       *每笔委托的委托量，注意：当前只会返回最多前50笔委托的委托数量
+       * </pre>
+       */
+      public Builder addOrderVol(double value) {
+        ensureOrderVolIsMutable();
+        orderVol_.add(value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated double orderVol = 2;</code>
+       *
+       * <pre>
+       *每笔委托的委托量，注意：当前只会返回最多前50笔委托的委托数量
+       * </pre>
+       */
+      public Builder addAllOrderVol(
+          java.lang.Iterable<? extends java.lang.Double> values) {
+        ensureOrderVolIsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, orderVol_);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated double orderVol = 2;</code>
+       *
+       * <pre>
+       *每笔委托的委托量，注意：当前只会返回最多前50笔委托的委托数量
+       * </pre>
+       */
+      public Builder clearOrderVol() {
+        orderVol_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000002);
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:Qot_Common.OrderDetail)
+    }
+
+    static {
+      defaultInstance = new OrderDetail(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:Qot_Common.OrderDetail)
+  }
+
+  public interface ShareHoldingChangeOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:Qot_Common.ShareHoldingChange)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>required string holderName = 1;</code>
+     *
+     * <pre>
+     *持有者名称（机构名称 或 基金名称 或 高管姓名）
+     * </pre>
+     */
+    boolean hasHolderName();
+    /**
+     * <code>required string holderName = 1;</code>
+     *
+     * <pre>
+     *持有者名称（机构名称 或 基金名称 或 高管姓名）
+     * </pre>
+     */
+    java.lang.String getHolderName();
+    /**
+     * <code>required string holderName = 1;</code>
+     *
+     * <pre>
+     *持有者名称（机构名称 或 基金名称 或 高管姓名）
+     * </pre>
+     */
+    com.google.protobuf.ByteString
+        getHolderNameBytes();
+
+    /**
+     * <code>required double holdingQty = 2;</code>
+     *
+     * <pre>
+     *当前持股数量
+     * </pre>
+     */
+    boolean hasHoldingQty();
+    /**
+     * <code>required double holdingQty = 2;</code>
+     *
+     * <pre>
+     *当前持股数量
+     * </pre>
+     */
+    double getHoldingQty();
+
+    /**
+     * <code>required double holdingRatio = 3;</code>
+     *
+     * <pre>
+     *当前持股百分比
+     * </pre>
+     */
+    boolean hasHoldingRatio();
+    /**
+     * <code>required double holdingRatio = 3;</code>
+     *
+     * <pre>
+     *当前持股百分比
+     * </pre>
+     */
+    double getHoldingRatio();
+
+    /**
+     * <code>required double changeQty = 4;</code>
+     *
+     * <pre>
+     *较上一次变动数量
+     * </pre>
+     */
+    boolean hasChangeQty();
+    /**
+     * <code>required double changeQty = 4;</code>
+     *
+     * <pre>
+     *较上一次变动数量
+     * </pre>
+     */
+    double getChangeQty();
+
+    /**
+     * <code>required double changeRatio = 5;</code>
+     *
+     * <pre>
+     *较上一次变动百分比（是相对于自身的比例，而不是总的。如总股本1万股，持有100股，持股百分比是1%，卖掉50股，变动比例是50%，而不是0.5%）
+     * </pre>
+     */
+    boolean hasChangeRatio();
+    /**
+     * <code>required double changeRatio = 5;</code>
+     *
+     * <pre>
+     *较上一次变动百分比（是相对于自身的比例，而不是总的。如总股本1万股，持有100股，持股百分比是1%，卖掉50股，变动比例是50%，而不是0.5%）
+     * </pre>
+     */
+    double getChangeRatio();
+
+    /**
+     * <code>required string time = 6;</code>
+     *
+     * <pre>
+     *发布时间(YYYY-MM-DD HH:MM:SS字符串)
+     * </pre>
+     */
+    boolean hasTime();
+    /**
+     * <code>required string time = 6;</code>
+     *
+     * <pre>
+     *发布时间(YYYY-MM-DD HH:MM:SS字符串)
+     * </pre>
+     */
+    java.lang.String getTime();
+    /**
+     * <code>required string time = 6;</code>
+     *
+     * <pre>
+     *发布时间(YYYY-MM-DD HH:MM:SS字符串)
+     * </pre>
+     */
+    com.google.protobuf.ByteString
+        getTimeBytes();
+  }
+  /**
+   * Protobuf type {@code Qot_Common.ShareHoldingChange}
+   *
+   * <pre>
+   *持股变动
+   * </pre>
+   */
+  public static final class ShareHoldingChange extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:Qot_Common.ShareHoldingChange)
+      ShareHoldingChangeOrBuilder {
+    // Use ShareHoldingChange.newBuilder() to construct.
+    private ShareHoldingChange(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private ShareHoldingChange(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final ShareHoldingChange defaultInstance;
+    public static ShareHoldingChange getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public ShareHoldingChange getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private ShareHoldingChange(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000001;
+              holderName_ = bs;
+              break;
+            }
+            case 17: {
+              bitField0_ |= 0x00000002;
+              holdingQty_ = input.readDouble();
+              break;
+            }
+            case 25: {
+              bitField0_ |= 0x00000004;
+              holdingRatio_ = input.readDouble();
+              break;
+            }
+            case 33: {
+              bitField0_ |= 0x00000008;
+              changeQty_ = input.readDouble();
+              break;
+            }
+            case 41: {
+              bitField0_ |= 0x00000010;
+              changeRatio_ = input.readDouble();
+              break;
+            }
+            case 50: {
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000020;
+              time_ = bs;
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.futu.opend.api.protobuf.QotCommon.internal_static_Qot_Common_ShareHoldingChange_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.futu.opend.api.protobuf.QotCommon.internal_static_Qot_Common_ShareHoldingChange_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.futu.opend.api.protobuf.QotCommon.ShareHoldingChange.class, com.futu.opend.api.protobuf.QotCommon.ShareHoldingChange.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<ShareHoldingChange> PARSER =
+        new com.google.protobuf.AbstractParser<ShareHoldingChange>() {
+      public ShareHoldingChange parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new ShareHoldingChange(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<ShareHoldingChange> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    public static final int HOLDERNAME_FIELD_NUMBER = 1;
+    private java.lang.Object holderName_;
+    /**
+     * <code>required string holderName = 1;</code>
+     *
+     * <pre>
+     *持有者名称（机构名称 或 基金名称 或 高管姓名）
+     * </pre>
+     */
+    public boolean hasHolderName() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required string holderName = 1;</code>
+     *
+     * <pre>
+     *持有者名称（机构名称 或 基金名称 或 高管姓名）
+     * </pre>
+     */
+    public java.lang.String getHolderName() {
+      java.lang.Object ref = holderName_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          holderName_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string holderName = 1;</code>
+     *
+     * <pre>
+     *持有者名称（机构名称 或 基金名称 或 高管姓名）
+     * </pre>
+     */
+    public com.google.protobuf.ByteString
+        getHolderNameBytes() {
+      java.lang.Object ref = holderName_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        holderName_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int HOLDINGQTY_FIELD_NUMBER = 2;
+    private double holdingQty_;
+    /**
+     * <code>required double holdingQty = 2;</code>
+     *
+     * <pre>
+     *当前持股数量
+     * </pre>
+     */
+    public boolean hasHoldingQty() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>required double holdingQty = 2;</code>
+     *
+     * <pre>
+     *当前持股数量
+     * </pre>
+     */
+    public double getHoldingQty() {
+      return holdingQty_;
+    }
+
+    public static final int HOLDINGRATIO_FIELD_NUMBER = 3;
+    private double holdingRatio_;
+    /**
+     * <code>required double holdingRatio = 3;</code>
+     *
+     * <pre>
+     *当前持股百分比
+     * </pre>
+     */
+    public boolean hasHoldingRatio() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>required double holdingRatio = 3;</code>
+     *
+     * <pre>
+     *当前持股百分比
+     * </pre>
+     */
+    public double getHoldingRatio() {
+      return holdingRatio_;
+    }
+
+    public static final int CHANGEQTY_FIELD_NUMBER = 4;
+    private double changeQty_;
+    /**
+     * <code>required double changeQty = 4;</code>
+     *
+     * <pre>
+     *较上一次变动数量
+     * </pre>
+     */
+    public boolean hasChangeQty() {
+      return ((bitField0_ & 0x00000008) == 0x00000008);
+    }
+    /**
+     * <code>required double changeQty = 4;</code>
+     *
+     * <pre>
+     *较上一次变动数量
+     * </pre>
+     */
+    public double getChangeQty() {
+      return changeQty_;
+    }
+
+    public static final int CHANGERATIO_FIELD_NUMBER = 5;
+    private double changeRatio_;
+    /**
+     * <code>required double changeRatio = 5;</code>
+     *
+     * <pre>
+     *较上一次变动百分比（是相对于自身的比例，而不是总的。如总股本1万股，持有100股，持股百分比是1%，卖掉50股，变动比例是50%，而不是0.5%）
+     * </pre>
+     */
+    public boolean hasChangeRatio() {
+      return ((bitField0_ & 0x00000010) == 0x00000010);
+    }
+    /**
+     * <code>required double changeRatio = 5;</code>
+     *
+     * <pre>
+     *较上一次变动百分比（是相对于自身的比例，而不是总的。如总股本1万股，持有100股，持股百分比是1%，卖掉50股，变动比例是50%，而不是0.5%）
+     * </pre>
+     */
+    public double getChangeRatio() {
+      return changeRatio_;
+    }
+
+    public static final int TIME_FIELD_NUMBER = 6;
+    private java.lang.Object time_;
+    /**
+     * <code>required string time = 6;</code>
+     *
+     * <pre>
+     *发布时间(YYYY-MM-DD HH:MM:SS字符串)
+     * </pre>
+     */
+    public boolean hasTime() {
+      return ((bitField0_ & 0x00000020) == 0x00000020);
+    }
+    /**
+     * <code>required string time = 6;</code>
+     *
+     * <pre>
+     *发布时间(YYYY-MM-DD HH:MM:SS字符串)
+     * </pre>
+     */
+    public java.lang.String getTime() {
+      java.lang.Object ref = time_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          time_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string time = 6;</code>
+     *
+     * <pre>
+     *发布时间(YYYY-MM-DD HH:MM:SS字符串)
+     * </pre>
+     */
+    public com.google.protobuf.ByteString
+        getTimeBytes() {
+      java.lang.Object ref = time_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        time_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private void initFields() {
+      holderName_ = "";
+      holdingQty_ = 0D;
+      holdingRatio_ = 0D;
+      changeQty_ = 0D;
+      changeRatio_ = 0D;
+      time_ = "";
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      if (!hasHolderName()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasHoldingQty()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasHoldingRatio()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasChangeQty()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasChangeRatio()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasTime()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeBytes(1, getHolderNameBytes());
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeDouble(2, holdingQty_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeDouble(3, holdingRatio_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        output.writeDouble(4, changeQty_);
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        output.writeDouble(5, changeRatio_);
+      }
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        output.writeBytes(6, getTimeBytes());
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(1, getHolderNameBytes());
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeDoubleSize(2, holdingQty_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeDoubleSize(3, holdingRatio_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeDoubleSize(4, changeQty_);
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeDoubleSize(5, changeRatio_);
+      }
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(6, getTimeBytes());
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.futu.opend.api.protobuf.QotCommon.ShareHoldingChange parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.futu.opend.api.protobuf.QotCommon.ShareHoldingChange parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.futu.opend.api.protobuf.QotCommon.ShareHoldingChange parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.futu.opend.api.protobuf.QotCommon.ShareHoldingChange parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.futu.opend.api.protobuf.QotCommon.ShareHoldingChange parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.futu.opend.api.protobuf.QotCommon.ShareHoldingChange parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.futu.opend.api.protobuf.QotCommon.ShareHoldingChange parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.futu.opend.api.protobuf.QotCommon.ShareHoldingChange parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.futu.opend.api.protobuf.QotCommon.ShareHoldingChange parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.futu.opend.api.protobuf.QotCommon.ShareHoldingChange parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.futu.opend.api.protobuf.QotCommon.ShareHoldingChange prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code Qot_Common.ShareHoldingChange}
+     *
+     * <pre>
+     *持股变动
+     * </pre>
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:Qot_Common.ShareHoldingChange)
+        com.futu.opend.api.protobuf.QotCommon.ShareHoldingChangeOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.futu.opend.api.protobuf.QotCommon.internal_static_Qot_Common_ShareHoldingChange_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.futu.opend.api.protobuf.QotCommon.internal_static_Qot_Common_ShareHoldingChange_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.futu.opend.api.protobuf.QotCommon.ShareHoldingChange.class, com.futu.opend.api.protobuf.QotCommon.ShareHoldingChange.Builder.class);
+      }
+
+      // Construct using com.futu.opend.api.protobuf.QotCommon.ShareHoldingChange.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        holderName_ = "";
+        bitField0_ = (bitField0_ & ~0x00000001);
+        holdingQty_ = 0D;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        holdingRatio_ = 0D;
+        bitField0_ = (bitField0_ & ~0x00000004);
+        changeQty_ = 0D;
+        bitField0_ = (bitField0_ & ~0x00000008);
+        changeRatio_ = 0D;
+        bitField0_ = (bitField0_ & ~0x00000010);
+        time_ = "";
+        bitField0_ = (bitField0_ & ~0x00000020);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.futu.opend.api.protobuf.QotCommon.internal_static_Qot_Common_ShareHoldingChange_descriptor;
+      }
+
+      public com.futu.opend.api.protobuf.QotCommon.ShareHoldingChange getDefaultInstanceForType() {
+        return com.futu.opend.api.protobuf.QotCommon.ShareHoldingChange.getDefaultInstance();
+      }
+
+      public com.futu.opend.api.protobuf.QotCommon.ShareHoldingChange build() {
+        com.futu.opend.api.protobuf.QotCommon.ShareHoldingChange result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.futu.opend.api.protobuf.QotCommon.ShareHoldingChange buildPartial() {
+        com.futu.opend.api.protobuf.QotCommon.ShareHoldingChange result = new com.futu.opend.api.protobuf.QotCommon.ShareHoldingChange(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.holderName_ = holderName_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.holdingQty_ = holdingQty_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.holdingRatio_ = holdingRatio_;
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000008;
+        }
+        result.changeQty_ = changeQty_;
+        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
+          to_bitField0_ |= 0x00000010;
+        }
+        result.changeRatio_ = changeRatio_;
+        if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
+          to_bitField0_ |= 0x00000020;
+        }
+        result.time_ = time_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.futu.opend.api.protobuf.QotCommon.ShareHoldingChange) {
+          return mergeFrom((com.futu.opend.api.protobuf.QotCommon.ShareHoldingChange)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.futu.opend.api.protobuf.QotCommon.ShareHoldingChange other) {
+        if (other == com.futu.opend.api.protobuf.QotCommon.ShareHoldingChange.getDefaultInstance()) return this;
+        if (other.hasHolderName()) {
+          bitField0_ |= 0x00000001;
+          holderName_ = other.holderName_;
+          onChanged();
+        }
+        if (other.hasHoldingQty()) {
+          setHoldingQty(other.getHoldingQty());
+        }
+        if (other.hasHoldingRatio()) {
+          setHoldingRatio(other.getHoldingRatio());
+        }
+        if (other.hasChangeQty()) {
+          setChangeQty(other.getChangeQty());
+        }
+        if (other.hasChangeRatio()) {
+          setChangeRatio(other.getChangeRatio());
+        }
+        if (other.hasTime()) {
+          bitField0_ |= 0x00000020;
+          time_ = other.time_;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasHolderName()) {
+          
+          return false;
+        }
+        if (!hasHoldingQty()) {
+          
+          return false;
+        }
+        if (!hasHoldingRatio()) {
+          
+          return false;
+        }
+        if (!hasChangeQty()) {
+          
+          return false;
+        }
+        if (!hasChangeRatio()) {
+          
+          return false;
+        }
+        if (!hasTime()) {
+          
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.futu.opend.api.protobuf.QotCommon.ShareHoldingChange parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.futu.opend.api.protobuf.QotCommon.ShareHoldingChange) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private java.lang.Object holderName_ = "";
+      /**
+       * <code>required string holderName = 1;</code>
+       *
+       * <pre>
+       *持有者名称（机构名称 或 基金名称 或 高管姓名）
+       * </pre>
+       */
+      public boolean hasHolderName() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required string holderName = 1;</code>
+       *
+       * <pre>
+       *持有者名称（机构名称 或 基金名称 或 高管姓名）
+       * </pre>
+       */
+      public java.lang.String getHolderName() {
+        java.lang.Object ref = holderName_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            holderName_ = s;
+          }
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>required string holderName = 1;</code>
+       *
+       * <pre>
+       *持有者名称（机构名称 或 基金名称 或 高管姓名）
+       * </pre>
+       */
+      public com.google.protobuf.ByteString
+          getHolderNameBytes() {
+        java.lang.Object ref = holderName_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          holderName_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string holderName = 1;</code>
+       *
+       * <pre>
+       *持有者名称（机构名称 或 基金名称 或 高管姓名）
+       * </pre>
+       */
+      public Builder setHolderName(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        holderName_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string holderName = 1;</code>
+       *
+       * <pre>
+       *持有者名称（机构名称 或 基金名称 或 高管姓名）
+       * </pre>
+       */
+      public Builder clearHolderName() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        holderName_ = getDefaultInstance().getHolderName();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string holderName = 1;</code>
+       *
+       * <pre>
+       *持有者名称（机构名称 或 基金名称 或 高管姓名）
+       * </pre>
+       */
+      public Builder setHolderNameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        holderName_ = value;
+        onChanged();
+        return this;
+      }
+
+      private double holdingQty_ ;
+      /**
+       * <code>required double holdingQty = 2;</code>
+       *
+       * <pre>
+       *当前持股数量
+       * </pre>
+       */
+      public boolean hasHoldingQty() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>required double holdingQty = 2;</code>
+       *
+       * <pre>
+       *当前持股数量
+       * </pre>
+       */
+      public double getHoldingQty() {
+        return holdingQty_;
+      }
+      /**
+       * <code>required double holdingQty = 2;</code>
+       *
+       * <pre>
+       *当前持股数量
+       * </pre>
+       */
+      public Builder setHoldingQty(double value) {
+        bitField0_ |= 0x00000002;
+        holdingQty_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required double holdingQty = 2;</code>
+       *
+       * <pre>
+       *当前持股数量
+       * </pre>
+       */
+      public Builder clearHoldingQty() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        holdingQty_ = 0D;
+        onChanged();
+        return this;
+      }
+
+      private double holdingRatio_ ;
+      /**
+       * <code>required double holdingRatio = 3;</code>
+       *
+       * <pre>
+       *当前持股百分比
+       * </pre>
+       */
+      public boolean hasHoldingRatio() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>required double holdingRatio = 3;</code>
+       *
+       * <pre>
+       *当前持股百分比
+       * </pre>
+       */
+      public double getHoldingRatio() {
+        return holdingRatio_;
+      }
+      /**
+       * <code>required double holdingRatio = 3;</code>
+       *
+       * <pre>
+       *当前持股百分比
+       * </pre>
+       */
+      public Builder setHoldingRatio(double value) {
+        bitField0_ |= 0x00000004;
+        holdingRatio_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required double holdingRatio = 3;</code>
+       *
+       * <pre>
+       *当前持股百分比
+       * </pre>
+       */
+      public Builder clearHoldingRatio() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        holdingRatio_ = 0D;
+        onChanged();
+        return this;
+      }
+
+      private double changeQty_ ;
+      /**
+       * <code>required double changeQty = 4;</code>
+       *
+       * <pre>
+       *较上一次变动数量
+       * </pre>
+       */
+      public boolean hasChangeQty() {
+        return ((bitField0_ & 0x00000008) == 0x00000008);
+      }
+      /**
+       * <code>required double changeQty = 4;</code>
+       *
+       * <pre>
+       *较上一次变动数量
+       * </pre>
+       */
+      public double getChangeQty() {
+        return changeQty_;
+      }
+      /**
+       * <code>required double changeQty = 4;</code>
+       *
+       * <pre>
+       *较上一次变动数量
+       * </pre>
+       */
+      public Builder setChangeQty(double value) {
+        bitField0_ |= 0x00000008;
+        changeQty_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required double changeQty = 4;</code>
+       *
+       * <pre>
+       *较上一次变动数量
+       * </pre>
+       */
+      public Builder clearChangeQty() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        changeQty_ = 0D;
+        onChanged();
+        return this;
+      }
+
+      private double changeRatio_ ;
+      /**
+       * <code>required double changeRatio = 5;</code>
+       *
+       * <pre>
+       *较上一次变动百分比（是相对于自身的比例，而不是总的。如总股本1万股，持有100股，持股百分比是1%，卖掉50股，变动比例是50%，而不是0.5%）
+       * </pre>
+       */
+      public boolean hasChangeRatio() {
+        return ((bitField0_ & 0x00000010) == 0x00000010);
+      }
+      /**
+       * <code>required double changeRatio = 5;</code>
+       *
+       * <pre>
+       *较上一次变动百分比（是相对于自身的比例，而不是总的。如总股本1万股，持有100股，持股百分比是1%，卖掉50股，变动比例是50%，而不是0.5%）
+       * </pre>
+       */
+      public double getChangeRatio() {
+        return changeRatio_;
+      }
+      /**
+       * <code>required double changeRatio = 5;</code>
+       *
+       * <pre>
+       *较上一次变动百分比（是相对于自身的比例，而不是总的。如总股本1万股，持有100股，持股百分比是1%，卖掉50股，变动比例是50%，而不是0.5%）
+       * </pre>
+       */
+      public Builder setChangeRatio(double value) {
+        bitField0_ |= 0x00000010;
+        changeRatio_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required double changeRatio = 5;</code>
+       *
+       * <pre>
+       *较上一次变动百分比（是相对于自身的比例，而不是总的。如总股本1万股，持有100股，持股百分比是1%，卖掉50股，变动比例是50%，而不是0.5%）
+       * </pre>
+       */
+      public Builder clearChangeRatio() {
+        bitField0_ = (bitField0_ & ~0x00000010);
+        changeRatio_ = 0D;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object time_ = "";
+      /**
+       * <code>required string time = 6;</code>
+       *
+       * <pre>
+       *发布时间(YYYY-MM-DD HH:MM:SS字符串)
+       * </pre>
+       */
+      public boolean hasTime() {
+        return ((bitField0_ & 0x00000020) == 0x00000020);
+      }
+      /**
+       * <code>required string time = 6;</code>
+       *
+       * <pre>
+       *发布时间(YYYY-MM-DD HH:MM:SS字符串)
+       * </pre>
+       */
+      public java.lang.String getTime() {
+        java.lang.Object ref = time_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            time_ = s;
+          }
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>required string time = 6;</code>
+       *
+       * <pre>
+       *发布时间(YYYY-MM-DD HH:MM:SS字符串)
+       * </pre>
+       */
+      public com.google.protobuf.ByteString
+          getTimeBytes() {
+        java.lang.Object ref = time_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          time_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string time = 6;</code>
+       *
+       * <pre>
+       *发布时间(YYYY-MM-DD HH:MM:SS字符串)
+       * </pre>
+       */
+      public Builder setTime(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000020;
+        time_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string time = 6;</code>
+       *
+       * <pre>
+       *发布时间(YYYY-MM-DD HH:MM:SS字符串)
+       * </pre>
+       */
+      public Builder clearTime() {
+        bitField0_ = (bitField0_ & ~0x00000020);
+        time_ = getDefaultInstance().getTime();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string time = 6;</code>
+       *
+       * <pre>
+       *发布时间(YYYY-MM-DD HH:MM:SS字符串)
+       * </pre>
+       */
+      public Builder setTimeBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000020;
+        time_ = value;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:Qot_Common.ShareHoldingChange)
+    }
+
+    static {
+      defaultInstance = new ShareHoldingChange(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:Qot_Common.ShareHoldingChange)
   }
 
   public interface SubInfoOrBuilder extends
@@ -16809,6 +22672,913 @@ public final class QotCommon {
     // @@protoc_insertion_point(class_scope:Qot_Common.ConnSubInfo)
   }
 
+  public interface PlateInfoOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:Qot_Common.PlateInfo)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>required .Qot_Common.Security plate = 1;</code>
+     *
+     * <pre>
+     *板块
+     * </pre>
+     */
+    boolean hasPlate();
+    /**
+     * <code>required .Qot_Common.Security plate = 1;</code>
+     *
+     * <pre>
+     *板块
+     * </pre>
+     */
+    com.futu.opend.api.protobuf.QotCommon.Security getPlate();
+    /**
+     * <code>required .Qot_Common.Security plate = 1;</code>
+     *
+     * <pre>
+     *板块
+     * </pre>
+     */
+    com.futu.opend.api.protobuf.QotCommon.SecurityOrBuilder getPlateOrBuilder();
+
+    /**
+     * <code>required string name = 2;</code>
+     *
+     * <pre>
+     *板块名字
+     * </pre>
+     */
+    boolean hasName();
+    /**
+     * <code>required string name = 2;</code>
+     *
+     * <pre>
+     *板块名字
+     * </pre>
+     */
+    java.lang.String getName();
+    /**
+     * <code>required string name = 2;</code>
+     *
+     * <pre>
+     *板块名字
+     * </pre>
+     */
+    com.google.protobuf.ByteString
+        getNameBytes();
+
+    /**
+     * <code>optional int32 plateType = 3;</code>
+     *
+     * <pre>
+     *PlateSetType 板块类型, 仅3207（获取股票所属板块）协议返回该字段
+     * </pre>
+     */
+    boolean hasPlateType();
+    /**
+     * <code>optional int32 plateType = 3;</code>
+     *
+     * <pre>
+     *PlateSetType 板块类型, 仅3207（获取股票所属板块）协议返回该字段
+     * </pre>
+     */
+    int getPlateType();
+  }
+  /**
+   * Protobuf type {@code Qot_Common.PlateInfo}
+   */
+  public static final class PlateInfo extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:Qot_Common.PlateInfo)
+      PlateInfoOrBuilder {
+    // Use PlateInfo.newBuilder() to construct.
+    private PlateInfo(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private PlateInfo(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final PlateInfo defaultInstance;
+    public static PlateInfo getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public PlateInfo getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private PlateInfo(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              com.futu.opend.api.protobuf.QotCommon.Security.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000001) == 0x00000001)) {
+                subBuilder = plate_.toBuilder();
+              }
+              plate_ = input.readMessage(com.futu.opend.api.protobuf.QotCommon.Security.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(plate_);
+                plate_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000001;
+              break;
+            }
+            case 18: {
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000002;
+              name_ = bs;
+              break;
+            }
+            case 24: {
+              bitField0_ |= 0x00000004;
+              plateType_ = input.readInt32();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.futu.opend.api.protobuf.QotCommon.internal_static_Qot_Common_PlateInfo_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.futu.opend.api.protobuf.QotCommon.internal_static_Qot_Common_PlateInfo_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.futu.opend.api.protobuf.QotCommon.PlateInfo.class, com.futu.opend.api.protobuf.QotCommon.PlateInfo.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<PlateInfo> PARSER =
+        new com.google.protobuf.AbstractParser<PlateInfo>() {
+      public PlateInfo parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new PlateInfo(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<PlateInfo> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    public static final int PLATE_FIELD_NUMBER = 1;
+    private com.futu.opend.api.protobuf.QotCommon.Security plate_;
+    /**
+     * <code>required .Qot_Common.Security plate = 1;</code>
+     *
+     * <pre>
+     *板块
+     * </pre>
+     */
+    public boolean hasPlate() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required .Qot_Common.Security plate = 1;</code>
+     *
+     * <pre>
+     *板块
+     * </pre>
+     */
+    public com.futu.opend.api.protobuf.QotCommon.Security getPlate() {
+      return plate_;
+    }
+    /**
+     * <code>required .Qot_Common.Security plate = 1;</code>
+     *
+     * <pre>
+     *板块
+     * </pre>
+     */
+    public com.futu.opend.api.protobuf.QotCommon.SecurityOrBuilder getPlateOrBuilder() {
+      return plate_;
+    }
+
+    public static final int NAME_FIELD_NUMBER = 2;
+    private java.lang.Object name_;
+    /**
+     * <code>required string name = 2;</code>
+     *
+     * <pre>
+     *板块名字
+     * </pre>
+     */
+    public boolean hasName() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>required string name = 2;</code>
+     *
+     * <pre>
+     *板块名字
+     * </pre>
+     */
+    public java.lang.String getName() {
+      java.lang.Object ref = name_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          name_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string name = 2;</code>
+     *
+     * <pre>
+     *板块名字
+     * </pre>
+     */
+    public com.google.protobuf.ByteString
+        getNameBytes() {
+      java.lang.Object ref = name_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        name_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int PLATETYPE_FIELD_NUMBER = 3;
+    private int plateType_;
+    /**
+     * <code>optional int32 plateType = 3;</code>
+     *
+     * <pre>
+     *PlateSetType 板块类型, 仅3207（获取股票所属板块）协议返回该字段
+     * </pre>
+     */
+    public boolean hasPlateType() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>optional int32 plateType = 3;</code>
+     *
+     * <pre>
+     *PlateSetType 板块类型, 仅3207（获取股票所属板块）协议返回该字段
+     * </pre>
+     */
+    public int getPlateType() {
+      return plateType_;
+    }
+
+    private void initFields() {
+      plate_ = com.futu.opend.api.protobuf.QotCommon.Security.getDefaultInstance();
+      name_ = "";
+      plateType_ = 0;
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      if (!hasPlate()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasName()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!getPlate().isInitialized()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeMessage(1, plate_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeBytes(2, getNameBytes());
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeInt32(3, plateType_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, plate_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(2, getNameBytes());
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(3, plateType_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.futu.opend.api.protobuf.QotCommon.PlateInfo parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.futu.opend.api.protobuf.QotCommon.PlateInfo parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.futu.opend.api.protobuf.QotCommon.PlateInfo parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.futu.opend.api.protobuf.QotCommon.PlateInfo parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.futu.opend.api.protobuf.QotCommon.PlateInfo parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.futu.opend.api.protobuf.QotCommon.PlateInfo parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.futu.opend.api.protobuf.QotCommon.PlateInfo parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.futu.opend.api.protobuf.QotCommon.PlateInfo parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.futu.opend.api.protobuf.QotCommon.PlateInfo parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.futu.opend.api.protobuf.QotCommon.PlateInfo parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.futu.opend.api.protobuf.QotCommon.PlateInfo prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code Qot_Common.PlateInfo}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:Qot_Common.PlateInfo)
+        com.futu.opend.api.protobuf.QotCommon.PlateInfoOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.futu.opend.api.protobuf.QotCommon.internal_static_Qot_Common_PlateInfo_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.futu.opend.api.protobuf.QotCommon.internal_static_Qot_Common_PlateInfo_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.futu.opend.api.protobuf.QotCommon.PlateInfo.class, com.futu.opend.api.protobuf.QotCommon.PlateInfo.Builder.class);
+      }
+
+      // Construct using com.futu.opend.api.protobuf.QotCommon.PlateInfo.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getPlateFieldBuilder();
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        if (plateBuilder_ == null) {
+          plate_ = com.futu.opend.api.protobuf.QotCommon.Security.getDefaultInstance();
+        } else {
+          plateBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000001);
+        name_ = "";
+        bitField0_ = (bitField0_ & ~0x00000002);
+        plateType_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000004);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.futu.opend.api.protobuf.QotCommon.internal_static_Qot_Common_PlateInfo_descriptor;
+      }
+
+      public com.futu.opend.api.protobuf.QotCommon.PlateInfo getDefaultInstanceForType() {
+        return com.futu.opend.api.protobuf.QotCommon.PlateInfo.getDefaultInstance();
+      }
+
+      public com.futu.opend.api.protobuf.QotCommon.PlateInfo build() {
+        com.futu.opend.api.protobuf.QotCommon.PlateInfo result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.futu.opend.api.protobuf.QotCommon.PlateInfo buildPartial() {
+        com.futu.opend.api.protobuf.QotCommon.PlateInfo result = new com.futu.opend.api.protobuf.QotCommon.PlateInfo(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        if (plateBuilder_ == null) {
+          result.plate_ = plate_;
+        } else {
+          result.plate_ = plateBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.name_ = name_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.plateType_ = plateType_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.futu.opend.api.protobuf.QotCommon.PlateInfo) {
+          return mergeFrom((com.futu.opend.api.protobuf.QotCommon.PlateInfo)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.futu.opend.api.protobuf.QotCommon.PlateInfo other) {
+        if (other == com.futu.opend.api.protobuf.QotCommon.PlateInfo.getDefaultInstance()) return this;
+        if (other.hasPlate()) {
+          mergePlate(other.getPlate());
+        }
+        if (other.hasName()) {
+          bitField0_ |= 0x00000002;
+          name_ = other.name_;
+          onChanged();
+        }
+        if (other.hasPlateType()) {
+          setPlateType(other.getPlateType());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasPlate()) {
+          
+          return false;
+        }
+        if (!hasName()) {
+          
+          return false;
+        }
+        if (!getPlate().isInitialized()) {
+          
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.futu.opend.api.protobuf.QotCommon.PlateInfo parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.futu.opend.api.protobuf.QotCommon.PlateInfo) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private com.futu.opend.api.protobuf.QotCommon.Security plate_ = com.futu.opend.api.protobuf.QotCommon.Security.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          com.futu.opend.api.protobuf.QotCommon.Security, com.futu.opend.api.protobuf.QotCommon.Security.Builder, com.futu.opend.api.protobuf.QotCommon.SecurityOrBuilder> plateBuilder_;
+      /**
+       * <code>required .Qot_Common.Security plate = 1;</code>
+       *
+       * <pre>
+       *板块
+       * </pre>
+       */
+      public boolean hasPlate() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required .Qot_Common.Security plate = 1;</code>
+       *
+       * <pre>
+       *板块
+       * </pre>
+       */
+      public com.futu.opend.api.protobuf.QotCommon.Security getPlate() {
+        if (plateBuilder_ == null) {
+          return plate_;
+        } else {
+          return plateBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>required .Qot_Common.Security plate = 1;</code>
+       *
+       * <pre>
+       *板块
+       * </pre>
+       */
+      public Builder setPlate(com.futu.opend.api.protobuf.QotCommon.Security value) {
+        if (plateBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          plate_ = value;
+          onChanged();
+        } else {
+          plateBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000001;
+        return this;
+      }
+      /**
+       * <code>required .Qot_Common.Security plate = 1;</code>
+       *
+       * <pre>
+       *板块
+       * </pre>
+       */
+      public Builder setPlate(
+          com.futu.opend.api.protobuf.QotCommon.Security.Builder builderForValue) {
+        if (plateBuilder_ == null) {
+          plate_ = builderForValue.build();
+          onChanged();
+        } else {
+          plateBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000001;
+        return this;
+      }
+      /**
+       * <code>required .Qot_Common.Security plate = 1;</code>
+       *
+       * <pre>
+       *板块
+       * </pre>
+       */
+      public Builder mergePlate(com.futu.opend.api.protobuf.QotCommon.Security value) {
+        if (plateBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) == 0x00000001) &&
+              plate_ != com.futu.opend.api.protobuf.QotCommon.Security.getDefaultInstance()) {
+            plate_ =
+              com.futu.opend.api.protobuf.QotCommon.Security.newBuilder(plate_).mergeFrom(value).buildPartial();
+          } else {
+            plate_ = value;
+          }
+          onChanged();
+        } else {
+          plateBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000001;
+        return this;
+      }
+      /**
+       * <code>required .Qot_Common.Security plate = 1;</code>
+       *
+       * <pre>
+       *板块
+       * </pre>
+       */
+      public Builder clearPlate() {
+        if (plateBuilder_ == null) {
+          plate_ = com.futu.opend.api.protobuf.QotCommon.Security.getDefaultInstance();
+          onChanged();
+        } else {
+          plateBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000001);
+        return this;
+      }
+      /**
+       * <code>required .Qot_Common.Security plate = 1;</code>
+       *
+       * <pre>
+       *板块
+       * </pre>
+       */
+      public com.futu.opend.api.protobuf.QotCommon.Security.Builder getPlateBuilder() {
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return getPlateFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>required .Qot_Common.Security plate = 1;</code>
+       *
+       * <pre>
+       *板块
+       * </pre>
+       */
+      public com.futu.opend.api.protobuf.QotCommon.SecurityOrBuilder getPlateOrBuilder() {
+        if (plateBuilder_ != null) {
+          return plateBuilder_.getMessageOrBuilder();
+        } else {
+          return plate_;
+        }
+      }
+      /**
+       * <code>required .Qot_Common.Security plate = 1;</code>
+       *
+       * <pre>
+       *板块
+       * </pre>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.futu.opend.api.protobuf.QotCommon.Security, com.futu.opend.api.protobuf.QotCommon.Security.Builder, com.futu.opend.api.protobuf.QotCommon.SecurityOrBuilder> 
+          getPlateFieldBuilder() {
+        if (plateBuilder_ == null) {
+          plateBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.futu.opend.api.protobuf.QotCommon.Security, com.futu.opend.api.protobuf.QotCommon.Security.Builder, com.futu.opend.api.protobuf.QotCommon.SecurityOrBuilder>(
+                  getPlate(),
+                  getParentForChildren(),
+                  isClean());
+          plate_ = null;
+        }
+        return plateBuilder_;
+      }
+
+      private java.lang.Object name_ = "";
+      /**
+       * <code>required string name = 2;</code>
+       *
+       * <pre>
+       *板块名字
+       * </pre>
+       */
+      public boolean hasName() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>required string name = 2;</code>
+       *
+       * <pre>
+       *板块名字
+       * </pre>
+       */
+      public java.lang.String getName() {
+        java.lang.Object ref = name_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            name_ = s;
+          }
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>required string name = 2;</code>
+       *
+       * <pre>
+       *板块名字
+       * </pre>
+       */
+      public com.google.protobuf.ByteString
+          getNameBytes() {
+        java.lang.Object ref = name_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          name_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string name = 2;</code>
+       *
+       * <pre>
+       *板块名字
+       * </pre>
+       */
+      public Builder setName(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+        name_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string name = 2;</code>
+       *
+       * <pre>
+       *板块名字
+       * </pre>
+       */
+      public Builder clearName() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        name_ = getDefaultInstance().getName();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string name = 2;</code>
+       *
+       * <pre>
+       *板块名字
+       * </pre>
+       */
+      public Builder setNameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+        name_ = value;
+        onChanged();
+        return this;
+      }
+
+      private int plateType_ ;
+      /**
+       * <code>optional int32 plateType = 3;</code>
+       *
+       * <pre>
+       *PlateSetType 板块类型, 仅3207（获取股票所属板块）协议返回该字段
+       * </pre>
+       */
+      public boolean hasPlateType() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>optional int32 plateType = 3;</code>
+       *
+       * <pre>
+       *PlateSetType 板块类型, 仅3207（获取股票所属板块）协议返回该字段
+       * </pre>
+       */
+      public int getPlateType() {
+        return plateType_;
+      }
+      /**
+       * <code>optional int32 plateType = 3;</code>
+       *
+       * <pre>
+       *PlateSetType 板块类型, 仅3207（获取股票所属板块）协议返回该字段
+       * </pre>
+       */
+      public Builder setPlateType(int value) {
+        bitField0_ |= 0x00000004;
+        plateType_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 plateType = 3;</code>
+       *
+       * <pre>
+       *PlateSetType 板块类型, 仅3207（获取股票所属板块）协议返回该字段
+       * </pre>
+       */
+      public Builder clearPlateType() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        plateType_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:Qot_Common.PlateInfo)
+    }
+
+    static {
+      defaultInstance = new PlateInfo(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:Qot_Common.PlateInfo)
+  }
+
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_Qot_Common_Security_descriptor;
   private static
@@ -16819,6 +23589,11 @@ public final class QotCommon {
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_Qot_Common_KLine_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_Qot_Common_OptionBasicQotExData_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_Qot_Common_OptionBasicQotExData_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_Qot_Common_BasicQot_descriptor;
   private static
@@ -16840,6 +23615,11 @@ public final class QotCommon {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_Qot_Common_WarrantStaticExData_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_Qot_Common_OptionStaticExData_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_Qot_Common_OptionStaticExData_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_Qot_Common_SecurityStaticInfo_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -16860,6 +23640,16 @@ public final class QotCommon {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_Qot_Common_OrderBook_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_Qot_Common_OrderDetail_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_Qot_Common_OrderDetail_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_Qot_Common_ShareHoldingChange_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_Qot_Common_ShareHoldingChange_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_Qot_Common_SubInfo_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -16869,6 +23659,11 @@ public final class QotCommon {
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_Qot_Common_ConnSubInfo_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_Qot_Common_PlateInfo_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_Qot_Common_PlateInfo_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -16885,122 +23680,151 @@ public final class QotCommon {
       "\004 \001(\001\022\020\n\010lowPrice\030\005 \001(\001\022\022\n\nclosePrice\030\006 " +
       "\001(\001\022\026\n\016lastClosePrice\030\007 \001(\001\022\016\n\006volume\030\010 " +
       "\001(\003\022\020\n\010turnover\030\t \001(\001\022\024\n\014turnoverRate\030\n " +
-      "\001(\001\022\n\n\002pe\030\013 \001(\001\022\022\n\nchangeRate\030\014 \001(\001\"\303\002\n\010" +
-      "BasicQot\022&\n\010security\030\001 \002(\0132\024.Qot_Common." +
-      "Security\022\023\n\013isSuspended\030\002 \002(\010\022\020\n\010listTim",
-      "e\030\003 \002(\t\022\023\n\013priceSpread\030\004 \002(\001\022\022\n\nupdateTi" +
-      "me\030\005 \002(\t\022\021\n\thighPrice\030\006 \002(\001\022\021\n\topenPrice" +
-      "\030\007 \002(\001\022\020\n\010lowPrice\030\010 \002(\001\022\020\n\010curPrice\030\t \002" +
-      "(\001\022\026\n\016lastClosePrice\030\n \002(\001\022\016\n\006volume\030\013 \002" +
-      "(\003\022\020\n\010turnover\030\014 \002(\001\022\024\n\014turnoverRate\030\r \002" +
-      "(\001\022\021\n\tamplitude\030\016 \002(\001\022\022\n\ndarkStatus\030\017 \001(" +
-      "\005\"\225\001\n\tTimeShare\022\014\n\004time\030\001 \002(\t\022\016\n\006minute\030" +
-      "\002 \002(\005\022\017\n\007isBlank\030\003 \002(\010\022\r\n\005price\030\004 \001(\001\022\026\n" +
-      "\016lastClosePrice\030\005 \001(\001\022\020\n\010avgPrice\030\006 \001(\001\022" +
-      "\016\n\006volume\030\007 \001(\003\022\020\n\010turnover\030\010 \001(\001\"\213\001\n\023Se",
-      "curityStaticBasic\022&\n\010security\030\001 \002(\0132\024.Qo" +
-      "t_Common.Security\022\n\n\002id\030\002 \002(\003\022\017\n\007lotSize" +
-      "\030\003 \002(\005\022\017\n\007secType\030\004 \002(\005\022\014\n\004name\030\005 \002(\t\022\020\n" +
-      "\010listTime\030\006 \002(\t\"H\n\023WarrantStaticExData\022\014" +
-      "\n\004type\030\001 \002(\005\022#\n\005owner\030\002 \002(\0132\024.Qot_Common" +
-      ".Security\"|\n\022SecurityStaticInfo\022.\n\005basic" +
-      "\030\001 \002(\0132\037.Qot_Common.SecurityStaticBasic\022" +
-      "6\n\rwarrantExData\030\002 \001(\0132\037.Qot_Common.Warr" +
-      "antStaticExData\"/\n\006Broker\022\n\n\002id\030\001 \002(\003\022\014\n" +
-      "\004name\030\002 \002(\t\022\013\n\003pos\030\003 \002(\005\"\230\001\n\006Ticker\022\014\n\004t",
-      "ime\030\001 \002(\t\022\020\n\010sequence\030\002 \002(\003\022\013\n\003dir\030\003 \002(\005" +
-      "\022\r\n\005price\030\004 \002(\001\022\016\n\006volume\030\005 \002(\003\022\020\n\010turno" +
-      "ver\030\006 \002(\001\022\020\n\010recvTime\030\007 \001(\001\022\014\n\004type\030\010 \001(" +
-      "\005\022\020\n\010typeSign\030\t \001(\005\"?\n\tOrderBook\022\r\n\005pric" +
-      "e\030\001 \002(\001\022\016\n\006volume\030\002 \002(\003\022\023\n\013orederCount\030\003" +
-      " \002(\005\"F\n\007SubInfo\022\017\n\007subType\030\001 \002(\005\022*\n\014secu" +
-      "rityList\030\002 \003(\0132\024.Qot_Common.Security\"a\n\013" +
-      "ConnSubInfo\022(\n\013subInfoList\030\001 \003(\0132\023.Qot_C" +
-      "ommon.SubInfo\022\021\n\tusedQuota\030\002 \002(\005\022\025\n\risOw" +
-      "nConnData\030\003 \002(\010*\304\001\n\tQotMarket\022\025\n\021QotMark",
-      "et_Unknown\020\000\022\031\n\025QotMarket_HK_Security\020\001\022" +
-      "\027\n\023QotMarket_HK_Future\020\002\022\031\n\025QotMarket_US" +
-      "_Security\020\013\022\027\n\023QotMarket_US_Option\020\014\022\033\n\027" +
-      "QotMarket_CNSH_Security\020\025\022\033\n\027QotMarket_C" +
-      "NSZ_Security\020\026*\201\002\n\014SecurityType\022\030\n\024Secur" +
-      "ityType_Unknown\020\000\022\025\n\021SecurityType_Bond\020\001" +
-      "\022\025\n\021SecurityType_Bwrt\020\002\022\025\n\021SecurityType_" +
-      "Eqty\020\003\022\026\n\022SecurityType_Trust\020\004\022\030\n\024Securi" +
-      "tyType_Warrant\020\005\022\026\n\022SecurityType_Index\020\006" +
-      "\022\026\n\022SecurityType_Plate\020\007\022\025\n\021SecurityType",
-      "_Drvt\020\010\022\031\n\025SecurityType_PlateSet\020\t*r\n\014Pl" +
-      "ateSetType\022\024\n\020PlateSetType_All\020\000\022\031\n\025Plat" +
-      "eSetType_Industry\020\001\022\027\n\023PlateSetType_Regi" +
-      "on\020\002\022\030\n\024PlateSetType_Concept\020\003*}\n\013Warran" +
-      "tType\022\027\n\023WarrantType_Unknown\020\000\022\023\n\017Warran" +
-      "tType_Buy\020\001\022\024\n\020WarrantType_Sell\020\002\022\024\n\020War" +
-      "rantType_Bull\020\003\022\024\n\020WarrantType_Bear\020\004*\303\004" +
-      "\n\016QotMarketState\022\027\n\023QotMarketState_None\020" +
-      "\000\022\032\n\026QotMarketState_Auction\020\001\022\036\n\032QotMark" +
-      "etState_WaitingOpen\020\002\022\032\n\026QotMarketState_",
-      "Morning\020\003\022\027\n\023QotMarketState_Rest\020\004\022\034\n\030Qo" +
-      "tMarketState_Afternoon\020\005\022\031\n\025QotMarketSta" +
-      "te_Closed\020\006\022!\n\035QotMarketState_PreMarketB" +
-      "egin\020\010\022\037\n\033QotMarketState_PreMarketEnd\020\t\022" +
-      "\"\n\036QotMarketState_AfterHoursBegin\020\n\022 \n\034Q" +
-      "otMarketState_AfterHoursEnd\020\013\022\034\n\030QotMark" +
-      "etState_NightOpen\020\r\022\033\n\027QotMarketState_Ni" +
-      "ghtEnd\020\016\022 \n\034QotMarketState_FutureDayOpen" +
-      "\020\017\022!\n\035QotMarketState_FutureDayBreak\020\020\022!\n" +
-      "\035QotMarketState_FutureDayClose\020\021\022\'\n#QotM",
-      "arketState_FutureDayWaitForOpen\020\022\022\030\n\024Qot" +
-      "MarketState_HkCas\020\023*N\n\tRehabType\022\022\n\016Reha" +
-      "bType_None\020\000\022\025\n\021RehabType_Forward\020\001\022\026\n\022R" +
-      "ehabType_Backward\020\002*\335\001\n\006KLType\022\022\n\016KLType" +
-      "_Unknown\020\000\022\017\n\013KLType_1Min\020\001\022\016\n\nKLType_Da" +
-      "y\020\002\022\017\n\013KLType_Week\020\003\022\020\n\014KLType_Month\020\004\022\017" +
-      "\n\013KLType_Year\020\005\022\017\n\013KLType_5Min\020\006\022\020\n\014KLTy" +
-      "pe_15Min\020\007\022\020\n\014KLType_30Min\020\010\022\020\n\014KLType_6" +
-      "0Min\020\t\022\017\n\013KLType_3Min\020\n\022\022\n\016KLType_Quarte" +
-      "r\020\013*\365\001\n\010KLFields\022\021\n\rKLFields_None\020\000\022\021\n\rK",
-      "LFields_High\020\001\022\021\n\rKLFields_Open\020\002\022\020\n\014KLF" +
-      "ields_Low\020\004\022\022\n\016KLFields_Close\020\010\022\026\n\022KLFie" +
-      "lds_LastClose\020\020\022\023\n\017KLFields_Volume\020 \022\025\n\021" +
-      "KLFields_Turnover\020@\022\032\n\025KLFields_Turnover" +
-      "Rate\020\200\001\022\020\n\013KLFields_PE\020\200\002\022\030\n\023KLFields_Ch" +
-      "angeRate\020\200\004*\352\002\n\007SubType\022\020\n\014SubType_None\020" +
-      "\000\022\021\n\rSubType_Basic\020\001\022\025\n\021SubType_OrderBoo" +
-      "k\020\002\022\022\n\016SubType_Ticker\020\004\022\016\n\nSubType_RT\020\005\022" +
-      "\022\n\016SubType_KL_Day\020\006\022\023\n\017SubType_KL_5Min\020\007" +
-      "\022\024\n\020SubType_KL_15Min\020\010\022\024\n\020SubType_KL_30M",
-      "in\020\t\022\024\n\020SubType_KL_60Min\020\n\022\023\n\017SubType_KL" +
-      "_1Min\020\013\022\023\n\017SubType_KL_Week\020\014\022\024\n\020SubType_" +
-      "KL_Month\020\r\022\022\n\016SubType_Broker\020\016\022\026\n\022SubTyp" +
-      "e_KL_Qurater\020\017\022\023\n\017SubType_KL_Year\020\020\022\023\n\017S" +
-      "ubType_KL_3Min\020\021*}\n\017TickerDirection\022\033\n\027T" +
-      "ickerDirection_Unknown\020\000\022\027\n\023TickerDirect" +
-      "ion_Bid\020\001\022\027\n\023TickerDirection_Ask\020\002\022\033\n\027Ti" +
-      "ckerDirection_Neutral\020\003*\207\007\n\nTickerType\022\026" +
-      "\n\022TickerType_Unknown\020\000\022\030\n\024TickerType_Aut" +
-      "omatch\020\001\022\023\n\017TickerType_Late\020\002\022\034\n\030TickerT",
-      "ype_NoneAutomatch\020\003\022\035\n\031TickerType_InterA" +
-      "utomatch\020\004\022!\n\035TickerType_InterNoneAutoma" +
-      "tch\020\005\022\025\n\021TickerType_OddLot\020\006\022\026\n\022TickerTy" +
-      "pe_Auction\020\007\022\023\n\017TickerType_Bulk\020\010\022\024\n\020Tic" +
-      "kerType_Crash\020\t\022\032\n\026TickerType_CrossMarke" +
-      "t\020\n\022\027\n\023TickerType_BulkSold\020\013\022\032\n\026TickerTy" +
-      "pe_FreeOnBoard\020\014\022\033\n\027TickerType_Rule127Or" +
-      "155\020\r\022\024\n\020TickerType_Delay\020\016\022%\n!TickerTyp" +
-      "e_MarketCenterClosePrice\020\017\022\026\n\022TickerType" +
-      "_NextDay\020\020\022\"\n\036TickerType_MarketCenterOpe",
-      "ning\020\021\022\"\n\036TickerType_PriorReferencePrice" +
-      "\020\022\022$\n TickerType_MarketCenterOpenPrice\020\023" +
-      "\022\025\n\021TickerType_Seller\020\024\022\020\n\014TickerType_T\020" +
-      "\025\022#\n\037TickerType_ExtendedTradingHours\020\026\022\031" +
-      "\n\025TickerType_Contingent\020\027\022\033\n\027TickerType_" +
-      "AveragePrice\020\030\022\026\n\022TickerType_OTCSold\020\031\022 " +
-      "\n\034TickerType_OddLotCrossMarket\020\032\022!\n\035Tick" +
-      "erType_DerivativelyPriced\020\033\022\036\n\032TickerTyp" +
-      "e_ReOpeningPriced\020\034\022\034\n\030TickerType_Closin" +
-      "gPriced\020\035\022&\n\"TickerType_ComprehensiveDel",
-      "ayPrice\020\036*M\n\nDarkStatus\022\023\n\017DarkStatus_No" +
-      "ne\020\000\022\026\n\022DarkStatus_Trading\020\001\022\022\n\016DarkStat" +
-      "us_End\020\002B\035\n\033com.futu.opend.api.protobuf"
+      "\001(\001\022\n\n\002pe\030\013 \001(\001\022\022\n\nchangeRate\030\014 \001(\001\"\313\001\n\024" +
+      "OptionBasicQotExData\022\023\n\013strikePrice\030\001 \002(" +
+      "\001\022\024\n\014contractSize\030\002 \002(\005\022\024\n\014openInterest\030",
+      "\003 \002(\005\022\031\n\021impliedVolatility\030\004 \002(\001\022\017\n\007prem" +
+      "ium\030\005 \002(\001\022\r\n\005delta\030\006 \002(\001\022\r\n\005gamma\030\007 \002(\001\022" +
+      "\014\n\004vega\030\010 \002(\001\022\r\n\005theta\030\t \002(\001\022\013\n\003rho\030\n \002(" +
+      "\001\"\373\002\n\010BasicQot\022&\n\010security\030\001 \002(\0132\024.Qot_C" +
+      "ommon.Security\022\023\n\013isSuspended\030\002 \002(\010\022\020\n\010l" +
+      "istTime\030\003 \002(\t\022\023\n\013priceSpread\030\004 \002(\001\022\022\n\nup" +
+      "dateTime\030\005 \002(\t\022\021\n\thighPrice\030\006 \002(\001\022\021\n\tope" +
+      "nPrice\030\007 \002(\001\022\020\n\010lowPrice\030\010 \002(\001\022\020\n\010curPri" +
+      "ce\030\t \002(\001\022\026\n\016lastClosePrice\030\n \002(\001\022\016\n\006volu" +
+      "me\030\013 \002(\003\022\020\n\010turnover\030\014 \002(\001\022\024\n\014turnoverRa",
+      "te\030\r \002(\001\022\021\n\tamplitude\030\016 \002(\001\022\022\n\ndarkStatu" +
+      "s\030\017 \001(\005\0226\n\014optionExData\030\020 \001(\0132 .Qot_Comm" +
+      "on.OptionBasicQotExData\"\225\001\n\tTimeShare\022\014\n" +
+      "\004time\030\001 \002(\t\022\016\n\006minute\030\002 \002(\005\022\017\n\007isBlank\030\003" +
+      " \002(\010\022\r\n\005price\030\004 \001(\001\022\026\n\016lastClosePrice\030\005 " +
+      "\001(\001\022\020\n\010avgPrice\030\006 \001(\001\022\016\n\006volume\030\007 \001(\003\022\020\n" +
+      "\010turnover\030\010 \001(\001\"\236\001\n\023SecurityStaticBasic\022" +
+      "&\n\010security\030\001 \002(\0132\024.Qot_Common.Security\022" +
+      "\n\n\002id\030\002 \002(\003\022\017\n\007lotSize\030\003 \002(\005\022\017\n\007secType\030" +
+      "\004 \002(\005\022\014\n\004name\030\005 \002(\t\022\020\n\010listTime\030\006 \002(\t\022\021\n",
+      "\tdelisting\030\007 \001(\010\"H\n\023WarrantStaticExData\022" +
+      "\014\n\004type\030\001 \002(\005\022#\n\005owner\030\002 \002(\0132\024.Qot_Commo" +
+      "n.Security\"\221\001\n\022OptionStaticExData\022\014\n\004typ" +
+      "e\030\001 \002(\005\022#\n\005owner\030\002 \002(\0132\024.Qot_Common.Secu" +
+      "rity\022\022\n\nstrikeTime\030\003 \002(\t\022\023\n\013strikePrice\030" +
+      "\004 \002(\001\022\017\n\007suspend\030\005 \002(\010\022\016\n\006market\030\006 \002(\t\"\262" +
+      "\001\n\022SecurityStaticInfo\022.\n\005basic\030\001 \002(\0132\037.Q" +
+      "ot_Common.SecurityStaticBasic\0226\n\rwarrant" +
+      "ExData\030\002 \001(\0132\037.Qot_Common.WarrantStaticE" +
+      "xData\0224\n\014optionExData\030\003 \001(\0132\036.Qot_Common",
+      ".OptionStaticExData\"/\n\006Broker\022\n\n\002id\030\001 \002(" +
+      "\003\022\014\n\004name\030\002 \002(\t\022\013\n\003pos\030\003 \002(\005\"\256\001\n\006Ticker\022" +
+      "\014\n\004time\030\001 \002(\t\022\020\n\010sequence\030\002 \002(\003\022\013\n\003dir\030\003" +
+      " \002(\005\022\r\n\005price\030\004 \002(\001\022\016\n\006volume\030\005 \002(\003\022\020\n\010t" +
+      "urnover\030\006 \002(\001\022\020\n\010recvTime\030\007 \001(\001\022\014\n\004type\030" +
+      "\010 \001(\005\022\020\n\010typeSign\030\t \001(\005\022\024\n\014pushDataType\030" +
+      "\n \001(\005\"?\n\tOrderBook\022\r\n\005price\030\001 \002(\001\022\016\n\006vol" +
+      "ume\030\002 \002(\003\022\023\n\013orederCount\030\003 \002(\005\"3\n\013OrderD" +
+      "etail\022\022\n\norderCount\030\001 \002(\005\022\020\n\010orderVol\030\002 " +
+      "\003(\001\"\210\001\n\022ShareHoldingChange\022\022\n\nholderName",
+      "\030\001 \002(\t\022\022\n\nholdingQty\030\002 \002(\001\022\024\n\014holdingRat" +
+      "io\030\003 \002(\001\022\021\n\tchangeQty\030\004 \002(\001\022\023\n\013changeRat" +
+      "io\030\005 \002(\001\022\014\n\004time\030\006 \002(\t\"F\n\007SubInfo\022\017\n\007sub" +
+      "Type\030\001 \002(\005\022*\n\014securityList\030\002 \003(\0132\024.Qot_C" +
+      "ommon.Security\"a\n\013ConnSubInfo\022(\n\013subInfo" +
+      "List\030\001 \003(\0132\023.Qot_Common.SubInfo\022\021\n\tusedQ" +
+      "uota\030\002 \002(\005\022\025\n\risOwnConnData\030\003 \002(\010\"Q\n\tPla" +
+      "teInfo\022#\n\005plate\030\001 \002(\0132\024.Qot_Common.Secur" +
+      "ity\022\014\n\004name\030\002 \002(\t\022\021\n\tplateType\030\003 \001(\005*\253\001\n" +
+      "\tQotMarket\022\025\n\021QotMarket_Unknown\020\000\022\031\n\025Qot",
+      "Market_HK_Security\020\001\022\027\n\023QotMarket_HK_Fut" +
+      "ure\020\002\022\031\n\025QotMarket_US_Security\020\013\022\033\n\027QotM" +
+      "arket_CNSH_Security\020\025\022\033\n\027QotMarket_CNSZ_" +
+      "Security\020\026*\201\002\n\014SecurityType\022\030\n\024SecurityT" +
+      "ype_Unknown\020\000\022\025\n\021SecurityType_Bond\020\001\022\025\n\021" +
+      "SecurityType_Bwrt\020\002\022\025\n\021SecurityType_Eqty" +
+      "\020\003\022\026\n\022SecurityType_Trust\020\004\022\030\n\024SecurityTy" +
+      "pe_Warrant\020\005\022\026\n\022SecurityType_Index\020\006\022\026\n\022" +
+      "SecurityType_Plate\020\007\022\025\n\021SecurityType_Drv" +
+      "t\020\010\022\031\n\025SecurityType_PlateSet\020\t*\212\001\n\014Plate",
+      "SetType\022\024\n\020PlateSetType_All\020\000\022\031\n\025PlateSe" +
+      "tType_Industry\020\001\022\027\n\023PlateSetType_Region\020" +
+      "\002\022\030\n\024PlateSetType_Concept\020\003\022\026\n\022PlateSetT" +
+      "ype_Other\020\004*}\n\013WarrantType\022\027\n\023WarrantTyp" +
+      "e_Unknown\020\000\022\023\n\017WarrantType_Buy\020\001\022\024\n\020Warr" +
+      "antType_Sell\020\002\022\024\n\020WarrantType_Bull\020\003\022\024\n\020" +
+      "WarrantType_Bear\020\004*M\n\nOptionType\022\026\n\022Opti" +
+      "onType_Unknown\020\000\022\023\n\017OptionType_Call\020\001\022\022\n" +
+      "\016OptionType_Put\020\002*\303\004\n\016QotMarketState\022\027\n\023" +
+      "QotMarketState_None\020\000\022\032\n\026QotMarketState_",
+      "Auction\020\001\022\036\n\032QotMarketState_WaitingOpen\020" +
+      "\002\022\032\n\026QotMarketState_Morning\020\003\022\027\n\023QotMark" +
+      "etState_Rest\020\004\022\034\n\030QotMarketState_Afterno" +
+      "on\020\005\022\031\n\025QotMarketState_Closed\020\006\022!\n\035QotMa" +
+      "rketState_PreMarketBegin\020\010\022\037\n\033QotMarketS" +
+      "tate_PreMarketEnd\020\t\022\"\n\036QotMarketState_Af" +
+      "terHoursBegin\020\n\022 \n\034QotMarketState_AfterH" +
+      "oursEnd\020\013\022\034\n\030QotMarketState_NightOpen\020\r\022" +
+      "\033\n\027QotMarketState_NightEnd\020\016\022 \n\034QotMarke" +
+      "tState_FutureDayOpen\020\017\022!\n\035QotMarketState",
+      "_FutureDayBreak\020\020\022!\n\035QotMarketState_Futu" +
+      "reDayClose\020\021\022\'\n#QotMarketState_FutureDay" +
+      "WaitForOpen\020\022\022\030\n\024QotMarketState_HkCas\020\023*" +
+      "N\n\tRehabType\022\022\n\016RehabType_None\020\000\022\025\n\021Reha" +
+      "bType_Forward\020\001\022\026\n\022RehabType_Backward\020\002*" +
+      "\335\001\n\006KLType\022\022\n\016KLType_Unknown\020\000\022\017\n\013KLType" +
+      "_1Min\020\001\022\016\n\nKLType_Day\020\002\022\017\n\013KLType_Week\020\003" +
+      "\022\020\n\014KLType_Month\020\004\022\017\n\013KLType_Year\020\005\022\017\n\013K" +
+      "LType_5Min\020\006\022\020\n\014KLType_15Min\020\007\022\020\n\014KLType" +
+      "_30Min\020\010\022\020\n\014KLType_60Min\020\t\022\017\n\013KLType_3Mi",
+      "n\020\n\022\022\n\016KLType_Quarter\020\013*\365\001\n\010KLFields\022\021\n\r" +
+      "KLFields_None\020\000\022\021\n\rKLFields_High\020\001\022\021\n\rKL" +
+      "Fields_Open\020\002\022\020\n\014KLFields_Low\020\004\022\022\n\016KLFie" +
+      "lds_Close\020\010\022\026\n\022KLFields_LastClose\020\020\022\023\n\017K" +
+      "LFields_Volume\020 \022\025\n\021KLFields_Turnover\020@\022" +
+      "\032\n\025KLFields_TurnoverRate\020\200\001\022\020\n\013KLFields_" +
+      "PE\020\200\002\022\030\n\023KLFields_ChangeRate\020\200\004*\203\003\n\007SubT" +
+      "ype\022\020\n\014SubType_None\020\000\022\021\n\rSubType_Basic\020\001" +
+      "\022\025\n\021SubType_OrderBook\020\002\022\022\n\016SubType_Ticke" +
+      "r\020\004\022\016\n\nSubType_RT\020\005\022\022\n\016SubType_KL_Day\020\006\022",
+      "\023\n\017SubType_KL_5Min\020\007\022\024\n\020SubType_KL_15Min" +
+      "\020\010\022\024\n\020SubType_KL_30Min\020\t\022\024\n\020SubType_KL_6" +
+      "0Min\020\n\022\023\n\017SubType_KL_1Min\020\013\022\023\n\017SubType_K" +
+      "L_Week\020\014\022\024\n\020SubType_KL_Month\020\r\022\022\n\016SubTyp" +
+      "e_Broker\020\016\022\026\n\022SubType_KL_Qurater\020\017\022\023\n\017Su" +
+      "bType_KL_Year\020\020\022\023\n\017SubType_KL_3Min\020\021\022\027\n\023" +
+      "SubType_OrderDetail\020\022*}\n\017TickerDirection" +
+      "\022\033\n\027TickerDirection_Unknown\020\000\022\027\n\023TickerD" +
+      "irection_Bid\020\001\022\027\n\023TickerDirection_Ask\020\002\022" +
+      "\033\n\027TickerDirection_Neutral\020\003*\207\007\n\nTickerT",
+      "ype\022\026\n\022TickerType_Unknown\020\000\022\030\n\024TickerTyp" +
+      "e_Automatch\020\001\022\023\n\017TickerType_Late\020\002\022\034\n\030Ti" +
+      "ckerType_NoneAutomatch\020\003\022\035\n\031TickerType_I" +
+      "nterAutomatch\020\004\022!\n\035TickerType_InterNoneA" +
+      "utomatch\020\005\022\025\n\021TickerType_OddLot\020\006\022\026\n\022Tic" +
+      "kerType_Auction\020\007\022\023\n\017TickerType_Bulk\020\010\022\024" +
+      "\n\020TickerType_Crash\020\t\022\032\n\026TickerType_Cross" +
+      "Market\020\n\022\027\n\023TickerType_BulkSold\020\013\022\032\n\026Tic" +
+      "kerType_FreeOnBoard\020\014\022\033\n\027TickerType_Rule" +
+      "127Or155\020\r\022\024\n\020TickerType_Delay\020\016\022%\n!Tick",
+      "erType_MarketCenterClosePrice\020\017\022\026\n\022Ticke" +
+      "rType_NextDay\020\020\022\"\n\036TickerType_MarketCent" +
+      "erOpening\020\021\022\"\n\036TickerType_PriorReference" +
+      "Price\020\022\022$\n TickerType_MarketCenterOpenPr" +
+      "ice\020\023\022\025\n\021TickerType_Seller\020\024\022\020\n\014TickerTy" +
+      "pe_T\020\025\022#\n\037TickerType_ExtendedTradingHour" +
+      "s\020\026\022\031\n\025TickerType_Contingent\020\027\022\033\n\027Ticker" +
+      "Type_AveragePrice\020\030\022\026\n\022TickerType_OTCSol" +
+      "d\020\031\022 \n\034TickerType_OddLotCrossMarket\020\032\022!\n" +
+      "\035TickerType_DerivativelyPriced\020\033\022\036\n\032Tick",
+      "erType_ReOpeningPriced\020\034\022\034\n\030TickerType_C" +
+      "losingPriced\020\035\022&\n\"TickerType_Comprehensi" +
+      "veDelayPrice\020\036*M\n\nDarkStatus\022\023\n\017DarkStat" +
+      "us_None\020\000\022\026\n\022DarkStatus_Trading\020\001\022\022\n\016Dar" +
+      "kStatus_End\020\002*\201\001\n\016HolderCategory\022\031\n\025Hold" +
+      "erCategory_Unknow\020\000\022\031\n\025HolderCategory_Ag" +
+      "ency\020\001\022\027\n\023HolderCategory_Fund\020\002\022 \n\034Holde" +
+      "rCategory_SeniorManager\020\003*v\n\014PushDataTyp" +
+      "e\022\027\n\023PushDataType_Unknow\020\000\022\031\n\025PushDataTy" +
+      "pe_Realtime\020\001\022\032\n\026PushDataType_ByDisConn\020",
+      "\002\022\026\n\022PushDataType_Cache\020\003B\035\n\033com.futu.op" +
+      "end.api.protobuf"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -17027,66 +23851,96 @@ public final class QotCommon {
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_Qot_Common_KLine_descriptor,
         new java.lang.String[] { "Time", "IsBlank", "HighPrice", "OpenPrice", "LowPrice", "ClosePrice", "LastClosePrice", "Volume", "Turnover", "TurnoverRate", "Pe", "ChangeRate", });
-    internal_static_Qot_Common_BasicQot_descriptor =
+    internal_static_Qot_Common_OptionBasicQotExData_descriptor =
       getDescriptor().getMessageTypes().get(2);
+    internal_static_Qot_Common_OptionBasicQotExData_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_Qot_Common_OptionBasicQotExData_descriptor,
+        new java.lang.String[] { "StrikePrice", "ContractSize", "OpenInterest", "ImpliedVolatility", "Premium", "Delta", "Gamma", "Vega", "Theta", "Rho", });
+    internal_static_Qot_Common_BasicQot_descriptor =
+      getDescriptor().getMessageTypes().get(3);
     internal_static_Qot_Common_BasicQot_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_Qot_Common_BasicQot_descriptor,
-        new java.lang.String[] { "Security", "IsSuspended", "ListTime", "PriceSpread", "UpdateTime", "HighPrice", "OpenPrice", "LowPrice", "CurPrice", "LastClosePrice", "Volume", "Turnover", "TurnoverRate", "Amplitude", "DarkStatus", });
+        new java.lang.String[] { "Security", "IsSuspended", "ListTime", "PriceSpread", "UpdateTime", "HighPrice", "OpenPrice", "LowPrice", "CurPrice", "LastClosePrice", "Volume", "Turnover", "TurnoverRate", "Amplitude", "DarkStatus", "OptionExData", });
     internal_static_Qot_Common_TimeShare_descriptor =
-      getDescriptor().getMessageTypes().get(3);
+      getDescriptor().getMessageTypes().get(4);
     internal_static_Qot_Common_TimeShare_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_Qot_Common_TimeShare_descriptor,
         new java.lang.String[] { "Time", "Minute", "IsBlank", "Price", "LastClosePrice", "AvgPrice", "Volume", "Turnover", });
     internal_static_Qot_Common_SecurityStaticBasic_descriptor =
-      getDescriptor().getMessageTypes().get(4);
+      getDescriptor().getMessageTypes().get(5);
     internal_static_Qot_Common_SecurityStaticBasic_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_Qot_Common_SecurityStaticBasic_descriptor,
-        new java.lang.String[] { "Security", "Id", "LotSize", "SecType", "Name", "ListTime", });
+        new java.lang.String[] { "Security", "Id", "LotSize", "SecType", "Name", "ListTime", "Delisting", });
     internal_static_Qot_Common_WarrantStaticExData_descriptor =
-      getDescriptor().getMessageTypes().get(5);
+      getDescriptor().getMessageTypes().get(6);
     internal_static_Qot_Common_WarrantStaticExData_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_Qot_Common_WarrantStaticExData_descriptor,
         new java.lang.String[] { "Type", "Owner", });
+    internal_static_Qot_Common_OptionStaticExData_descriptor =
+      getDescriptor().getMessageTypes().get(7);
+    internal_static_Qot_Common_OptionStaticExData_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_Qot_Common_OptionStaticExData_descriptor,
+        new java.lang.String[] { "Type", "Owner", "StrikeTime", "StrikePrice", "Suspend", "Market", });
     internal_static_Qot_Common_SecurityStaticInfo_descriptor =
-      getDescriptor().getMessageTypes().get(6);
+      getDescriptor().getMessageTypes().get(8);
     internal_static_Qot_Common_SecurityStaticInfo_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_Qot_Common_SecurityStaticInfo_descriptor,
-        new java.lang.String[] { "Basic", "WarrantExData", });
+        new java.lang.String[] { "Basic", "WarrantExData", "OptionExData", });
     internal_static_Qot_Common_Broker_descriptor =
-      getDescriptor().getMessageTypes().get(7);
+      getDescriptor().getMessageTypes().get(9);
     internal_static_Qot_Common_Broker_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_Qot_Common_Broker_descriptor,
         new java.lang.String[] { "Id", "Name", "Pos", });
     internal_static_Qot_Common_Ticker_descriptor =
-      getDescriptor().getMessageTypes().get(8);
+      getDescriptor().getMessageTypes().get(10);
     internal_static_Qot_Common_Ticker_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_Qot_Common_Ticker_descriptor,
-        new java.lang.String[] { "Time", "Sequence", "Dir", "Price", "Volume", "Turnover", "RecvTime", "Type", "TypeSign", });
+        new java.lang.String[] { "Time", "Sequence", "Dir", "Price", "Volume", "Turnover", "RecvTime", "Type", "TypeSign", "PushDataType", });
     internal_static_Qot_Common_OrderBook_descriptor =
-      getDescriptor().getMessageTypes().get(9);
+      getDescriptor().getMessageTypes().get(11);
     internal_static_Qot_Common_OrderBook_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_Qot_Common_OrderBook_descriptor,
         new java.lang.String[] { "Price", "Volume", "OrederCount", });
+    internal_static_Qot_Common_OrderDetail_descriptor =
+      getDescriptor().getMessageTypes().get(12);
+    internal_static_Qot_Common_OrderDetail_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_Qot_Common_OrderDetail_descriptor,
+        new java.lang.String[] { "OrderCount", "OrderVol", });
+    internal_static_Qot_Common_ShareHoldingChange_descriptor =
+      getDescriptor().getMessageTypes().get(13);
+    internal_static_Qot_Common_ShareHoldingChange_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_Qot_Common_ShareHoldingChange_descriptor,
+        new java.lang.String[] { "HolderName", "HoldingQty", "HoldingRatio", "ChangeQty", "ChangeRatio", "Time", });
     internal_static_Qot_Common_SubInfo_descriptor =
-      getDescriptor().getMessageTypes().get(10);
+      getDescriptor().getMessageTypes().get(14);
     internal_static_Qot_Common_SubInfo_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_Qot_Common_SubInfo_descriptor,
         new java.lang.String[] { "SubType", "SecurityList", });
     internal_static_Qot_Common_ConnSubInfo_descriptor =
-      getDescriptor().getMessageTypes().get(11);
+      getDescriptor().getMessageTypes().get(15);
     internal_static_Qot_Common_ConnSubInfo_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_Qot_Common_ConnSubInfo_descriptor,
         new java.lang.String[] { "SubInfoList", "UsedQuota", "IsOwnConnData", });
+    internal_static_Qot_Common_PlateInfo_descriptor =
+      getDescriptor().getMessageTypes().get(16);
+    internal_static_Qot_Common_PlateInfo_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_Qot_Common_PlateInfo_descriptor,
+        new java.lang.String[] { "Plate", "Name", "PlateType", });
     com.futu.opend.api.protobuf.Common.getDescriptor();
   }
 

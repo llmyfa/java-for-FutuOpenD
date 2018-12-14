@@ -31,10 +31,8 @@ class QotGetHistoryKLPointsExec implements IExecutor{
 		this.klType = klType;
 		this.noDataMode = noDataMode;
 		this.timeLists = timeLists;
-		if (maxReqSecurityNum > 0)
-			this.maxReqSecurityNum = maxReqSecurityNum;
-		if (needKLFieldsFlag > 0)
-			this.needKLFieldsFlag = needKLFieldsFlag;
+		this.maxReqSecurityNum = maxReqSecurityNum;
+		this.needKLFieldsFlag = needKLFieldsFlag;
 	}
 	
 	@Override

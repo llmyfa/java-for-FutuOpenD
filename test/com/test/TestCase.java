@@ -2,17 +2,23 @@ package com.test;
 
 import java.io.IOException;
 import java.util.List;
+
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
+
 import com.futu.opend.api.Brokers;
 import com.futu.opend.api.IUpdateCallBack;
 import com.futu.opend.api.OrderBooks;
+import com.futu.opend.api.OrderDetails;
 import com.futu.opend.api.Session;
 import com.futu.opend.api.impl.FutuOpenD;
+import com.futu.opend.api.protobuf.QotCommon;
 import com.futu.opend.api.protobuf.QotCommon.KLFields;
 import com.futu.opend.api.protobuf.QotCommon.KLType;
 import com.futu.opend.api.protobuf.QotCommon.KLine;
+import com.futu.opend.api.protobuf.QotCommon.OptionType;
+import com.futu.opend.api.protobuf.QotCommon.PlateInfo;
 import com.futu.opend.api.protobuf.QotCommon.PlateSetType;
 import com.futu.opend.api.protobuf.QotCommon.RehabType;
 import com.futu.opend.api.protobuf.QotCommon.SecurityStaticInfo;
@@ -24,8 +30,13 @@ import com.futu.opend.api.protobuf.QotGetBroker;
 import com.futu.opend.api.protobuf.QotGetHistoryKL;
 import com.futu.opend.api.protobuf.QotGetHistoryKLPoints;
 import com.futu.opend.api.protobuf.QotGetHistoryKLPoints.NoDataMode;
+import com.futu.opend.api.protobuf.QotGetHoldingChangeList;
 import com.futu.opend.api.protobuf.QotGetKL;
+import com.futu.opend.api.protobuf.QotGetOptionChain;
+import com.futu.opend.api.protobuf.QotGetOptionChain.OptionCondType;
 import com.futu.opend.api.protobuf.QotGetOrderBook;
+import com.futu.opend.api.protobuf.QotGetOrderDetail;
+import com.futu.opend.api.protobuf.QotGetOwnerPlate;
 import com.futu.opend.api.protobuf.QotGetPlateSecurity;
 import com.futu.opend.api.protobuf.QotGetPlateSet;
 import com.futu.opend.api.protobuf.QotGetRT;
@@ -37,6 +48,7 @@ import com.futu.opend.api.protobuf.QotGetStaticInfo;
 import com.futu.opend.api.protobuf.QotGetTicker;
 import com.futu.opend.api.protobuf.QotGetTradeDate;
 import com.futu.opend.api.protobuf.QotRegQotPush;
+import com.futu.opend.api.protobuf.QotRequestHistoryKL;
 import com.futu.opend.api.protobuf.QotSub;
 import com.futu.opend.api.protobuf.QotCommon.QotMarket;
 import com.futu.opend.api.protobuf.QotCommon.SubType;
@@ -171,6 +183,7 @@ public class TestCase{
 	
 	//单只股票一段历史K线(请选下载历史数据)
 	@Test
+	@Deprecated
 	public void testQotGetHistoryKLAll() throws IOException{
 		QotGetHistoryKL.Response value9 = session.qotGetHistoryKL(QotMarket.QotMarket_HK_Security, "00700",RehabType.RehabType_Forward, KLType.KLType_Day,"2018-07-01","2018-07-30", -1,-1);
 		System.out.println(value9);
@@ -178,6 +191,7 @@ public class TestCase{
 	
 	//单只股票一段历史K线,部分字段(请选下载历史数据)
 	@Test
+	@Deprecated
 	public void testQotGetHistoryKL() throws IOException{
 		QotGetHistoryKL.Response value10 = session.qotGetHistoryKL(QotMarket.QotMarket_HK_Security, "00700",RehabType.RehabType_Forward, KLType.KLType_Day,"2018-07-01","2018-07-30", -1,KLFields.KLFields_Open_VALUE|KLFields.KLFields_Close_VALUE|KLFields.KLFields_Low_VALUE|KLFields.KLFields_High_VALUE);
 		System.out.println(value10);
@@ -185,11 +199,18 @@ public class TestCase{
 	
 	//获取多只股票多点历史K线(请选下载历史数据)
 	@Test
+	@Deprecated
 	public void testQotGetHistoryKLPoints() throws IOException{
 		QotGetHistoryKLPoints.Response value11 = session.qotGetHistoryKLPoints(QotMarket.QotMarket_HK_Security, new String[]{"00700","00005"},RehabType.RehabType_Forward, KLType.KLType_Day,new String[]{"2018-07-01","2018-07-30"},NoDataMode.NoDataMode_Forward, -1,-1);
 		System.out.println(value11);
 	}
 	
+	//单只股票一段历史K线(1.08新接口)
+	@Test
+	public void testQotRequestHistoryKL() throws IOException{
+		QotRequestHistoryKL.Response value9 = session.qotRequestHistoryKL(QotMarket.QotMarket_HK_Security, "00700",RehabType.RehabType_Forward, KLType.KLType_Day,"2018-01-01","2018-07-30", -1,-1,"None");
+		System.out.println(value9);
+	}
 	//获取复权信息
 	@Test
 	public void testQotGetRehab() throws IOException{
@@ -241,7 +262,45 @@ public class TestCase{
 		System.out.println(value18);
 	}
 	
-
+	
+	//获取股票所属板块
+	@Test
+	public void testQotGetOwnerPlate() throws IOException{
+		QotGetOwnerPlate.Response value18 = session.qotGetOwnerPlate(QotMarket.QotMarket_HK_Security, new String[]{"00700"});
+		for(QotGetOwnerPlate.SecurityOwnerPlate info : value18.getS2C().getOwnerPlateListList()){
+			for(PlateInfo plateInfo : info.getPlateInfoListList()){
+				System.out.println(new String(plateInfo.getName().getBytes(),"UTF-8"));
+			}
+		}
+	}
+	
+	//获取持股变化列表(目前仅支持美股)
+	@Test
+	public void testQotGetHoldingChangeList() throws IOException{
+		QotGetHoldingChangeList.Response value18 = session.qotGetHoldingChangeList(QotMarket.QotMarket_US_Security, "AAPL",QotCommon.HolderCategory.HolderCategory_Fund_VALUE,null,null);
+		System.out.println(value18);
+	}
+	
+	//获取期权链(目前仅支持美股)
+	@Test
+	public void testQotGetOptionChainExec() throws IOException{
+		QotGetOptionChain.Response value18 = session.qotGetOptionChain(QotMarket.QotMarket_US_Security, "AAPL","2018-12-20","2019-01-19",QotCommon.OptionType.OptionType_Call_VALUE,-1);//OptionCondType.OptionCondType_WithIn_VALUE
+		System.out.println(value18);
+	}
+	
+	//获取委托明细
+	@Test
+	public void testQotGetOrderDetail() throws IOException{
+		QotGetOrderDetail.Response value18 = session.qotGetOrderDetail(QotMarket.QotMarket_CNSH_Security, "006519",new IUpdateCallBack<OrderDetails>(){
+			@Override
+			public void callback(OrderDetails res) {
+				System.out.println(res);
+			}
+		});
+		System.out.println(value18);
+		System.out.println(new String(value18.getRetMsg().getBytes(),"UTF-8"));
+	}
+	
 	public static void main(String[] avgs) {
 		Session session = FutuOpenD.openSession("localhost", 11111);
 		try {

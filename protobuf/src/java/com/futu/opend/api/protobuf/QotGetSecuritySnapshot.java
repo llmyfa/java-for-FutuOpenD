@@ -998,6 +998,23 @@ public final class QotGetSecuritySnapshot {
      * </pre>
      */
     double getPbRate();
+
+    /**
+     * <code>required double peTTMRate = 12;</code>
+     *
+     * <pre>
+     * 市盈率TTM
+     * </pre>
+     */
+    boolean hasPeTTMRate();
+    /**
+     * <code>required double peTTMRate = 12;</code>
+     *
+     * <pre>
+     * 市盈率TTM
+     * </pre>
+     */
+    double getPeTTMRate();
   }
   /**
    * Protobuf type {@code Qot_GetSecuritySnapshot.EquitySnapshotExData}
@@ -1108,6 +1125,11 @@ public final class QotGetSecuritySnapshot {
             case 89: {
               bitField0_ |= 0x00000400;
               pbRate_ = input.readDouble();
+              break;
+            }
+            case 97: {
+              bitField0_ |= 0x00000800;
+              peTTMRate_ = input.readDouble();
               break;
             }
           }
@@ -1403,6 +1425,29 @@ public final class QotGetSecuritySnapshot {
       return pbRate_;
     }
 
+    public static final int PETTMRATE_FIELD_NUMBER = 12;
+    private double peTTMRate_;
+    /**
+     * <code>required double peTTMRate = 12;</code>
+     *
+     * <pre>
+     * 市盈率TTM
+     * </pre>
+     */
+    public boolean hasPeTTMRate() {
+      return ((bitField0_ & 0x00000800) == 0x00000800);
+    }
+    /**
+     * <code>required double peTTMRate = 12;</code>
+     *
+     * <pre>
+     * 市盈率TTM
+     * </pre>
+     */
+    public double getPeTTMRate() {
+      return peTTMRate_;
+    }
+
     private void initFields() {
       issuedShares_ = 0L;
       issuedMarketVal_ = 0D;
@@ -1415,6 +1460,7 @@ public final class QotGetSecuritySnapshot {
       eyRate_ = 0D;
       peRate_ = 0D;
       pbRate_ = 0D;
+      peTTMRate_ = 0D;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -1466,6 +1512,10 @@ public final class QotGetSecuritySnapshot {
         memoizedIsInitialized = 0;
         return false;
       }
+      if (!hasPeTTMRate()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -1505,6 +1555,9 @@ public final class QotGetSecuritySnapshot {
       }
       if (((bitField0_ & 0x00000400) == 0x00000400)) {
         output.writeDouble(11, pbRate_);
+      }
+      if (((bitField0_ & 0x00000800) == 0x00000800)) {
+        output.writeDouble(12, peTTMRate_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -1558,6 +1611,10 @@ public final class QotGetSecuritySnapshot {
       if (((bitField0_ & 0x00000400) == 0x00000400)) {
         size += com.google.protobuf.CodedOutputStream
           .computeDoubleSize(11, pbRate_);
+      }
+      if (((bitField0_ & 0x00000800) == 0x00000800)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeDoubleSize(12, peTTMRate_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -1702,6 +1759,8 @@ public final class QotGetSecuritySnapshot {
         bitField0_ = (bitField0_ & ~0x00000200);
         pbRate_ = 0D;
         bitField0_ = (bitField0_ & ~0x00000400);
+        peTTMRate_ = 0D;
+        bitField0_ = (bitField0_ & ~0x00000800);
         return this;
       }
 
@@ -1774,6 +1833,10 @@ public final class QotGetSecuritySnapshot {
           to_bitField0_ |= 0x00000400;
         }
         result.pbRate_ = pbRate_;
+        if (((from_bitField0_ & 0x00000800) == 0x00000800)) {
+          to_bitField0_ |= 0x00000800;
+        }
+        result.peTTMRate_ = peTTMRate_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -1823,6 +1886,9 @@ public final class QotGetSecuritySnapshot {
         if (other.hasPbRate()) {
           setPbRate(other.getPbRate());
         }
+        if (other.hasPeTTMRate()) {
+          setPeTTMRate(other.getPeTTMRate());
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
@@ -1869,6 +1935,10 @@ public final class QotGetSecuritySnapshot {
           return false;
         }
         if (!hasPbRate()) {
+          
+          return false;
+        }
+        if (!hasPeTTMRate()) {
           
           return false;
         }
@@ -2418,6 +2488,54 @@ public final class QotGetSecuritySnapshot {
       public Builder clearPbRate() {
         bitField0_ = (bitField0_ & ~0x00000400);
         pbRate_ = 0D;
+        onChanged();
+        return this;
+      }
+
+      private double peTTMRate_ ;
+      /**
+       * <code>required double peTTMRate = 12;</code>
+       *
+       * <pre>
+       * 市盈率TTM
+       * </pre>
+       */
+      public boolean hasPeTTMRate() {
+        return ((bitField0_ & 0x00000800) == 0x00000800);
+      }
+      /**
+       * <code>required double peTTMRate = 12;</code>
+       *
+       * <pre>
+       * 市盈率TTM
+       * </pre>
+       */
+      public double getPeTTMRate() {
+        return peTTMRate_;
+      }
+      /**
+       * <code>required double peTTMRate = 12;</code>
+       *
+       * <pre>
+       * 市盈率TTM
+       * </pre>
+       */
+      public Builder setPeTTMRate(double value) {
+        bitField0_ |= 0x00000800;
+        peTTMRate_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required double peTTMRate = 12;</code>
+       *
+       * <pre>
+       * 市盈率TTM
+       * </pre>
+       */
+      public Builder clearPeTTMRate() {
+        bitField0_ = (bitField0_ & ~0x00000800);
+        peTTMRate_ = 0D;
         onChanged();
         return this;
       }
@@ -4629,6 +4747,2109 @@ public final class QotGetSecuritySnapshot {
     }
 
     // @@protoc_insertion_point(class_scope:Qot_GetSecuritySnapshot.WarrantSnapshotExData)
+  }
+
+  public interface OptionSnapshotExDataOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:Qot_GetSecuritySnapshot.OptionSnapshotExData)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>required int32 type = 1;</code>
+     *
+     * <pre>
+     *Qot_Common.OptionType,期权
+     * </pre>
+     */
+    boolean hasType();
+    /**
+     * <code>required int32 type = 1;</code>
+     *
+     * <pre>
+     *Qot_Common.OptionType,期权
+     * </pre>
+     */
+    int getType();
+
+    /**
+     * <code>required .Qot_Common.Security owner = 2;</code>
+     *
+     * <pre>
+     *标的股
+     * </pre>
+     */
+    boolean hasOwner();
+    /**
+     * <code>required .Qot_Common.Security owner = 2;</code>
+     *
+     * <pre>
+     *标的股
+     * </pre>
+     */
+    com.futu.opend.api.protobuf.QotCommon.Security getOwner();
+    /**
+     * <code>required .Qot_Common.Security owner = 2;</code>
+     *
+     * <pre>
+     *标的股
+     * </pre>
+     */
+    com.futu.opend.api.protobuf.QotCommon.SecurityOrBuilder getOwnerOrBuilder();
+
+    /**
+     * <code>required string strikeTime = 3;</code>
+     *
+     * <pre>
+     *行权日
+     * </pre>
+     */
+    boolean hasStrikeTime();
+    /**
+     * <code>required string strikeTime = 3;</code>
+     *
+     * <pre>
+     *行权日
+     * </pre>
+     */
+    java.lang.String getStrikeTime();
+    /**
+     * <code>required string strikeTime = 3;</code>
+     *
+     * <pre>
+     *行权日
+     * </pre>
+     */
+    com.google.protobuf.ByteString
+        getStrikeTimeBytes();
+
+    /**
+     * <code>required double strikePrice = 4;</code>
+     *
+     * <pre>
+     *行权价
+     * </pre>
+     */
+    boolean hasStrikePrice();
+    /**
+     * <code>required double strikePrice = 4;</code>
+     *
+     * <pre>
+     *行权价
+     * </pre>
+     */
+    double getStrikePrice();
+
+    /**
+     * <code>required int32 contractSize = 5;</code>
+     *
+     * <pre>
+     *每份合约数
+     * </pre>
+     */
+    boolean hasContractSize();
+    /**
+     * <code>required int32 contractSize = 5;</code>
+     *
+     * <pre>
+     *每份合约数
+     * </pre>
+     */
+    int getContractSize();
+
+    /**
+     * <code>required int32 openInterest = 6;</code>
+     *
+     * <pre>
+     *未平仓合约数
+     * </pre>
+     */
+    boolean hasOpenInterest();
+    /**
+     * <code>required int32 openInterest = 6;</code>
+     *
+     * <pre>
+     *未平仓合约数
+     * </pre>
+     */
+    int getOpenInterest();
+
+    /**
+     * <code>required double impliedVolatility = 7;</code>
+     *
+     * <pre>
+     *隐含波动率
+     * </pre>
+     */
+    boolean hasImpliedVolatility();
+    /**
+     * <code>required double impliedVolatility = 7;</code>
+     *
+     * <pre>
+     *隐含波动率
+     * </pre>
+     */
+    double getImpliedVolatility();
+
+    /**
+     * <code>required double premium = 8;</code>
+     *
+     * <pre>
+     *溢价
+     * </pre>
+     */
+    boolean hasPremium();
+    /**
+     * <code>required double premium = 8;</code>
+     *
+     * <pre>
+     *溢价
+     * </pre>
+     */
+    double getPremium();
+
+    /**
+     * <code>required double delta = 9;</code>
+     *
+     * <pre>
+     *希腊值 Delta
+     * </pre>
+     */
+    boolean hasDelta();
+    /**
+     * <code>required double delta = 9;</code>
+     *
+     * <pre>
+     *希腊值 Delta
+     * </pre>
+     */
+    double getDelta();
+
+    /**
+     * <code>required double gamma = 10;</code>
+     *
+     * <pre>
+     *希腊值 Gamma
+     * </pre>
+     */
+    boolean hasGamma();
+    /**
+     * <code>required double gamma = 10;</code>
+     *
+     * <pre>
+     *希腊值 Gamma
+     * </pre>
+     */
+    double getGamma();
+
+    /**
+     * <code>required double vega = 11;</code>
+     *
+     * <pre>
+     *希腊值 Vega
+     * </pre>
+     */
+    boolean hasVega();
+    /**
+     * <code>required double vega = 11;</code>
+     *
+     * <pre>
+     *希腊值 Vega
+     * </pre>
+     */
+    double getVega();
+
+    /**
+     * <code>required double theta = 12;</code>
+     *
+     * <pre>
+     *希腊值 Theta
+     * </pre>
+     */
+    boolean hasTheta();
+    /**
+     * <code>required double theta = 12;</code>
+     *
+     * <pre>
+     *希腊值 Theta
+     * </pre>
+     */
+    double getTheta();
+
+    /**
+     * <code>required double rho = 13;</code>
+     *
+     * <pre>
+     *希腊值 Rho  
+     * </pre>
+     */
+    boolean hasRho();
+    /**
+     * <code>required double rho = 13;</code>
+     *
+     * <pre>
+     *希腊值 Rho  
+     * </pre>
+     */
+    double getRho();
+  }
+  /**
+   * Protobuf type {@code Qot_GetSecuritySnapshot.OptionSnapshotExData}
+   *
+   * <pre>
+   * 期权类型额外数据
+   * </pre>
+   */
+  public static final class OptionSnapshotExData extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:Qot_GetSecuritySnapshot.OptionSnapshotExData)
+      OptionSnapshotExDataOrBuilder {
+    // Use OptionSnapshotExData.newBuilder() to construct.
+    private OptionSnapshotExData(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private OptionSnapshotExData(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final OptionSnapshotExData defaultInstance;
+    public static OptionSnapshotExData getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public OptionSnapshotExData getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private OptionSnapshotExData(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              type_ = input.readInt32();
+              break;
+            }
+            case 18: {
+              com.futu.opend.api.protobuf.QotCommon.Security.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000002) == 0x00000002)) {
+                subBuilder = owner_.toBuilder();
+              }
+              owner_ = input.readMessage(com.futu.opend.api.protobuf.QotCommon.Security.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(owner_);
+                owner_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000002;
+              break;
+            }
+            case 26: {
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000004;
+              strikeTime_ = bs;
+              break;
+            }
+            case 33: {
+              bitField0_ |= 0x00000008;
+              strikePrice_ = input.readDouble();
+              break;
+            }
+            case 40: {
+              bitField0_ |= 0x00000010;
+              contractSize_ = input.readInt32();
+              break;
+            }
+            case 48: {
+              bitField0_ |= 0x00000020;
+              openInterest_ = input.readInt32();
+              break;
+            }
+            case 57: {
+              bitField0_ |= 0x00000040;
+              impliedVolatility_ = input.readDouble();
+              break;
+            }
+            case 65: {
+              bitField0_ |= 0x00000080;
+              premium_ = input.readDouble();
+              break;
+            }
+            case 73: {
+              bitField0_ |= 0x00000100;
+              delta_ = input.readDouble();
+              break;
+            }
+            case 81: {
+              bitField0_ |= 0x00000200;
+              gamma_ = input.readDouble();
+              break;
+            }
+            case 89: {
+              bitField0_ |= 0x00000400;
+              vega_ = input.readDouble();
+              break;
+            }
+            case 97: {
+              bitField0_ |= 0x00000800;
+              theta_ = input.readDouble();
+              break;
+            }
+            case 105: {
+              bitField0_ |= 0x00001000;
+              rho_ = input.readDouble();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.futu.opend.api.protobuf.QotGetSecuritySnapshot.internal_static_Qot_GetSecuritySnapshot_OptionSnapshotExData_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.futu.opend.api.protobuf.QotGetSecuritySnapshot.internal_static_Qot_GetSecuritySnapshot_OptionSnapshotExData_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.futu.opend.api.protobuf.QotGetSecuritySnapshot.OptionSnapshotExData.class, com.futu.opend.api.protobuf.QotGetSecuritySnapshot.OptionSnapshotExData.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<OptionSnapshotExData> PARSER =
+        new com.google.protobuf.AbstractParser<OptionSnapshotExData>() {
+      public OptionSnapshotExData parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new OptionSnapshotExData(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<OptionSnapshotExData> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    public static final int TYPE_FIELD_NUMBER = 1;
+    private int type_;
+    /**
+     * <code>required int32 type = 1;</code>
+     *
+     * <pre>
+     *Qot_Common.OptionType,期权
+     * </pre>
+     */
+    public boolean hasType() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required int32 type = 1;</code>
+     *
+     * <pre>
+     *Qot_Common.OptionType,期权
+     * </pre>
+     */
+    public int getType() {
+      return type_;
+    }
+
+    public static final int OWNER_FIELD_NUMBER = 2;
+    private com.futu.opend.api.protobuf.QotCommon.Security owner_;
+    /**
+     * <code>required .Qot_Common.Security owner = 2;</code>
+     *
+     * <pre>
+     *标的股
+     * </pre>
+     */
+    public boolean hasOwner() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>required .Qot_Common.Security owner = 2;</code>
+     *
+     * <pre>
+     *标的股
+     * </pre>
+     */
+    public com.futu.opend.api.protobuf.QotCommon.Security getOwner() {
+      return owner_;
+    }
+    /**
+     * <code>required .Qot_Common.Security owner = 2;</code>
+     *
+     * <pre>
+     *标的股
+     * </pre>
+     */
+    public com.futu.opend.api.protobuf.QotCommon.SecurityOrBuilder getOwnerOrBuilder() {
+      return owner_;
+    }
+
+    public static final int STRIKETIME_FIELD_NUMBER = 3;
+    private java.lang.Object strikeTime_;
+    /**
+     * <code>required string strikeTime = 3;</code>
+     *
+     * <pre>
+     *行权日
+     * </pre>
+     */
+    public boolean hasStrikeTime() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>required string strikeTime = 3;</code>
+     *
+     * <pre>
+     *行权日
+     * </pre>
+     */
+    public java.lang.String getStrikeTime() {
+      java.lang.Object ref = strikeTime_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          strikeTime_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string strikeTime = 3;</code>
+     *
+     * <pre>
+     *行权日
+     * </pre>
+     */
+    public com.google.protobuf.ByteString
+        getStrikeTimeBytes() {
+      java.lang.Object ref = strikeTime_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        strikeTime_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int STRIKEPRICE_FIELD_NUMBER = 4;
+    private double strikePrice_;
+    /**
+     * <code>required double strikePrice = 4;</code>
+     *
+     * <pre>
+     *行权价
+     * </pre>
+     */
+    public boolean hasStrikePrice() {
+      return ((bitField0_ & 0x00000008) == 0x00000008);
+    }
+    /**
+     * <code>required double strikePrice = 4;</code>
+     *
+     * <pre>
+     *行权价
+     * </pre>
+     */
+    public double getStrikePrice() {
+      return strikePrice_;
+    }
+
+    public static final int CONTRACTSIZE_FIELD_NUMBER = 5;
+    private int contractSize_;
+    /**
+     * <code>required int32 contractSize = 5;</code>
+     *
+     * <pre>
+     *每份合约数
+     * </pre>
+     */
+    public boolean hasContractSize() {
+      return ((bitField0_ & 0x00000010) == 0x00000010);
+    }
+    /**
+     * <code>required int32 contractSize = 5;</code>
+     *
+     * <pre>
+     *每份合约数
+     * </pre>
+     */
+    public int getContractSize() {
+      return contractSize_;
+    }
+
+    public static final int OPENINTEREST_FIELD_NUMBER = 6;
+    private int openInterest_;
+    /**
+     * <code>required int32 openInterest = 6;</code>
+     *
+     * <pre>
+     *未平仓合约数
+     * </pre>
+     */
+    public boolean hasOpenInterest() {
+      return ((bitField0_ & 0x00000020) == 0x00000020);
+    }
+    /**
+     * <code>required int32 openInterest = 6;</code>
+     *
+     * <pre>
+     *未平仓合约数
+     * </pre>
+     */
+    public int getOpenInterest() {
+      return openInterest_;
+    }
+
+    public static final int IMPLIEDVOLATILITY_FIELD_NUMBER = 7;
+    private double impliedVolatility_;
+    /**
+     * <code>required double impliedVolatility = 7;</code>
+     *
+     * <pre>
+     *隐含波动率
+     * </pre>
+     */
+    public boolean hasImpliedVolatility() {
+      return ((bitField0_ & 0x00000040) == 0x00000040);
+    }
+    /**
+     * <code>required double impliedVolatility = 7;</code>
+     *
+     * <pre>
+     *隐含波动率
+     * </pre>
+     */
+    public double getImpliedVolatility() {
+      return impliedVolatility_;
+    }
+
+    public static final int PREMIUM_FIELD_NUMBER = 8;
+    private double premium_;
+    /**
+     * <code>required double premium = 8;</code>
+     *
+     * <pre>
+     *溢价
+     * </pre>
+     */
+    public boolean hasPremium() {
+      return ((bitField0_ & 0x00000080) == 0x00000080);
+    }
+    /**
+     * <code>required double premium = 8;</code>
+     *
+     * <pre>
+     *溢价
+     * </pre>
+     */
+    public double getPremium() {
+      return premium_;
+    }
+
+    public static final int DELTA_FIELD_NUMBER = 9;
+    private double delta_;
+    /**
+     * <code>required double delta = 9;</code>
+     *
+     * <pre>
+     *希腊值 Delta
+     * </pre>
+     */
+    public boolean hasDelta() {
+      return ((bitField0_ & 0x00000100) == 0x00000100);
+    }
+    /**
+     * <code>required double delta = 9;</code>
+     *
+     * <pre>
+     *希腊值 Delta
+     * </pre>
+     */
+    public double getDelta() {
+      return delta_;
+    }
+
+    public static final int GAMMA_FIELD_NUMBER = 10;
+    private double gamma_;
+    /**
+     * <code>required double gamma = 10;</code>
+     *
+     * <pre>
+     *希腊值 Gamma
+     * </pre>
+     */
+    public boolean hasGamma() {
+      return ((bitField0_ & 0x00000200) == 0x00000200);
+    }
+    /**
+     * <code>required double gamma = 10;</code>
+     *
+     * <pre>
+     *希腊值 Gamma
+     * </pre>
+     */
+    public double getGamma() {
+      return gamma_;
+    }
+
+    public static final int VEGA_FIELD_NUMBER = 11;
+    private double vega_;
+    /**
+     * <code>required double vega = 11;</code>
+     *
+     * <pre>
+     *希腊值 Vega
+     * </pre>
+     */
+    public boolean hasVega() {
+      return ((bitField0_ & 0x00000400) == 0x00000400);
+    }
+    /**
+     * <code>required double vega = 11;</code>
+     *
+     * <pre>
+     *希腊值 Vega
+     * </pre>
+     */
+    public double getVega() {
+      return vega_;
+    }
+
+    public static final int THETA_FIELD_NUMBER = 12;
+    private double theta_;
+    /**
+     * <code>required double theta = 12;</code>
+     *
+     * <pre>
+     *希腊值 Theta
+     * </pre>
+     */
+    public boolean hasTheta() {
+      return ((bitField0_ & 0x00000800) == 0x00000800);
+    }
+    /**
+     * <code>required double theta = 12;</code>
+     *
+     * <pre>
+     *希腊值 Theta
+     * </pre>
+     */
+    public double getTheta() {
+      return theta_;
+    }
+
+    public static final int RHO_FIELD_NUMBER = 13;
+    private double rho_;
+    /**
+     * <code>required double rho = 13;</code>
+     *
+     * <pre>
+     *希腊值 Rho  
+     * </pre>
+     */
+    public boolean hasRho() {
+      return ((bitField0_ & 0x00001000) == 0x00001000);
+    }
+    /**
+     * <code>required double rho = 13;</code>
+     *
+     * <pre>
+     *希腊值 Rho  
+     * </pre>
+     */
+    public double getRho() {
+      return rho_;
+    }
+
+    private void initFields() {
+      type_ = 0;
+      owner_ = com.futu.opend.api.protobuf.QotCommon.Security.getDefaultInstance();
+      strikeTime_ = "";
+      strikePrice_ = 0D;
+      contractSize_ = 0;
+      openInterest_ = 0;
+      impliedVolatility_ = 0D;
+      premium_ = 0D;
+      delta_ = 0D;
+      gamma_ = 0D;
+      vega_ = 0D;
+      theta_ = 0D;
+      rho_ = 0D;
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      if (!hasType()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasOwner()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasStrikeTime()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasStrikePrice()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasContractSize()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasOpenInterest()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasImpliedVolatility()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasPremium()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasDelta()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasGamma()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasVega()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasTheta()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasRho()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!getOwner().isInitialized()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeInt32(1, type_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeMessage(2, owner_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeBytes(3, getStrikeTimeBytes());
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        output.writeDouble(4, strikePrice_);
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        output.writeInt32(5, contractSize_);
+      }
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        output.writeInt32(6, openInterest_);
+      }
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
+        output.writeDouble(7, impliedVolatility_);
+      }
+      if (((bitField0_ & 0x00000080) == 0x00000080)) {
+        output.writeDouble(8, premium_);
+      }
+      if (((bitField0_ & 0x00000100) == 0x00000100)) {
+        output.writeDouble(9, delta_);
+      }
+      if (((bitField0_ & 0x00000200) == 0x00000200)) {
+        output.writeDouble(10, gamma_);
+      }
+      if (((bitField0_ & 0x00000400) == 0x00000400)) {
+        output.writeDouble(11, vega_);
+      }
+      if (((bitField0_ & 0x00000800) == 0x00000800)) {
+        output.writeDouble(12, theta_);
+      }
+      if (((bitField0_ & 0x00001000) == 0x00001000)) {
+        output.writeDouble(13, rho_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, type_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, owner_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(3, getStrikeTimeBytes());
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeDoubleSize(4, strikePrice_);
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(5, contractSize_);
+      }
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(6, openInterest_);
+      }
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeDoubleSize(7, impliedVolatility_);
+      }
+      if (((bitField0_ & 0x00000080) == 0x00000080)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeDoubleSize(8, premium_);
+      }
+      if (((bitField0_ & 0x00000100) == 0x00000100)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeDoubleSize(9, delta_);
+      }
+      if (((bitField0_ & 0x00000200) == 0x00000200)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeDoubleSize(10, gamma_);
+      }
+      if (((bitField0_ & 0x00000400) == 0x00000400)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeDoubleSize(11, vega_);
+      }
+      if (((bitField0_ & 0x00000800) == 0x00000800)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeDoubleSize(12, theta_);
+      }
+      if (((bitField0_ & 0x00001000) == 0x00001000)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeDoubleSize(13, rho_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.futu.opend.api.protobuf.QotGetSecuritySnapshot.OptionSnapshotExData parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.futu.opend.api.protobuf.QotGetSecuritySnapshot.OptionSnapshotExData parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.futu.opend.api.protobuf.QotGetSecuritySnapshot.OptionSnapshotExData parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.futu.opend.api.protobuf.QotGetSecuritySnapshot.OptionSnapshotExData parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.futu.opend.api.protobuf.QotGetSecuritySnapshot.OptionSnapshotExData parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.futu.opend.api.protobuf.QotGetSecuritySnapshot.OptionSnapshotExData parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.futu.opend.api.protobuf.QotGetSecuritySnapshot.OptionSnapshotExData parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.futu.opend.api.protobuf.QotGetSecuritySnapshot.OptionSnapshotExData parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.futu.opend.api.protobuf.QotGetSecuritySnapshot.OptionSnapshotExData parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.futu.opend.api.protobuf.QotGetSecuritySnapshot.OptionSnapshotExData parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.futu.opend.api.protobuf.QotGetSecuritySnapshot.OptionSnapshotExData prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code Qot_GetSecuritySnapshot.OptionSnapshotExData}
+     *
+     * <pre>
+     * 期权类型额外数据
+     * </pre>
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:Qot_GetSecuritySnapshot.OptionSnapshotExData)
+        com.futu.opend.api.protobuf.QotGetSecuritySnapshot.OptionSnapshotExDataOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.futu.opend.api.protobuf.QotGetSecuritySnapshot.internal_static_Qot_GetSecuritySnapshot_OptionSnapshotExData_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.futu.opend.api.protobuf.QotGetSecuritySnapshot.internal_static_Qot_GetSecuritySnapshot_OptionSnapshotExData_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.futu.opend.api.protobuf.QotGetSecuritySnapshot.OptionSnapshotExData.class, com.futu.opend.api.protobuf.QotGetSecuritySnapshot.OptionSnapshotExData.Builder.class);
+      }
+
+      // Construct using com.futu.opend.api.protobuf.QotGetSecuritySnapshot.OptionSnapshotExData.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getOwnerFieldBuilder();
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        type_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        if (ownerBuilder_ == null) {
+          owner_ = com.futu.opend.api.protobuf.QotCommon.Security.getDefaultInstance();
+        } else {
+          ownerBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000002);
+        strikeTime_ = "";
+        bitField0_ = (bitField0_ & ~0x00000004);
+        strikePrice_ = 0D;
+        bitField0_ = (bitField0_ & ~0x00000008);
+        contractSize_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000010);
+        openInterest_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000020);
+        impliedVolatility_ = 0D;
+        bitField0_ = (bitField0_ & ~0x00000040);
+        premium_ = 0D;
+        bitField0_ = (bitField0_ & ~0x00000080);
+        delta_ = 0D;
+        bitField0_ = (bitField0_ & ~0x00000100);
+        gamma_ = 0D;
+        bitField0_ = (bitField0_ & ~0x00000200);
+        vega_ = 0D;
+        bitField0_ = (bitField0_ & ~0x00000400);
+        theta_ = 0D;
+        bitField0_ = (bitField0_ & ~0x00000800);
+        rho_ = 0D;
+        bitField0_ = (bitField0_ & ~0x00001000);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.futu.opend.api.protobuf.QotGetSecuritySnapshot.internal_static_Qot_GetSecuritySnapshot_OptionSnapshotExData_descriptor;
+      }
+
+      public com.futu.opend.api.protobuf.QotGetSecuritySnapshot.OptionSnapshotExData getDefaultInstanceForType() {
+        return com.futu.opend.api.protobuf.QotGetSecuritySnapshot.OptionSnapshotExData.getDefaultInstance();
+      }
+
+      public com.futu.opend.api.protobuf.QotGetSecuritySnapshot.OptionSnapshotExData build() {
+        com.futu.opend.api.protobuf.QotGetSecuritySnapshot.OptionSnapshotExData result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.futu.opend.api.protobuf.QotGetSecuritySnapshot.OptionSnapshotExData buildPartial() {
+        com.futu.opend.api.protobuf.QotGetSecuritySnapshot.OptionSnapshotExData result = new com.futu.opend.api.protobuf.QotGetSecuritySnapshot.OptionSnapshotExData(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.type_ = type_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        if (ownerBuilder_ == null) {
+          result.owner_ = owner_;
+        } else {
+          result.owner_ = ownerBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.strikeTime_ = strikeTime_;
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000008;
+        }
+        result.strikePrice_ = strikePrice_;
+        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
+          to_bitField0_ |= 0x00000010;
+        }
+        result.contractSize_ = contractSize_;
+        if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
+          to_bitField0_ |= 0x00000020;
+        }
+        result.openInterest_ = openInterest_;
+        if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
+          to_bitField0_ |= 0x00000040;
+        }
+        result.impliedVolatility_ = impliedVolatility_;
+        if (((from_bitField0_ & 0x00000080) == 0x00000080)) {
+          to_bitField0_ |= 0x00000080;
+        }
+        result.premium_ = premium_;
+        if (((from_bitField0_ & 0x00000100) == 0x00000100)) {
+          to_bitField0_ |= 0x00000100;
+        }
+        result.delta_ = delta_;
+        if (((from_bitField0_ & 0x00000200) == 0x00000200)) {
+          to_bitField0_ |= 0x00000200;
+        }
+        result.gamma_ = gamma_;
+        if (((from_bitField0_ & 0x00000400) == 0x00000400)) {
+          to_bitField0_ |= 0x00000400;
+        }
+        result.vega_ = vega_;
+        if (((from_bitField0_ & 0x00000800) == 0x00000800)) {
+          to_bitField0_ |= 0x00000800;
+        }
+        result.theta_ = theta_;
+        if (((from_bitField0_ & 0x00001000) == 0x00001000)) {
+          to_bitField0_ |= 0x00001000;
+        }
+        result.rho_ = rho_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.futu.opend.api.protobuf.QotGetSecuritySnapshot.OptionSnapshotExData) {
+          return mergeFrom((com.futu.opend.api.protobuf.QotGetSecuritySnapshot.OptionSnapshotExData)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.futu.opend.api.protobuf.QotGetSecuritySnapshot.OptionSnapshotExData other) {
+        if (other == com.futu.opend.api.protobuf.QotGetSecuritySnapshot.OptionSnapshotExData.getDefaultInstance()) return this;
+        if (other.hasType()) {
+          setType(other.getType());
+        }
+        if (other.hasOwner()) {
+          mergeOwner(other.getOwner());
+        }
+        if (other.hasStrikeTime()) {
+          bitField0_ |= 0x00000004;
+          strikeTime_ = other.strikeTime_;
+          onChanged();
+        }
+        if (other.hasStrikePrice()) {
+          setStrikePrice(other.getStrikePrice());
+        }
+        if (other.hasContractSize()) {
+          setContractSize(other.getContractSize());
+        }
+        if (other.hasOpenInterest()) {
+          setOpenInterest(other.getOpenInterest());
+        }
+        if (other.hasImpliedVolatility()) {
+          setImpliedVolatility(other.getImpliedVolatility());
+        }
+        if (other.hasPremium()) {
+          setPremium(other.getPremium());
+        }
+        if (other.hasDelta()) {
+          setDelta(other.getDelta());
+        }
+        if (other.hasGamma()) {
+          setGamma(other.getGamma());
+        }
+        if (other.hasVega()) {
+          setVega(other.getVega());
+        }
+        if (other.hasTheta()) {
+          setTheta(other.getTheta());
+        }
+        if (other.hasRho()) {
+          setRho(other.getRho());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasType()) {
+          
+          return false;
+        }
+        if (!hasOwner()) {
+          
+          return false;
+        }
+        if (!hasStrikeTime()) {
+          
+          return false;
+        }
+        if (!hasStrikePrice()) {
+          
+          return false;
+        }
+        if (!hasContractSize()) {
+          
+          return false;
+        }
+        if (!hasOpenInterest()) {
+          
+          return false;
+        }
+        if (!hasImpliedVolatility()) {
+          
+          return false;
+        }
+        if (!hasPremium()) {
+          
+          return false;
+        }
+        if (!hasDelta()) {
+          
+          return false;
+        }
+        if (!hasGamma()) {
+          
+          return false;
+        }
+        if (!hasVega()) {
+          
+          return false;
+        }
+        if (!hasTheta()) {
+          
+          return false;
+        }
+        if (!hasRho()) {
+          
+          return false;
+        }
+        if (!getOwner().isInitialized()) {
+          
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.futu.opend.api.protobuf.QotGetSecuritySnapshot.OptionSnapshotExData parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.futu.opend.api.protobuf.QotGetSecuritySnapshot.OptionSnapshotExData) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private int type_ ;
+      /**
+       * <code>required int32 type = 1;</code>
+       *
+       * <pre>
+       *Qot_Common.OptionType,期权
+       * </pre>
+       */
+      public boolean hasType() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required int32 type = 1;</code>
+       *
+       * <pre>
+       *Qot_Common.OptionType,期权
+       * </pre>
+       */
+      public int getType() {
+        return type_;
+      }
+      /**
+       * <code>required int32 type = 1;</code>
+       *
+       * <pre>
+       *Qot_Common.OptionType,期权
+       * </pre>
+       */
+      public Builder setType(int value) {
+        bitField0_ |= 0x00000001;
+        type_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 type = 1;</code>
+       *
+       * <pre>
+       *Qot_Common.OptionType,期权
+       * </pre>
+       */
+      public Builder clearType() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        type_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private com.futu.opend.api.protobuf.QotCommon.Security owner_ = com.futu.opend.api.protobuf.QotCommon.Security.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          com.futu.opend.api.protobuf.QotCommon.Security, com.futu.opend.api.protobuf.QotCommon.Security.Builder, com.futu.opend.api.protobuf.QotCommon.SecurityOrBuilder> ownerBuilder_;
+      /**
+       * <code>required .Qot_Common.Security owner = 2;</code>
+       *
+       * <pre>
+       *标的股
+       * </pre>
+       */
+      public boolean hasOwner() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>required .Qot_Common.Security owner = 2;</code>
+       *
+       * <pre>
+       *标的股
+       * </pre>
+       */
+      public com.futu.opend.api.protobuf.QotCommon.Security getOwner() {
+        if (ownerBuilder_ == null) {
+          return owner_;
+        } else {
+          return ownerBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>required .Qot_Common.Security owner = 2;</code>
+       *
+       * <pre>
+       *标的股
+       * </pre>
+       */
+      public Builder setOwner(com.futu.opend.api.protobuf.QotCommon.Security value) {
+        if (ownerBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          owner_ = value;
+          onChanged();
+        } else {
+          ownerBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000002;
+        return this;
+      }
+      /**
+       * <code>required .Qot_Common.Security owner = 2;</code>
+       *
+       * <pre>
+       *标的股
+       * </pre>
+       */
+      public Builder setOwner(
+          com.futu.opend.api.protobuf.QotCommon.Security.Builder builderForValue) {
+        if (ownerBuilder_ == null) {
+          owner_ = builderForValue.build();
+          onChanged();
+        } else {
+          ownerBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000002;
+        return this;
+      }
+      /**
+       * <code>required .Qot_Common.Security owner = 2;</code>
+       *
+       * <pre>
+       *标的股
+       * </pre>
+       */
+      public Builder mergeOwner(com.futu.opend.api.protobuf.QotCommon.Security value) {
+        if (ownerBuilder_ == null) {
+          if (((bitField0_ & 0x00000002) == 0x00000002) &&
+              owner_ != com.futu.opend.api.protobuf.QotCommon.Security.getDefaultInstance()) {
+            owner_ =
+              com.futu.opend.api.protobuf.QotCommon.Security.newBuilder(owner_).mergeFrom(value).buildPartial();
+          } else {
+            owner_ = value;
+          }
+          onChanged();
+        } else {
+          ownerBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000002;
+        return this;
+      }
+      /**
+       * <code>required .Qot_Common.Security owner = 2;</code>
+       *
+       * <pre>
+       *标的股
+       * </pre>
+       */
+      public Builder clearOwner() {
+        if (ownerBuilder_ == null) {
+          owner_ = com.futu.opend.api.protobuf.QotCommon.Security.getDefaultInstance();
+          onChanged();
+        } else {
+          ownerBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000002);
+        return this;
+      }
+      /**
+       * <code>required .Qot_Common.Security owner = 2;</code>
+       *
+       * <pre>
+       *标的股
+       * </pre>
+       */
+      public com.futu.opend.api.protobuf.QotCommon.Security.Builder getOwnerBuilder() {
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return getOwnerFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>required .Qot_Common.Security owner = 2;</code>
+       *
+       * <pre>
+       *标的股
+       * </pre>
+       */
+      public com.futu.opend.api.protobuf.QotCommon.SecurityOrBuilder getOwnerOrBuilder() {
+        if (ownerBuilder_ != null) {
+          return ownerBuilder_.getMessageOrBuilder();
+        } else {
+          return owner_;
+        }
+      }
+      /**
+       * <code>required .Qot_Common.Security owner = 2;</code>
+       *
+       * <pre>
+       *标的股
+       * </pre>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.futu.opend.api.protobuf.QotCommon.Security, com.futu.opend.api.protobuf.QotCommon.Security.Builder, com.futu.opend.api.protobuf.QotCommon.SecurityOrBuilder> 
+          getOwnerFieldBuilder() {
+        if (ownerBuilder_ == null) {
+          ownerBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.futu.opend.api.protobuf.QotCommon.Security, com.futu.opend.api.protobuf.QotCommon.Security.Builder, com.futu.opend.api.protobuf.QotCommon.SecurityOrBuilder>(
+                  getOwner(),
+                  getParentForChildren(),
+                  isClean());
+          owner_ = null;
+        }
+        return ownerBuilder_;
+      }
+
+      private java.lang.Object strikeTime_ = "";
+      /**
+       * <code>required string strikeTime = 3;</code>
+       *
+       * <pre>
+       *行权日
+       * </pre>
+       */
+      public boolean hasStrikeTime() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>required string strikeTime = 3;</code>
+       *
+       * <pre>
+       *行权日
+       * </pre>
+       */
+      public java.lang.String getStrikeTime() {
+        java.lang.Object ref = strikeTime_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            strikeTime_ = s;
+          }
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>required string strikeTime = 3;</code>
+       *
+       * <pre>
+       *行权日
+       * </pre>
+       */
+      public com.google.protobuf.ByteString
+          getStrikeTimeBytes() {
+        java.lang.Object ref = strikeTime_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          strikeTime_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string strikeTime = 3;</code>
+       *
+       * <pre>
+       *行权日
+       * </pre>
+       */
+      public Builder setStrikeTime(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000004;
+        strikeTime_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string strikeTime = 3;</code>
+       *
+       * <pre>
+       *行权日
+       * </pre>
+       */
+      public Builder clearStrikeTime() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        strikeTime_ = getDefaultInstance().getStrikeTime();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string strikeTime = 3;</code>
+       *
+       * <pre>
+       *行权日
+       * </pre>
+       */
+      public Builder setStrikeTimeBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000004;
+        strikeTime_ = value;
+        onChanged();
+        return this;
+      }
+
+      private double strikePrice_ ;
+      /**
+       * <code>required double strikePrice = 4;</code>
+       *
+       * <pre>
+       *行权价
+       * </pre>
+       */
+      public boolean hasStrikePrice() {
+        return ((bitField0_ & 0x00000008) == 0x00000008);
+      }
+      /**
+       * <code>required double strikePrice = 4;</code>
+       *
+       * <pre>
+       *行权价
+       * </pre>
+       */
+      public double getStrikePrice() {
+        return strikePrice_;
+      }
+      /**
+       * <code>required double strikePrice = 4;</code>
+       *
+       * <pre>
+       *行权价
+       * </pre>
+       */
+      public Builder setStrikePrice(double value) {
+        bitField0_ |= 0x00000008;
+        strikePrice_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required double strikePrice = 4;</code>
+       *
+       * <pre>
+       *行权价
+       * </pre>
+       */
+      public Builder clearStrikePrice() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        strikePrice_ = 0D;
+        onChanged();
+        return this;
+      }
+
+      private int contractSize_ ;
+      /**
+       * <code>required int32 contractSize = 5;</code>
+       *
+       * <pre>
+       *每份合约数
+       * </pre>
+       */
+      public boolean hasContractSize() {
+        return ((bitField0_ & 0x00000010) == 0x00000010);
+      }
+      /**
+       * <code>required int32 contractSize = 5;</code>
+       *
+       * <pre>
+       *每份合约数
+       * </pre>
+       */
+      public int getContractSize() {
+        return contractSize_;
+      }
+      /**
+       * <code>required int32 contractSize = 5;</code>
+       *
+       * <pre>
+       *每份合约数
+       * </pre>
+       */
+      public Builder setContractSize(int value) {
+        bitField0_ |= 0x00000010;
+        contractSize_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 contractSize = 5;</code>
+       *
+       * <pre>
+       *每份合约数
+       * </pre>
+       */
+      public Builder clearContractSize() {
+        bitField0_ = (bitField0_ & ~0x00000010);
+        contractSize_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int openInterest_ ;
+      /**
+       * <code>required int32 openInterest = 6;</code>
+       *
+       * <pre>
+       *未平仓合约数
+       * </pre>
+       */
+      public boolean hasOpenInterest() {
+        return ((bitField0_ & 0x00000020) == 0x00000020);
+      }
+      /**
+       * <code>required int32 openInterest = 6;</code>
+       *
+       * <pre>
+       *未平仓合约数
+       * </pre>
+       */
+      public int getOpenInterest() {
+        return openInterest_;
+      }
+      /**
+       * <code>required int32 openInterest = 6;</code>
+       *
+       * <pre>
+       *未平仓合约数
+       * </pre>
+       */
+      public Builder setOpenInterest(int value) {
+        bitField0_ |= 0x00000020;
+        openInterest_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 openInterest = 6;</code>
+       *
+       * <pre>
+       *未平仓合约数
+       * </pre>
+       */
+      public Builder clearOpenInterest() {
+        bitField0_ = (bitField0_ & ~0x00000020);
+        openInterest_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private double impliedVolatility_ ;
+      /**
+       * <code>required double impliedVolatility = 7;</code>
+       *
+       * <pre>
+       *隐含波动率
+       * </pre>
+       */
+      public boolean hasImpliedVolatility() {
+        return ((bitField0_ & 0x00000040) == 0x00000040);
+      }
+      /**
+       * <code>required double impliedVolatility = 7;</code>
+       *
+       * <pre>
+       *隐含波动率
+       * </pre>
+       */
+      public double getImpliedVolatility() {
+        return impliedVolatility_;
+      }
+      /**
+       * <code>required double impliedVolatility = 7;</code>
+       *
+       * <pre>
+       *隐含波动率
+       * </pre>
+       */
+      public Builder setImpliedVolatility(double value) {
+        bitField0_ |= 0x00000040;
+        impliedVolatility_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required double impliedVolatility = 7;</code>
+       *
+       * <pre>
+       *隐含波动率
+       * </pre>
+       */
+      public Builder clearImpliedVolatility() {
+        bitField0_ = (bitField0_ & ~0x00000040);
+        impliedVolatility_ = 0D;
+        onChanged();
+        return this;
+      }
+
+      private double premium_ ;
+      /**
+       * <code>required double premium = 8;</code>
+       *
+       * <pre>
+       *溢价
+       * </pre>
+       */
+      public boolean hasPremium() {
+        return ((bitField0_ & 0x00000080) == 0x00000080);
+      }
+      /**
+       * <code>required double premium = 8;</code>
+       *
+       * <pre>
+       *溢价
+       * </pre>
+       */
+      public double getPremium() {
+        return premium_;
+      }
+      /**
+       * <code>required double premium = 8;</code>
+       *
+       * <pre>
+       *溢价
+       * </pre>
+       */
+      public Builder setPremium(double value) {
+        bitField0_ |= 0x00000080;
+        premium_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required double premium = 8;</code>
+       *
+       * <pre>
+       *溢价
+       * </pre>
+       */
+      public Builder clearPremium() {
+        bitField0_ = (bitField0_ & ~0x00000080);
+        premium_ = 0D;
+        onChanged();
+        return this;
+      }
+
+      private double delta_ ;
+      /**
+       * <code>required double delta = 9;</code>
+       *
+       * <pre>
+       *希腊值 Delta
+       * </pre>
+       */
+      public boolean hasDelta() {
+        return ((bitField0_ & 0x00000100) == 0x00000100);
+      }
+      /**
+       * <code>required double delta = 9;</code>
+       *
+       * <pre>
+       *希腊值 Delta
+       * </pre>
+       */
+      public double getDelta() {
+        return delta_;
+      }
+      /**
+       * <code>required double delta = 9;</code>
+       *
+       * <pre>
+       *希腊值 Delta
+       * </pre>
+       */
+      public Builder setDelta(double value) {
+        bitField0_ |= 0x00000100;
+        delta_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required double delta = 9;</code>
+       *
+       * <pre>
+       *希腊值 Delta
+       * </pre>
+       */
+      public Builder clearDelta() {
+        bitField0_ = (bitField0_ & ~0x00000100);
+        delta_ = 0D;
+        onChanged();
+        return this;
+      }
+
+      private double gamma_ ;
+      /**
+       * <code>required double gamma = 10;</code>
+       *
+       * <pre>
+       *希腊值 Gamma
+       * </pre>
+       */
+      public boolean hasGamma() {
+        return ((bitField0_ & 0x00000200) == 0x00000200);
+      }
+      /**
+       * <code>required double gamma = 10;</code>
+       *
+       * <pre>
+       *希腊值 Gamma
+       * </pre>
+       */
+      public double getGamma() {
+        return gamma_;
+      }
+      /**
+       * <code>required double gamma = 10;</code>
+       *
+       * <pre>
+       *希腊值 Gamma
+       * </pre>
+       */
+      public Builder setGamma(double value) {
+        bitField0_ |= 0x00000200;
+        gamma_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required double gamma = 10;</code>
+       *
+       * <pre>
+       *希腊值 Gamma
+       * </pre>
+       */
+      public Builder clearGamma() {
+        bitField0_ = (bitField0_ & ~0x00000200);
+        gamma_ = 0D;
+        onChanged();
+        return this;
+      }
+
+      private double vega_ ;
+      /**
+       * <code>required double vega = 11;</code>
+       *
+       * <pre>
+       *希腊值 Vega
+       * </pre>
+       */
+      public boolean hasVega() {
+        return ((bitField0_ & 0x00000400) == 0x00000400);
+      }
+      /**
+       * <code>required double vega = 11;</code>
+       *
+       * <pre>
+       *希腊值 Vega
+       * </pre>
+       */
+      public double getVega() {
+        return vega_;
+      }
+      /**
+       * <code>required double vega = 11;</code>
+       *
+       * <pre>
+       *希腊值 Vega
+       * </pre>
+       */
+      public Builder setVega(double value) {
+        bitField0_ |= 0x00000400;
+        vega_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required double vega = 11;</code>
+       *
+       * <pre>
+       *希腊值 Vega
+       * </pre>
+       */
+      public Builder clearVega() {
+        bitField0_ = (bitField0_ & ~0x00000400);
+        vega_ = 0D;
+        onChanged();
+        return this;
+      }
+
+      private double theta_ ;
+      /**
+       * <code>required double theta = 12;</code>
+       *
+       * <pre>
+       *希腊值 Theta
+       * </pre>
+       */
+      public boolean hasTheta() {
+        return ((bitField0_ & 0x00000800) == 0x00000800);
+      }
+      /**
+       * <code>required double theta = 12;</code>
+       *
+       * <pre>
+       *希腊值 Theta
+       * </pre>
+       */
+      public double getTheta() {
+        return theta_;
+      }
+      /**
+       * <code>required double theta = 12;</code>
+       *
+       * <pre>
+       *希腊值 Theta
+       * </pre>
+       */
+      public Builder setTheta(double value) {
+        bitField0_ |= 0x00000800;
+        theta_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required double theta = 12;</code>
+       *
+       * <pre>
+       *希腊值 Theta
+       * </pre>
+       */
+      public Builder clearTheta() {
+        bitField0_ = (bitField0_ & ~0x00000800);
+        theta_ = 0D;
+        onChanged();
+        return this;
+      }
+
+      private double rho_ ;
+      /**
+       * <code>required double rho = 13;</code>
+       *
+       * <pre>
+       *希腊值 Rho  
+       * </pre>
+       */
+      public boolean hasRho() {
+        return ((bitField0_ & 0x00001000) == 0x00001000);
+      }
+      /**
+       * <code>required double rho = 13;</code>
+       *
+       * <pre>
+       *希腊值 Rho  
+       * </pre>
+       */
+      public double getRho() {
+        return rho_;
+      }
+      /**
+       * <code>required double rho = 13;</code>
+       *
+       * <pre>
+       *希腊值 Rho  
+       * </pre>
+       */
+      public Builder setRho(double value) {
+        bitField0_ |= 0x00001000;
+        rho_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required double rho = 13;</code>
+       *
+       * <pre>
+       *希腊值 Rho  
+       * </pre>
+       */
+      public Builder clearRho() {
+        bitField0_ = (bitField0_ & ~0x00001000);
+        rho_ = 0D;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:Qot_GetSecuritySnapshot.OptionSnapshotExData)
+    }
+
+    static {
+      defaultInstance = new OptionSnapshotExData(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:Qot_GetSecuritySnapshot.OptionSnapshotExData)
   }
 
   public interface SnapshotBasicDataOrBuilder extends
@@ -7143,6 +9364,31 @@ public final class QotGetSecuritySnapshot {
      * </pre>
      */
     com.futu.opend.api.protobuf.QotGetSecuritySnapshot.WarrantSnapshotExDataOrBuilder getWarrantExDataOrBuilder();
+
+    /**
+     * <code>optional .Qot_GetSecuritySnapshot.OptionSnapshotExData optionExData = 4;</code>
+     *
+     * <pre>
+     *期权快照额外数据
+     * </pre>
+     */
+    boolean hasOptionExData();
+    /**
+     * <code>optional .Qot_GetSecuritySnapshot.OptionSnapshotExData optionExData = 4;</code>
+     *
+     * <pre>
+     *期权快照额外数据
+     * </pre>
+     */
+    com.futu.opend.api.protobuf.QotGetSecuritySnapshot.OptionSnapshotExData getOptionExData();
+    /**
+     * <code>optional .Qot_GetSecuritySnapshot.OptionSnapshotExData optionExData = 4;</code>
+     *
+     * <pre>
+     *期权快照额外数据
+     * </pre>
+     */
+    com.futu.opend.api.protobuf.QotGetSecuritySnapshot.OptionSnapshotExDataOrBuilder getOptionExDataOrBuilder();
   }
   /**
    * Protobuf type {@code Qot_GetSecuritySnapshot.Snapshot}
@@ -7233,6 +9479,19 @@ public final class QotGetSecuritySnapshot {
                 warrantExData_ = subBuilder.buildPartial();
               }
               bitField0_ |= 0x00000004;
+              break;
+            }
+            case 34: {
+              com.futu.opend.api.protobuf.QotGetSecuritySnapshot.OptionSnapshotExData.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000008) == 0x00000008)) {
+                subBuilder = optionExData_.toBuilder();
+              }
+              optionExData_ = input.readMessage(com.futu.opend.api.protobuf.QotGetSecuritySnapshot.OptionSnapshotExData.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(optionExData_);
+                optionExData_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000008;
               break;
             }
           }
@@ -7374,10 +9633,44 @@ public final class QotGetSecuritySnapshot {
       return warrantExData_;
     }
 
+    public static final int OPTIONEXDATA_FIELD_NUMBER = 4;
+    private com.futu.opend.api.protobuf.QotGetSecuritySnapshot.OptionSnapshotExData optionExData_;
+    /**
+     * <code>optional .Qot_GetSecuritySnapshot.OptionSnapshotExData optionExData = 4;</code>
+     *
+     * <pre>
+     *期权快照额外数据
+     * </pre>
+     */
+    public boolean hasOptionExData() {
+      return ((bitField0_ & 0x00000008) == 0x00000008);
+    }
+    /**
+     * <code>optional .Qot_GetSecuritySnapshot.OptionSnapshotExData optionExData = 4;</code>
+     *
+     * <pre>
+     *期权快照额外数据
+     * </pre>
+     */
+    public com.futu.opend.api.protobuf.QotGetSecuritySnapshot.OptionSnapshotExData getOptionExData() {
+      return optionExData_;
+    }
+    /**
+     * <code>optional .Qot_GetSecuritySnapshot.OptionSnapshotExData optionExData = 4;</code>
+     *
+     * <pre>
+     *期权快照额外数据
+     * </pre>
+     */
+    public com.futu.opend.api.protobuf.QotGetSecuritySnapshot.OptionSnapshotExDataOrBuilder getOptionExDataOrBuilder() {
+      return optionExData_;
+    }
+
     private void initFields() {
       basic_ = com.futu.opend.api.protobuf.QotGetSecuritySnapshot.SnapshotBasicData.getDefaultInstance();
       equityExData_ = com.futu.opend.api.protobuf.QotGetSecuritySnapshot.EquitySnapshotExData.getDefaultInstance();
       warrantExData_ = com.futu.opend.api.protobuf.QotGetSecuritySnapshot.WarrantSnapshotExData.getDefaultInstance();
+      optionExData_ = com.futu.opend.api.protobuf.QotGetSecuritySnapshot.OptionSnapshotExData.getDefaultInstance();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -7405,6 +9698,12 @@ public final class QotGetSecuritySnapshot {
           return false;
         }
       }
+      if (hasOptionExData()) {
+        if (!getOptionExData().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -7420,6 +9719,9 @@ public final class QotGetSecuritySnapshot {
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         output.writeMessage(3, warrantExData_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        output.writeMessage(4, optionExData_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -7441,6 +9743,10 @@ public final class QotGetSecuritySnapshot {
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(3, warrantExData_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(4, optionExData_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -7554,6 +9860,7 @@ public final class QotGetSecuritySnapshot {
           getBasicFieldBuilder();
           getEquityExDataFieldBuilder();
           getWarrantExDataFieldBuilder();
+          getOptionExDataFieldBuilder();
         }
       }
       private static Builder create() {
@@ -7580,6 +9887,12 @@ public final class QotGetSecuritySnapshot {
           warrantExDataBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x00000004);
+        if (optionExDataBuilder_ == null) {
+          optionExData_ = com.futu.opend.api.protobuf.QotGetSecuritySnapshot.OptionSnapshotExData.getDefaultInstance();
+        } else {
+          optionExDataBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000008);
         return this;
       }
 
@@ -7632,6 +9945,14 @@ public final class QotGetSecuritySnapshot {
         } else {
           result.warrantExData_ = warrantExDataBuilder_.build();
         }
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000008;
+        }
+        if (optionExDataBuilder_ == null) {
+          result.optionExData_ = optionExData_;
+        } else {
+          result.optionExData_ = optionExDataBuilder_.build();
+        }
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -7657,6 +9978,9 @@ public final class QotGetSecuritySnapshot {
         if (other.hasWarrantExData()) {
           mergeWarrantExData(other.getWarrantExData());
         }
+        if (other.hasOptionExData()) {
+          mergeOptionExData(other.getOptionExData());
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
@@ -7678,6 +10002,12 @@ public final class QotGetSecuritySnapshot {
         }
         if (hasWarrantExData()) {
           if (!getWarrantExData().isInitialized()) {
+            
+            return false;
+          }
+        }
+        if (hasOptionExData()) {
+          if (!getOptionExData().isInitialized()) {
             
             return false;
           }
@@ -8158,6 +10488,158 @@ public final class QotGetSecuritySnapshot {
           warrantExData_ = null;
         }
         return warrantExDataBuilder_;
+      }
+
+      private com.futu.opend.api.protobuf.QotGetSecuritySnapshot.OptionSnapshotExData optionExData_ = com.futu.opend.api.protobuf.QotGetSecuritySnapshot.OptionSnapshotExData.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          com.futu.opend.api.protobuf.QotGetSecuritySnapshot.OptionSnapshotExData, com.futu.opend.api.protobuf.QotGetSecuritySnapshot.OptionSnapshotExData.Builder, com.futu.opend.api.protobuf.QotGetSecuritySnapshot.OptionSnapshotExDataOrBuilder> optionExDataBuilder_;
+      /**
+       * <code>optional .Qot_GetSecuritySnapshot.OptionSnapshotExData optionExData = 4;</code>
+       *
+       * <pre>
+       *期权快照额外数据
+       * </pre>
+       */
+      public boolean hasOptionExData() {
+        return ((bitField0_ & 0x00000008) == 0x00000008);
+      }
+      /**
+       * <code>optional .Qot_GetSecuritySnapshot.OptionSnapshotExData optionExData = 4;</code>
+       *
+       * <pre>
+       *期权快照额外数据
+       * </pre>
+       */
+      public com.futu.opend.api.protobuf.QotGetSecuritySnapshot.OptionSnapshotExData getOptionExData() {
+        if (optionExDataBuilder_ == null) {
+          return optionExData_;
+        } else {
+          return optionExDataBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .Qot_GetSecuritySnapshot.OptionSnapshotExData optionExData = 4;</code>
+       *
+       * <pre>
+       *期权快照额外数据
+       * </pre>
+       */
+      public Builder setOptionExData(com.futu.opend.api.protobuf.QotGetSecuritySnapshot.OptionSnapshotExData value) {
+        if (optionExDataBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          optionExData_ = value;
+          onChanged();
+        } else {
+          optionExDataBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000008;
+        return this;
+      }
+      /**
+       * <code>optional .Qot_GetSecuritySnapshot.OptionSnapshotExData optionExData = 4;</code>
+       *
+       * <pre>
+       *期权快照额外数据
+       * </pre>
+       */
+      public Builder setOptionExData(
+          com.futu.opend.api.protobuf.QotGetSecuritySnapshot.OptionSnapshotExData.Builder builderForValue) {
+        if (optionExDataBuilder_ == null) {
+          optionExData_ = builderForValue.build();
+          onChanged();
+        } else {
+          optionExDataBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000008;
+        return this;
+      }
+      /**
+       * <code>optional .Qot_GetSecuritySnapshot.OptionSnapshotExData optionExData = 4;</code>
+       *
+       * <pre>
+       *期权快照额外数据
+       * </pre>
+       */
+      public Builder mergeOptionExData(com.futu.opend.api.protobuf.QotGetSecuritySnapshot.OptionSnapshotExData value) {
+        if (optionExDataBuilder_ == null) {
+          if (((bitField0_ & 0x00000008) == 0x00000008) &&
+              optionExData_ != com.futu.opend.api.protobuf.QotGetSecuritySnapshot.OptionSnapshotExData.getDefaultInstance()) {
+            optionExData_ =
+              com.futu.opend.api.protobuf.QotGetSecuritySnapshot.OptionSnapshotExData.newBuilder(optionExData_).mergeFrom(value).buildPartial();
+          } else {
+            optionExData_ = value;
+          }
+          onChanged();
+        } else {
+          optionExDataBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000008;
+        return this;
+      }
+      /**
+       * <code>optional .Qot_GetSecuritySnapshot.OptionSnapshotExData optionExData = 4;</code>
+       *
+       * <pre>
+       *期权快照额外数据
+       * </pre>
+       */
+      public Builder clearOptionExData() {
+        if (optionExDataBuilder_ == null) {
+          optionExData_ = com.futu.opend.api.protobuf.QotGetSecuritySnapshot.OptionSnapshotExData.getDefaultInstance();
+          onChanged();
+        } else {
+          optionExDataBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000008);
+        return this;
+      }
+      /**
+       * <code>optional .Qot_GetSecuritySnapshot.OptionSnapshotExData optionExData = 4;</code>
+       *
+       * <pre>
+       *期权快照额外数据
+       * </pre>
+       */
+      public com.futu.opend.api.protobuf.QotGetSecuritySnapshot.OptionSnapshotExData.Builder getOptionExDataBuilder() {
+        bitField0_ |= 0x00000008;
+        onChanged();
+        return getOptionExDataFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .Qot_GetSecuritySnapshot.OptionSnapshotExData optionExData = 4;</code>
+       *
+       * <pre>
+       *期权快照额外数据
+       * </pre>
+       */
+      public com.futu.opend.api.protobuf.QotGetSecuritySnapshot.OptionSnapshotExDataOrBuilder getOptionExDataOrBuilder() {
+        if (optionExDataBuilder_ != null) {
+          return optionExDataBuilder_.getMessageOrBuilder();
+        } else {
+          return optionExData_;
+        }
+      }
+      /**
+       * <code>optional .Qot_GetSecuritySnapshot.OptionSnapshotExData optionExData = 4;</code>
+       *
+       * <pre>
+       *期权快照额外数据
+       * </pre>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.futu.opend.api.protobuf.QotGetSecuritySnapshot.OptionSnapshotExData, com.futu.opend.api.protobuf.QotGetSecuritySnapshot.OptionSnapshotExData.Builder, com.futu.opend.api.protobuf.QotGetSecuritySnapshot.OptionSnapshotExDataOrBuilder> 
+          getOptionExDataFieldBuilder() {
+        if (optionExDataBuilder_ == null) {
+          optionExDataBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.futu.opend.api.protobuf.QotGetSecuritySnapshot.OptionSnapshotExData, com.futu.opend.api.protobuf.QotGetSecuritySnapshot.OptionSnapshotExData.Builder, com.futu.opend.api.protobuf.QotGetSecuritySnapshot.OptionSnapshotExDataOrBuilder>(
+                  getOptionExData(),
+                  getParentForChildren(),
+                  isClean());
+          optionExData_ = null;
+        }
+        return optionExDataBuilder_;
       }
 
       // @@protoc_insertion_point(builder_scope:Qot_GetSecuritySnapshot.Snapshot)
@@ -10384,6 +12866,11 @@ public final class QotGetSecuritySnapshot {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_Qot_GetSecuritySnapshot_WarrantSnapshotExData_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_Qot_GetSecuritySnapshot_OptionSnapshotExData_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_Qot_GetSecuritySnapshot_OptionSnapshotExData_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_Qot_GetSecuritySnapshot_SnapshotBasicData_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -10420,41 +12907,51 @@ public final class QotGetSecuritySnapshot {
       "\n\035Qot_GetSecuritySnapshot.proto\022\027Qot_Get" +
       "SecuritySnapshot\032\014Common.proto\032\020Qot_Comm" +
       "on.proto\"1\n\003C2S\022*\n\014securityList\030\001 \003(\0132\024." +
-      "Qot_Common.Security\"\207\002\n\024EquitySnapshotEx" +
+      "Qot_Common.Security\"\232\002\n\024EquitySnapshotEx" +
       "Data\022\024\n\014issuedShares\030\001 \002(\003\022\027\n\017issuedMark" +
       "etVal\030\002 \002(\001\022\020\n\010netAsset\030\003 \002(\001\022\021\n\tnetProf" +
       "it\030\004 \002(\001\022\030\n\020earningsPershare\030\005 \002(\001\022\031\n\021ou" +
       "tstandingShares\030\006 \002(\003\022\034\n\024outstandingMark" +
       "etVal\030\007 \002(\001\022\030\n\020netAssetPershare\030\010 \002(\001\022\016\n" +
       "\006eyRate\030\t \002(\001\022\016\n\006peRate\030\n \002(\001\022\016\n\006pbRate\030",
-      "\013 \002(\001\"\273\002\n\025WarrantSnapshotExData\022\026\n\016conve" +
-      "rsionRate\030\001 \002(\001\022\023\n\013warrantType\030\002 \002(\005\022\023\n\013" +
-      "strikePrice\030\003 \002(\001\022\024\n\014maturityTime\030\004 \002(\t\022" +
-      "\024\n\014endTradeTime\030\005 \002(\t\022#\n\005owner\030\006 \002(\0132\024.Q" +
-      "ot_Common.Security\022\025\n\rrecoveryPrice\030\007 \002(" +
-      "\001\022\024\n\014streetVolumn\030\010 \002(\003\022\023\n\013issueVolumn\030\t" +
-      " \002(\003\022\022\n\nstreetRate\030\n \002(\001\022\r\n\005delta\030\013 \002(\001\022" +
-      "\031\n\021impliedVolatility\030\014 \002(\001\022\017\n\007premium\030\r " +
-      "\002(\001\"\302\002\n\021SnapshotBasicData\022&\n\010security\030\001 " +
-      "\002(\0132\024.Qot_Common.Security\022\014\n\004type\030\002 \002(\005\022",
-      "\021\n\tisSuspend\030\003 \002(\010\022\020\n\010listTime\030\004 \002(\t\022\017\n\007" +
-      "lotSize\030\005 \002(\005\022\023\n\013priceSpread\030\006 \002(\001\022\022\n\nup" +
-      "dateTime\030\007 \002(\t\022\021\n\thighPrice\030\010 \002(\001\022\021\n\tope" +
-      "nPrice\030\t \002(\001\022\020\n\010lowPrice\030\n \002(\001\022\026\n\016lastCl" +
-      "osePrice\030\013 \002(\001\022\020\n\010curPrice\030\014 \002(\001\022\016\n\006volu" +
-      "me\030\r \002(\003\022\020\n\010turnover\030\016 \002(\001\022\024\n\014turnoverRa" +
-      "te\030\017 \002(\001\"\321\001\n\010Snapshot\0229\n\005basic\030\001 \002(\0132*.Q" +
-      "ot_GetSecuritySnapshot.SnapshotBasicData" +
-      "\022C\n\014equityExData\030\002 \001(\0132-.Qot_GetSecurity" +
-      "Snapshot.EquitySnapshotExData\022E\n\rwarrant",
-      "ExData\030\003 \001(\0132..Qot_GetSecuritySnapshot.W" +
-      "arrantSnapshotExData\">\n\003S2C\0227\n\014snapshotL" +
-      "ist\030\001 \003(\0132!.Qot_GetSecuritySnapshot.Snap" +
-      "shot\"4\n\007Request\022)\n\003c2s\030\001 \002(\0132\034.Qot_GetSe" +
-      "curitySnapshot.C2S\"m\n\010Response\022\025\n\007retTyp" +
-      "e\030\001 \002(\005:\004-400\022\016\n\006retMsg\030\002 \001(\t\022\017\n\007errCode" +
-      "\030\003 \001(\005\022)\n\003s2c\030\004 \001(\0132\034.Qot_GetSecuritySna" +
-      "pshot.S2CB\035\n\033com.futu.opend.api.protobuf"
+      "\013 \002(\001\022\021\n\tpeTTMRate\030\014 \002(\001\"\273\002\n\025WarrantSnap" +
+      "shotExData\022\026\n\016conversionRate\030\001 \002(\001\022\023\n\013wa" +
+      "rrantType\030\002 \002(\005\022\023\n\013strikePrice\030\003 \002(\001\022\024\n\014" +
+      "maturityTime\030\004 \002(\t\022\024\n\014endTradeTime\030\005 \002(\t" +
+      "\022#\n\005owner\030\006 \002(\0132\024.Qot_Common.Security\022\025\n" +
+      "\rrecoveryPrice\030\007 \002(\001\022\024\n\014streetVolumn\030\010 \002" +
+      "(\003\022\023\n\013issueVolumn\030\t \002(\003\022\022\n\nstreetRate\030\n " +
+      "\002(\001\022\r\n\005delta\030\013 \002(\001\022\031\n\021impliedVolatility\030" +
+      "\014 \002(\001\022\017\n\007premium\030\r \002(\001\"\222\002\n\024OptionSnapsho" +
+      "tExData\022\014\n\004type\030\001 \002(\005\022#\n\005owner\030\002 \002(\0132\024.Q",
+      "ot_Common.Security\022\022\n\nstrikeTime\030\003 \002(\t\022\023" +
+      "\n\013strikePrice\030\004 \002(\001\022\024\n\014contractSize\030\005 \002(" +
+      "\005\022\024\n\014openInterest\030\006 \002(\005\022\031\n\021impliedVolati" +
+      "lity\030\007 \002(\001\022\017\n\007premium\030\010 \002(\001\022\r\n\005delta\030\t \002" +
+      "(\001\022\r\n\005gamma\030\n \002(\001\022\014\n\004vega\030\013 \002(\001\022\r\n\005theta" +
+      "\030\014 \002(\001\022\013\n\003rho\030\r \002(\001\"\302\002\n\021SnapshotBasicDat" +
+      "a\022&\n\010security\030\001 \002(\0132\024.Qot_Common.Securit" +
+      "y\022\014\n\004type\030\002 \002(\005\022\021\n\tisSuspend\030\003 \002(\010\022\020\n\010li" +
+      "stTime\030\004 \002(\t\022\017\n\007lotSize\030\005 \002(\005\022\023\n\013priceSp" +
+      "read\030\006 \002(\001\022\022\n\nupdateTime\030\007 \002(\t\022\021\n\thighPr",
+      "ice\030\010 \002(\001\022\021\n\topenPrice\030\t \002(\001\022\020\n\010lowPrice" +
+      "\030\n \002(\001\022\026\n\016lastClosePrice\030\013 \002(\001\022\020\n\010curPri" +
+      "ce\030\014 \002(\001\022\016\n\006volume\030\r \002(\003\022\020\n\010turnover\030\016 \002" +
+      "(\001\022\024\n\014turnoverRate\030\017 \002(\001\"\226\002\n\010Snapshot\0229\n" +
+      "\005basic\030\001 \002(\0132*.Qot_GetSecuritySnapshot.S" +
+      "napshotBasicData\022C\n\014equityExData\030\002 \001(\0132-" +
+      ".Qot_GetSecuritySnapshot.EquitySnapshotE" +
+      "xData\022E\n\rwarrantExData\030\003 \001(\0132..Qot_GetSe" +
+      "curitySnapshot.WarrantSnapshotExData\022C\n\014" +
+      "optionExData\030\004 \001(\0132-.Qot_GetSecuritySnap",
+      "shot.OptionSnapshotExData\">\n\003S2C\0227\n\014snap" +
+      "shotList\030\001 \003(\0132!.Qot_GetSecuritySnapshot" +
+      ".Snapshot\"4\n\007Request\022)\n\003c2s\030\001 \002(\0132\034.Qot_" +
+      "GetSecuritySnapshot.C2S\"m\n\010Response\022\025\n\007r" +
+      "etType\030\001 \002(\005:\004-400\022\016\n\006retMsg\030\002 \001(\t\022\017\n\007er" +
+      "rCode\030\003 \001(\005\022)\n\003s2c\030\004 \001(\0132\034.Qot_GetSecuri" +
+      "tySnapshot.S2CB\035\n\033com.futu.opend.api.pro" +
+      "tobuf"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -10481,39 +12978,45 @@ public final class QotGetSecuritySnapshot {
     internal_static_Qot_GetSecuritySnapshot_EquitySnapshotExData_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_Qot_GetSecuritySnapshot_EquitySnapshotExData_descriptor,
-        new java.lang.String[] { "IssuedShares", "IssuedMarketVal", "NetAsset", "NetProfit", "EarningsPershare", "OutstandingShares", "OutstandingMarketVal", "NetAssetPershare", "EyRate", "PeRate", "PbRate", });
+        new java.lang.String[] { "IssuedShares", "IssuedMarketVal", "NetAsset", "NetProfit", "EarningsPershare", "OutstandingShares", "OutstandingMarketVal", "NetAssetPershare", "EyRate", "PeRate", "PbRate", "PeTTMRate", });
     internal_static_Qot_GetSecuritySnapshot_WarrantSnapshotExData_descriptor =
       getDescriptor().getMessageTypes().get(2);
     internal_static_Qot_GetSecuritySnapshot_WarrantSnapshotExData_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_Qot_GetSecuritySnapshot_WarrantSnapshotExData_descriptor,
         new java.lang.String[] { "ConversionRate", "WarrantType", "StrikePrice", "MaturityTime", "EndTradeTime", "Owner", "RecoveryPrice", "StreetVolumn", "IssueVolumn", "StreetRate", "Delta", "ImpliedVolatility", "Premium", });
-    internal_static_Qot_GetSecuritySnapshot_SnapshotBasicData_descriptor =
+    internal_static_Qot_GetSecuritySnapshot_OptionSnapshotExData_descriptor =
       getDescriptor().getMessageTypes().get(3);
+    internal_static_Qot_GetSecuritySnapshot_OptionSnapshotExData_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_Qot_GetSecuritySnapshot_OptionSnapshotExData_descriptor,
+        new java.lang.String[] { "Type", "Owner", "StrikeTime", "StrikePrice", "ContractSize", "OpenInterest", "ImpliedVolatility", "Premium", "Delta", "Gamma", "Vega", "Theta", "Rho", });
+    internal_static_Qot_GetSecuritySnapshot_SnapshotBasicData_descriptor =
+      getDescriptor().getMessageTypes().get(4);
     internal_static_Qot_GetSecuritySnapshot_SnapshotBasicData_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_Qot_GetSecuritySnapshot_SnapshotBasicData_descriptor,
         new java.lang.String[] { "Security", "Type", "IsSuspend", "ListTime", "LotSize", "PriceSpread", "UpdateTime", "HighPrice", "OpenPrice", "LowPrice", "LastClosePrice", "CurPrice", "Volume", "Turnover", "TurnoverRate", });
     internal_static_Qot_GetSecuritySnapshot_Snapshot_descriptor =
-      getDescriptor().getMessageTypes().get(4);
+      getDescriptor().getMessageTypes().get(5);
     internal_static_Qot_GetSecuritySnapshot_Snapshot_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_Qot_GetSecuritySnapshot_Snapshot_descriptor,
-        new java.lang.String[] { "Basic", "EquityExData", "WarrantExData", });
+        new java.lang.String[] { "Basic", "EquityExData", "WarrantExData", "OptionExData", });
     internal_static_Qot_GetSecuritySnapshot_S2C_descriptor =
-      getDescriptor().getMessageTypes().get(5);
+      getDescriptor().getMessageTypes().get(6);
     internal_static_Qot_GetSecuritySnapshot_S2C_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_Qot_GetSecuritySnapshot_S2C_descriptor,
         new java.lang.String[] { "SnapshotList", });
     internal_static_Qot_GetSecuritySnapshot_Request_descriptor =
-      getDescriptor().getMessageTypes().get(6);
+      getDescriptor().getMessageTypes().get(7);
     internal_static_Qot_GetSecuritySnapshot_Request_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_Qot_GetSecuritySnapshot_Request_descriptor,
         new java.lang.String[] { "C2S", });
     internal_static_Qot_GetSecuritySnapshot_Response_descriptor =
-      getDescriptor().getMessageTypes().get(7);
+      getDescriptor().getMessageTypes().get(8);
     internal_static_Qot_GetSecuritySnapshot_Response_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_Qot_GetSecuritySnapshot_Response_descriptor,

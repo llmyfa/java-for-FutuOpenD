@@ -25,7 +25,7 @@ public final class Notify {
      * <code>NotifyType_GtwEvent = 1;</code>
      *
      * <pre>
-     *Gateway运行事件通知
+     *OpenD运行事件通知
      * </pre>
      */
     NotifyType_GtwEvent(1, 1),
@@ -43,7 +43,7 @@ public final class Notify {
      * <code>NotifyType_GtwEvent = 1;</code>
      *
      * <pre>
-     *Gateway运行事件通知
+     *OpenD运行事件通知
      * </pre>
      */
     public static final int NotifyType_GtwEvent_VALUE = 1;

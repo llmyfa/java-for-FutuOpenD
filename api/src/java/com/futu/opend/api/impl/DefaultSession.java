@@ -4,9 +4,11 @@ import java.io.IOException;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.List;
+
 import com.futu.opend.api.Brokers;
 import com.futu.opend.api.IUpdateCallBack;
 import com.futu.opend.api.OrderBooks;
+import com.futu.opend.api.OrderDetails;
 import com.futu.opend.api.Session;
 import com.futu.opend.api.TraderSession;
 import com.futu.opend.api.protobuf.GetGlobalState;
@@ -15,8 +17,12 @@ import com.futu.opend.api.protobuf.QotGetBasicQot;
 import com.futu.opend.api.protobuf.QotGetBroker;
 import com.futu.opend.api.protobuf.QotGetHistoryKL;
 import com.futu.opend.api.protobuf.QotGetHistoryKLPoints;
+import com.futu.opend.api.protobuf.QotGetHoldingChangeList;
 import com.futu.opend.api.protobuf.QotGetKL;
+import com.futu.opend.api.protobuf.QotGetOptionChain;
 import com.futu.opend.api.protobuf.QotGetOrderBook;
+import com.futu.opend.api.protobuf.QotGetOrderDetail;
+import com.futu.opend.api.protobuf.QotGetOwnerPlate;
 import com.futu.opend.api.protobuf.QotGetPlateSecurity;
 import com.futu.opend.api.protobuf.QotGetPlateSet;
 import com.futu.opend.api.protobuf.QotGetRT;
@@ -28,6 +34,7 @@ import com.futu.opend.api.protobuf.QotGetSubInfo;
 import com.futu.opend.api.protobuf.QotGetTicker;
 import com.futu.opend.api.protobuf.QotGetTradeDate;
 import com.futu.opend.api.protobuf.QotRegQotPush;
+import com.futu.opend.api.protobuf.QotRequestHistoryKL;
 import com.futu.opend.api.protobuf.QotSub;
 import com.futu.opend.api.protobuf.TrdGetHistoryOrderFillList;
 import com.futu.opend.api.protobuf.TrdGetHistoryOrderList;
@@ -45,6 +52,7 @@ import com.futu.opend.api.protobuf.QotCommon.KLType;
 import com.futu.opend.api.protobuf.QotCommon.PlateSetType;
 import com.futu.opend.api.protobuf.QotCommon.QotMarket;
 import com.futu.opend.api.protobuf.QotCommon.RehabType;
+import com.futu.opend.api.protobuf.QotCommon.Security;
 import com.futu.opend.api.protobuf.QotCommon.SecurityType;
 import com.futu.opend.api.protobuf.QotCommon.SubType;
 import com.futu.opend.api.protobuf.QotCommon.Ticker;
@@ -163,6 +171,12 @@ class DefaultSession implements Session,TraderSession{
 		return exec.getValue();
 	}
 	
+	public QotRequestHistoryKL.Response qotRequestHistoryKL(QotMarket market,String symbol,RehabType rehabType,KLType klType,String beginTime,String endTime,int maxAckKLNum,long needKLFieldsFlag,String nextReqKey) throws IOException{
+		QotRequestHistoryKLExec exec = new QotRequestHistoryKLExec(market,symbol,rehabType,klType,beginTime,endTime,maxAckKLNum,needKLFieldsFlag,nextReqKey);
+		request.execute(exec);
+		return exec.getValue();
+	}
+	
 	public QotGetRehab.Response qotGetRehab(QotMarket market,String[] symbols)  throws IOException{
 		QotGetRehabExec exec = new QotGetRehabExec(market,symbols);
 		request.execute(exec);
@@ -219,6 +233,33 @@ class DefaultSession implements Session,TraderSession{
 		return exec.getValue();
 	}
 
+	@Override
+	public QotGetOwnerPlate.Response qotGetOwnerPlate(QotMarket market,String[] symbol) throws IOException{
+		QotGetOwnerPlateExec exec = new QotGetOwnerPlateExec(market,symbol);
+		request.execute(exec);
+		return exec.getValue();
+	}
+	
+	@Override
+	public QotGetHoldingChangeList.Response qotGetHoldingChangeList(QotMarket market,String symbol,int holderCategory,String beginTime,String endTime) throws IOException{
+		QotGetHoldingChangeListExec exec = new QotGetHoldingChangeListExec(market,symbol,holderCategory,beginTime,endTime);
+		request.execute(exec);
+		return exec.getValue();
+	}
+	
+	@Override
+	public QotGetOptionChain.Response qotGetOptionChain(QotMarket market,String symbol,String beginTime,String endTime,int type,int condition) throws IOException{
+		QotGetOptionChainExec exec = new QotGetOptionChainExec(market,symbol,beginTime,endTime,type,condition);
+		request.execute(exec);
+		return exec.getValue();
+	}
+	
+	@Override
+	public QotGetOrderDetail.Response qotGetOrderDetail(QotMarket market,String symbol,IUpdateCallBack<OrderDetails> callback) throws IOException{
+		QotGetOrderDetailExec exec = new QotGetOrderDetailExec(market,symbol,callback);
+		request.execute(exec);
+		return exec.getValue();
+	}
 	
 	public TraderSession trdUnlockTradeForSimulate(long futuUserID,String pwdMD5) throws IOException {
 		this.trdenv = TrdEnv.TrdEnv_Simulate;

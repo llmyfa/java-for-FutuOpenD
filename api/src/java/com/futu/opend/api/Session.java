@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.UnknownHostException;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
+
 import com.futu.opend.api.protobuf.GetGlobalState;
 import com.futu.opend.api.protobuf.QotCommon.BasicQot;
 import com.futu.opend.api.protobuf.QotCommon.KLType;
@@ -17,8 +18,12 @@ import com.futu.opend.api.protobuf.QotGetBasicQot;
 import com.futu.opend.api.protobuf.QotGetBroker;
 import com.futu.opend.api.protobuf.QotGetHistoryKL;
 import com.futu.opend.api.protobuf.QotGetHistoryKLPoints;
+import com.futu.opend.api.protobuf.QotGetHoldingChangeList;
 import com.futu.opend.api.protobuf.QotGetKL;
+import com.futu.opend.api.protobuf.QotGetOptionChain;
 import com.futu.opend.api.protobuf.QotGetOrderBook;
+import com.futu.opend.api.protobuf.QotGetOrderDetail;
+import com.futu.opend.api.protobuf.QotGetOwnerPlate;
 import com.futu.opend.api.protobuf.QotGetPlateSecurity;
 import com.futu.opend.api.protobuf.QotGetPlateSet;
 import com.futu.opend.api.protobuf.QotGetRT;
@@ -30,6 +35,7 @@ import com.futu.opend.api.protobuf.QotGetSubInfo;
 import com.futu.opend.api.protobuf.QotGetTicker;
 import com.futu.opend.api.protobuf.QotGetTradeDate;
 import com.futu.opend.api.protobuf.QotRegQotPush;
+import com.futu.opend.api.protobuf.QotRequestHistoryKL;
 import com.futu.opend.api.protobuf.QotSub;
 import com.futu.opend.api.protobuf.QotCommon.QotMarket;
 import com.futu.opend.api.protobuf.QotCommon.SubType;
@@ -168,6 +174,7 @@ public interface Session {
 	
 	/**
 	 * 单只股票一段历史K线(必须先下载本地历史数据)
+	 * 从1.08开始富途不再提供本地历史数据全量下载。请调用qotRequestHistoryKL
 	 * @param market
 	 * @param symbol
 	 * @param rehabType
@@ -179,10 +186,12 @@ public interface Session {
 	 * @return
 	 * @throws IOException
 	 */
+	@Deprecated
 	QotGetHistoryKL.Response qotGetHistoryKL(QotMarket market,String symbol,RehabType rehabType,KLType klType,String beginTime,String endTime,int maxAckKLNum,long needKLFieldsFlag) throws IOException;
 	
 	/**
 	 * 获取多只股票多点历史K线(必须先下载本地历史数据)
+	 * 从1.08开始富途不再提供本地历史数据全量下载。请调用qotRequestHistoryKL
 	 * @param market
 	 * @param symbols
 	 * @param rehabType
@@ -194,7 +203,25 @@ public interface Session {
 	 * @return
 	 * @throws IOException
 	 */
+	@Deprecated
 	QotGetHistoryKLPoints.Response qotGetHistoryKLPoints(QotMarket market,String[] symbols,RehabType rehabType,KLType klType,String[] timeLists,NoDataMode noDataMode,int maxReqSecurityNum,long needKLFieldsFlag)  throws IOException;
+	
+	/**
+	 * 单只股票一段历史K线(1.08新接口，不再提供本地历史数据全量下载，不要本地数据直接调用)
+	 * @param market
+	 * @param symbol
+	 * @param rehabType
+	 * @param klType
+	 * @param beginTime
+	 * @param endTime
+	 * @param maxAckKLNum <0 所有数据
+	 * @param needKLFieldsFlag <0 所有字段
+	 * @param nextReqKey  分页请求的key。如果start和end之间的数据点多于max_count，那么后续请求时，要传入上次调用返回的page_req_key。初始请求时应该传None。
+	 * @return
+	 * @throws IOException
+	 */
+	QotRequestHistoryKL.Response qotRequestHistoryKL(QotMarket market,String symbol,RehabType rehabType,KLType klType,String beginTime,String endTime,int maxAckKLNum,long needKLFieldsFlag,String nextReqKey) throws IOException;
+	
 	/**
 	 * 注册行情推送
 	 * @param market
@@ -282,6 +309,48 @@ public interface Session {
 	 * @throws IOException
 	 */
 	QotGetTradeDate.Response qotGetTradeDate(QotMarket market,String beginTime,String endTime) throws IOException;
+	
+	/**
+	 * 获取股票所属板块
+	 * @param market
+	 * @param symbol
+	 * @return
+	 * @throws IOException
+	 */
+	QotGetOwnerPlate.Response qotGetOwnerPlate(QotMarket market,String[] symbol) throws IOException;
+	
+	/**
+	 * 获取持股变化列表(目前仅支持美股 1.08)
+	 * @param market
+	 * @param symbol
+	 * @param beginTime //开始时间，严格按YYYY-MM-DD HH:MM:SS或YYYY-MM-DD HH:MM:SS.MS格式传
+	 * @param endTime //结束时间，严格按YYYY-MM-DD HH:MM:SS或YYYY-MM-DD HH:MM:SS.MS格式传
+	 * @return
+	 * @throws IOException
+	 */
+	QotGetHoldingChangeList.Response qotGetHoldingChangeList(QotMarket market,String symbol,int holderCategory,String beginTime,String endTime) throws IOException;
+	
+	/**
+	 * 获取期权链(目前仅支持美股 1.08)
+	 * @param market
+	 * @param symbol
+	 * @param beginTime //期权到期日开始时间
+	 * @param endTime //期权到期日结束时间,时间跨度最多一个月
+	 * @param type
+	 * @param condition
+	 * @return
+	 * @throws IOException
+	 */
+	QotGetOptionChain.Response qotGetOptionChain(QotMarket market,String symbol,String beginTime,String endTime,int type,int condition) throws IOException;
+	
+	/**
+	 * 获取委托明细(至1.08应该只支持A股level2行情)
+	 * @param market
+	 * @param symbol
+	 * @return
+	 * @throws IOException
+	 */
+	QotGetOrderDetail.Response qotGetOrderDetail(QotMarket market,String symbol,IUpdateCallBack<OrderDetails> callback) throws IOException;
 	
 	/**
 	 * 解锁模拟盘交易
