@@ -65,7 +65,7 @@ public class TestCase{
 	
 	@BeforeClass
 	public static void tearUp() throws IOException{
-		session = FutuOpenD.openSession("localhost", 11111,false);//true,启用推送功能
+		session = FutuOpenD.openSession("47.75.78.52", 11111,false);//true,启用推送功能
 		
 		//订阅股票
 		QotSub.Response value = session.qotSub(QotMarket.QotMarket_HK_Security, new String[]{"00700","00005"},new SubType[]{SubType.SubType_Basic,SubType.SubType_Ticker,SubType.SubType_KL_1Min,SubType.SubType_KL_Day,SubType.SubType_RT,SubType.SubType_OrderBook,SubType.SubType_Broker});

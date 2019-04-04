@@ -4,9 +4,12 @@ import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
+
+import com.futu.opend.api.IUpdateCallBack;
 import com.futu.opend.api.Session;
 import com.futu.opend.api.TraderSession;
 import com.futu.opend.api.impl.FutuOpenD;
@@ -14,10 +17,12 @@ import com.futu.opend.api.protobuf.TrdCommon.ModifyOrderOp;
 import com.futu.opend.api.protobuf.TrdCommon.Order;
 import com.futu.opend.api.protobuf.TrdCommon.OrderStatus;
 import com.futu.opend.api.protobuf.TrdGetOrderList;
+import com.futu.opend.api.protobuf.TrdUpdateOrder;
 import com.futu.opend.api.protobuf.TrdCommon.OrderType;
 import com.futu.opend.api.protobuf.TrdCommon.TrdFilterConditions;
 import com.futu.opend.api.protobuf.TrdCommon.TrdMarket;
 import com.futu.opend.api.protobuf.TrdCommon.TrdSide;
+import com.futu.opend.api.protobuf.TrdUpdateOrder.Response;
 
 public class TraderTestCase {
 
@@ -83,6 +88,17 @@ private static Session session = null;
 			System.out.println(traderSession.trdGetHistoryOrderList(TrdMarket.TrdMarket_HK,conditions.build(),null));
 			System.out.println(traderSession.trdGetHistoryOrderList(TrdMarket.TrdMarket_CN,conditions.build(),null));
 			System.out.println(traderSession.trdGetHistoryOrderList(TrdMarket.TrdMarket_US,conditions.build(),null));
+		}
+		//下单并推送
+		@Test
+		public void testTrdPlaceOrder() throws IOException, InterruptedException{
+			TraderSession traderSession =  session.trdUnlockTradeForSimulate(this.futuUserID,pwdMD5);
+			System.out.println(traderSession.trdPlaceOrder(TrdMarket.TrdMarket_US,TrdSide.TrdSide_Buy,OrderType.OrderType_Normal,"AAPL",10,200,null,null, new IUpdateCallBack<TrdUpdateOrder.Response> (){
+				@Override
+				public void callback(Response res) {
+					System.out.println(res);
+				}
+			}));
 		}
 		
 		//下单，查单,改单，撤单

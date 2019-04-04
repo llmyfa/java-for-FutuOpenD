@@ -268,6 +268,13 @@ class DefaultSession implements Session,TraderSession{
 		TrdGetAccList.Response response = rrdexec.getValue();
 		if (response.getRetType()==0){
 			this.trdAccs = response.getS2C().getAccListList();
+			List<Long> accids = new ArrayList<Long>();
+			for(TrdAcc accid : trdAccs){
+				accids.add(accid.getAccID());
+			}
+			//订阅接收交易账户的推送数据
+			TrdSubAccPushExec trdSubAccPushExec = new TrdSubAccPushExec(accids.toArray(new Long[]{}));
+			request.execute(trdSubAccPushExec);
 			return this;
 		}
 		throw new IOException(response.getRetMsg());

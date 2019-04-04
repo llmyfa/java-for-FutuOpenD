@@ -45,6 +45,7 @@ class TrdPlaceOrderExec implements IUpdateExecutor<TrdUpdateOrder.Response>{
 		this.adjustPrice = adjustPrice;
 		this.adjustSideAndLimit = adjustSideAndLimit;
 		this.connID = connID;
+		this.callback = callback;
 	}
 	
 	@Override
